@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zeldo</title>
+    <style>
+        .row {
+    display: flex;
+}
+
+.tile {
+    border: 1px solid rgb(0, 0, 0);
+    width: 50px;
+    height: 50px;
+}
+
+    </style>
+</head>
+<body>
+
+    <div id="game-board"></div>
+
+
+    <div id="game-container">
+        <!-- Le plateau de jeu sera généré dynamiquement ici -->
+    </div>
+
+<div id="player-stats">
+        <!-- Le plateau de jeu sera généré dynamiquement ici -->
+    </div>
+
+    <div id="current-turn">
+        <!-- Le plateau de jeu sera généré dynamiquement ici -->
+    </div>
+    
+    <button id="start-game">Commencer le jeu</button>
+    <div id="action-buttons">
+        <button id="attack-button">Attaquer</button>
+        <button id="defend-button">Défendre</button>
+        <button id="use-item-button">Utiliser un objet</button>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

@@ -239,3 +239,19 @@ document.addEventListener('keydown', (event) =>{
                 game.keyboardControl(key)
     }
     });
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'r') {
+      var rules = document.getElementById('rules');
+      rules.style.display = 'block';
+    }
+  });
+  
+var closeButton = document.getElementsByClassName('close')[0];
+  
+closeButton.addEventListener('click', function() {
+    var rules = document.getElementById('rules');
+    rules.style.display = 'none';
+  });
+  
+

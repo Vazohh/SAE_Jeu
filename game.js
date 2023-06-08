@@ -166,15 +166,15 @@ function drawGameBoard(board) {
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'r') {
-      var modal = document.getElementById('modal');
-      modal.style.display = 'block';
+      var rules = document.getElementById('rules');
+      rules.style.display = 'block';
     }
   });
   
 var closeButton = document.getElementsByClassName('close')[0];
   
 closeButton.addEventListener('click', function() {
-    var modal = document.getElementById('modal');
-    modal.style.display = 'none';
+    var rules = document.getElementById('rules');
+    rules.style.display = 'none';
   });
   

@@ -8,7 +8,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.modal {
+.rules {
   display: none;
   position: fixed;
   z-index: 1;
@@ -20,7 +20,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.rules-content {
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;

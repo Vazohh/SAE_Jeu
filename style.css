@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 .cachee {
     display: none;
@@ -93,5 +94,13 @@ body {
   text-align: center;
   align-items: center; /* Aligner les éléments verticalement */
   margin-left: 675px;
+}
+
+.centered {
+  position: absolute;
+  top: 125%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Satisfy', cursive;
 }
 

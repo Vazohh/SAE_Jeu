@@ -253,4 +253,18 @@ closeButton.addEventListener('click', function() {
     var rules = document.getElementById('rules');
     rules.style.display = 'none';
   });
-// Fin des fonctions pour les règles
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'c') {
+        var controls = document.getElementById('controls');
+        controls.style.display = 'block';
+    }
+  });
+  
+var closeControlsButton = document.getElementsByClassName('closeControls')[0];
+  
+closeControlsButton.addEventListener('click', function() {
+    var controls = document.getElementById('controls');
+    controls.style.display = 'none';
+});

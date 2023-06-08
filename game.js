@@ -163,11 +163,11 @@ function drawGameBoard(board) {
     }
 }
 
-
+// Fonctions pour les règles 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'r') {
-      var rules = document.getElementById('rules');
-      rules.style.display = 'block';
+        var rules = document.getElementById('rules');
+        rules.style.display = 'block';
     }
   });
   
@@ -177,4 +177,4 @@ closeButton.addEventListener('click', function() {
     var rules = document.getElementById('rules');
     rules.style.display = 'none';
   });
-  
+// Fin des fonctions pour les règles

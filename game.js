@@ -2,6 +2,7 @@
 class Tile {
     constructor(i, j) {
         this.position = [i, j]
+        this.image=''
         this.character = ''
         this.item = null
         this.monster = null
@@ -20,8 +21,8 @@ class Tile {
     }
 }
 class Board {
-    constructor(size) {
-        this.rows = Array(size).fill().map(() => Array(size).fill().map(() => new Tile()))
+    constructor() {
+        this.rows = Array(25).fill().map(() => Array(25).fill().map(() => new Tile()))
         // On pourra ajouter ce qui se trouve sur le plateau, par exemple:
         //this.monsters = []
         //this.items = []
@@ -37,11 +38,41 @@ class Player {
         this.name = name;
         this.health = 100;
         this.items = [];
-        this.position = [0, 0];  // Position initiale sur le plateau
+        this.position = [0, 0];
     }
 
-    move(newPosition) {
+    moveLeft() {
+        if(this.position[1]>0){
+            this.position[1] = this.position[1]-1
+        }
+        else{
+
+        }
         // À implémenter : mettre à jour la position du joueur et gérer les interactions avec les objets/monstres
+    }
+    moveRight(){
+        if(this.position[1]<25){
+            this.position[1] = this.position[1]+1
+        }
+        else{
+
+        }
+    }
+    moveUp(){
+        if(this.position[0]>0){
+            this.position[0] = this.position[0]-1
+        }
+        else{
+
+        }
+    }
+    moveDown(){
+        if(this.position[0]<25){
+            this.position[0] = this.position[0]+1
+        }
+        else{
+
+        }
     }
 
     attack(target) {
@@ -64,10 +95,13 @@ class Game {
         this.board = board;
         this.currentPlayer = players[0];
         this.gameState = "not_started";
+
+        this.start()
     }
 
     start() {
         this.gameState = "in_progress";
+        this.board.rows[this.currentPlayer.position[0]][this.currentPlayer.position[1]].character = "hero"
         this.board.generate();
         // À implémenter : afficher le plateau de jeu et les joueurs sur l'interface HTML
     }
@@ -79,6 +113,30 @@ class Game {
 
     nextTurn() {
         // À implémenter : passer au joueur suivant et gérer le tour de jeu
+    }
+
+    update(){
+        this.board.rows.forEach(ligne => ligne.forEach(tuile => tuile.character = ""))
+        this.board.rows[this.currentPlayer.position[0]][this.currentPlayer.position[1]].character = "hero"
+        updateUI(this)
+
+    }
+
+    keyboardControl(touche){
+        if(touche == "ArrowLeft"){
+            this.currentPlayer.moveLeft()
+        }
+        if(touche == "ArrowRight"){
+            this.currentPlayer.moveRight()
+        }
+        if(touche == "ArrowUp"){
+            this.currentPlayer.moveUp()
+        }
+        if(touche == "ArrowDown"){
+            this.currentPlayer.moveDown()
+        }
+    
+        this.update()
     }
 }
 
@@ -96,10 +154,11 @@ function updateUI(game) {
         for(let tile of row){
 
             gameBoardHTML += `
-                <div class="tile" style="background-image: url('kenney_tiny-town/Tilestile_0000.png');">
-                    ${tile.character ? tile.character : ''}
+                <div class="tile">
+                    ${tile.character ? '<img id="Player" src="kenney_tiny-dungeon/Tiles/tile_0085.png"></img>' : ''}
                     ${tile.item ? tile.item.name : ''}
                     ${tile.monster ? tile.monster.name : ''}
+                    ${tile.image ? tile.image : ''}
                 </div>
             `;
         }
@@ -113,9 +172,9 @@ function updateUI(game) {
     console.log(game);
 }
 
-
+let game;
 document.getElementById('start-game').addEventListener('click', () => {
-    let game = new Game([new Player("Joueur 1"), new Player("Joueur 2")], new Board(10));
+    game = new Game([new Player("Joueur 1"), new Player("Joueur 2")], new Board(10));
     game.start();
     drawGameBoard(game.board);
     updateUI(game);
@@ -162,3 +221,21 @@ function drawGameBoard(board) {
         gameBoardDiv.appendChild(document.createElement('br'));
     }
 }
+
+document.addEventListener('keydown', (event) =>{
+                                
+        const key = event.key;
+        switch (key) {
+            case "ArrowLeft":
+                game.keyboardControl(key)
+            case "ArrowRight":
+                str = 'Right';
+                game.keyboardControl(key)
+            case "ArrowUp":
+                str = 'Up';
+                game.keyboardControl(key)
+            case "ArrowDown":
+                str = 'Down';
+                game.keyboardControl(key)
+    }
+    });

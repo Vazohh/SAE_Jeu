@@ -172,6 +172,30 @@ function updateUI(game) {
     console.log(game);
 }
 
+function updateInventory(inventory) {
+
+    // Afficher l'état de l'inventaire
+    let inventoryHTML = '';
+    for (let row of inventory.rows) {
+        inventoryHTML += `<div class="row">`; // Début de la ligne
+        for(let tile of row){
+
+            inventoryHTML += `
+                <div class="inventory">
+                    ${tile.character ? tile.character.name : ''}
+                    ${tile.item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/pioche.png"></img>' : ''}
+                    ${tile.monster ? tile.monster.name : ''}
+                    ${tile.image ? tile.image : ''}
+                </div>
+            `;
+        }
+        inventoryHTML += '</div>'; // Fin de la ligne
+    }
+    document.getElementById('inventory-board').innerHTML = inventoryHTML;
+
+    console.log(inventory);
+}
+
 let game;
 document.getElementById('start-game').addEventListener('click', () => {
     game = new Game([new Player("Joueur 1"), new Player("Joueur 2")], new Board(10));
@@ -179,7 +203,12 @@ document.getElementById('start-game').addEventListener('click', () => {
     drawGameBoard(game.board);
     updateUI(game);
 });
-
+let inventory;
+document.getElementById('use-item-button').addEventListener('click', () => {
+    inventory = new Board(10);
+    drawInventoryBoard(inventory);
+    updateInventory(inventory);
+});
 
 function drawGameBoard(board) {
     // Obtenir la div de plateau de jeu
@@ -211,6 +240,33 @@ function drawGameBoard(board) {
                 monsterDiv.className = 'monster';
                 monsterDiv.textContent = tile.monster.name;
                 tileDiv.appendChild(monsterDiv);
+            }
+
+            // Ajouter la tuile à la div de plateau de jeu
+            gameBoardDiv.appendChild(tileDiv);
+        }
+
+        // Ajouter un élément de saut de ligne pour créer une nouvelle ligne
+        gameBoardDiv.appendChild(document.createElement('br'));
+    }
+}
+
+function drawInventoryBoard(inventory) {
+    // Obtenir la div de plateau d'inventaire
+    let gameBoardDiv = document.getElementById('inventory-board');
+
+    // Créer un nouvel élément div pour chaque tuile
+    for (let row of inventory.rows) {
+        for (let tile of row) {
+            let tileDiv = document.createElement('div');
+            tileDiv.className = 'inventory';
+
+
+            if (tile.item) {
+                let itemDiv = document.createElement('div');
+                itemDiv.className = 'item';
+                itemDiv.textContent = tile.item.name;
+                tileDiv.appendChild(itemDiv);
             }
 
             // Ajouter la tuile à la div de plateau de jeu

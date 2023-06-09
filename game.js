@@ -2,11 +2,15 @@
 class Tile {
     constructor(i, j) {
         this.position = [i, j]
+        this.background = ''
         this.image=''
         this.character = ''
         this.item = null
         this.monster = null
+        this.walkable = true
     }
+
+    
 
     isEmpty() {
         return this.character === null && this.item === null && this.monster === null
@@ -20,17 +24,54 @@ class Tile {
         return this.monster !== null
     }
 }
+
 class Board {
     constructor() {
-        this.rows = Array(25).fill().map(() => Array(25).fill().map(() => new Tile()))
+        this.rows = Array(30).fill().map((_, y) => Array(80).fill().map((_,x) => new Tile(x,y)))
         // On pourra ajouter ce qui se trouve sur le plateau, par exemple:
         //this.monsters = []
         //this.items = []
         // Ces instances viendront avec les méthodes addItem, removeItem, addMonster, removeMonster, ...
+        this.generate()
     }
 
     generate(){
+        this.rows[17][2].background = 'grass'
+        this.rows[5][2].background = 'flower'
+        this.generateHouse(26,51)
+    }
 
+    generateHouse(abs, ord){
+        this.rows[abs, ord].image ='0089'
+        this.rows[abs, ord].walkable = false
+        this.rows[abs,ord+1].image='0079'
+        this.rows[abs, ord+1].walkable = false
+        this.rows[abs,ord-1].image='0077'
+        this.rows[abs, ord-1].walkable = false
+        this.rows[abs,ord-2].image='0077'
+        this.rows[abs, ord-2].walkable = false
+        this.rows[abs,ord-3].image='0076'
+        this.rows[abs, ord-3].walkable = false
+        this.rows[abs-1,ord+1].image='0064'
+        this.rows[abs-1, ord+1].walkable = false
+        this.rows[abs-1,ord].image='0067'
+        this.rows[abs-1, ord].walkable = false
+        this.rows[abs-1,ord-1].image='0065'
+        this.rows[abs-1, ord-1].walkable = false
+        this.rows[abs-1,ord-2].image='0065'
+        this.rows[abs-1, ord-2].walkable = false
+        this.rows[abs-1,ord-3].image='0066'
+        this.rows[abs-1, ord-3].walkable = false
+        this.rows[abs-2,ord+1].image='0054'
+        this.rows[abs-2, ord+1].walkable = false
+        this.rows[abs-2,ord].image='0055'
+        this.rows[abs-2, ord].walkable = false
+        this.rows[abs-2,ord-1].image='0053'
+        this.rows[abs-2, ord-1].walkable = false
+        this.rows[abs-2,ord-2].image='0053'
+        this.rows[abs-2, ord-2].walkable = false
+        this.rows[abs-2,ord-3].image='0052'
+        this.rows[abs-2, ord-3].walkable = false  
     }
 }
 class Player {
@@ -51,12 +92,13 @@ class Player {
         // À implémenter : mettre à jour la position du joueur et gérer les interactions avec les objets/monstres
     }
     moveRight(){
-        if(this.position[1]<25){
+        if(this.position[1]<30){
             this.position[1] = this.position[1]+1
         }
         else{
 
         }
+
     }
     moveUp(){
         if(this.position[0]>0){
@@ -67,7 +109,7 @@ class Player {
         }
     }
     moveDown(){
-        if(this.position[0]<25){
+        if(this.position[0]<80){
             this.position[0] = this.position[0]+1
         }
         else{
@@ -152,13 +194,12 @@ function updateUI(game) {
     for (let row of game.board.rows) {
         gameBoardHTML += `<div class="row">`; // Début de la ligne
         for(let tile of row){
-
             gameBoardHTML += `
-                <div class="tile">
+                <div class="tile ${tile.background}" >
                     ${tile.character ? '<img id="Player" src="kenney_tiny-dungeon/Tiles/tile_0085.png"></img>' : ''}
                     ${tile.item ? tile.item.name : ''}
                     ${tile.monster ? tile.monster.name : ''}
-                    ${tile.image ? tile.image : ''}
+                    ${tile.image ? `<img id=Player src=kenney_tiny-dungeon/Tiles/tile_${tile.image}.png></img>` : ''}
                 </div>
             `;
         }
@@ -169,7 +210,6 @@ function updateUI(game) {
     // Afficher le tour actuel
     document.getElementById('current-turn').textContent = `Current turn: ${game.currentPlayer.name}`;
 
-    console.log(game);
 }
 
 function updateInventory(inventory) {
@@ -284,24 +324,28 @@ document.addEventListener('keydown', (event) =>{
         switch (key) {
             case "ArrowLeft":
                 game.keyboardControl(key)
+                break
             case "ArrowRight":
-                str = 'Right';
                 game.keyboardControl(key)
+                break
             case "ArrowUp":
-                str = 'Up';
                 game.keyboardControl(key)
+                break
             case "ArrowDown":
-                str = 'Down';
                 game.keyboardControl(key)
+                break
     }
-    });
 
-document.addEventListener('keydown', function(event) {
     if (event.key === 'r') {
         var rules = document.getElementById('rules');
         rules.style.display = 'block';
     }
-  });
+    if (event.key === 'c') {
+        var controls = document.getElementById('controls');
+        controls.style.display = 'block';
+    }
+    });
+
   
 var closeButton = document.getElementsByClassName('close')[0];
   
@@ -311,12 +355,6 @@ closeButton.addEventListener('click', function() {
   });
 
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'c') {
-        var controls = document.getElementById('controls');
-        controls.style.display = 'block';
-    }
-  });
   
 var closeControlsButton = document.getElementsByClassName('closeControls')[0];
   

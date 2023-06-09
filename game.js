@@ -268,3 +268,72 @@ closeControlsButton.addEventListener('click', function() {
     var controls = document.getElementById('controls');
     controls.style.display = 'none';
 });
+
+// Sélectionnez le bouton "Commencer" par son ID
+const startButton = document.getElementById('start-game');
+// Sélectionnez l'élément d'affichage du timer par son ID
+const timerDisplay = document.getElementById('timer-display');
+
+let timerInterval; // Variable pour stocker l'ID de l'intervalle du timer
+let timerSeconds = 0; // Variable pour stocker le nombre de secondes écoulées
+
+// Ajoutez un écouteur d'événements pour le clic sur le bouton
+startButton.addEventListener('click', function() {
+  // Déclenchez votre fonction de démarrage du timer ici
+  startTimer();
+});
+
+// Fonction pour démarrer le timer
+function startTimer() {
+  // Réinitialisez le nombre de secondes écoulées
+  timerSeconds = 0;
+
+  // Affichez une indication de démarrage du timer (facultatif)
+  console.log('Le timer a commencé !');
+
+  // Mettez à jour l'affichage initial du timer
+  updateTimerDisplay();
+
+  // Démarrez l'intervalle du timer
+  timerInterval = setInterval(function() {
+    // Augmentez le nombre de secondes écoulées à chaque itération
+    timerSeconds++;
+
+    // Code à exécuter à chaque itération de l'intervalle (le timer continue)
+    console.log('Le timer continue...');
+    // Vous pouvez ajouter votre logique de jeu ici
+
+    // Mettez à jour l'affichage du timer
+    updateTimerDisplay();
+
+    // Exemple : Vérifiez si le jeu est terminé
+    if (jeuTermine()) {
+      // Arrêtez l'intervalle du timer
+      clearInterval(timerInterval);
+      console.log('Le jeu est terminé !');
+      // Ajoutez votre logique de fin de jeu ici
+    }
+  }, 1000); // Interval de 1 seconde (vous pouvez ajuster selon vos besoins)
+}
+
+// Fonction pour mettre à jour l'affichage du timer
+function updateTimerDisplay() {
+  // Calculez les minutes et les secondes à partir du nombre de secondes écoulées
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+
+  // Formatez les minutes et les secondes avec un zéro devant si nécessaire
+  const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+  // Mettez à jour le contenu de l'élément d'affichage du timer
+  timerDisplay.textContent = formattedTime;
+}
+
+// Fonction pour vérifier si le jeu est terminé (exemple)
+function jeuTermine() {
+  // Implémentez votre logique pour vérifier si le jeu est terminé
+  // Renvoyez true si le jeu est terminé, sinon renvoyez false
+  // Par exemple, vous pouvez vérifier si toutes les conditions de fin du jeu sont remplies
+  // et renvoyer true dans ce cas
+  return false;
+}

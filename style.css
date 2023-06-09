@@ -22,12 +22,11 @@ body {
 }
 
 .rules-content {
-  background-color: #fefefe;
-  text-align: center;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  overflow: hidden;
 }
 
 .close {
@@ -66,12 +65,11 @@ body {
 }
 
 .controls-content {
-  background-color: #fefefe;
-  text-align: center;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  overflow: hidden;
 }
 
 .closeControls:hover,
@@ -92,15 +90,42 @@ body {
 .iKey {
   display: flex;
   text-align: center;
-  align-items: center; /* Aligner les éléments verticalement */
+  align-items: center;
   margin-left: 675px;
 }
 
 .centered {
   position: absolute;
-  top: 125%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: 'Satisfy', cursive;
+  max-height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+img[src="img/parchemin1.png"] {
+  max-height: 900px; 
+}
+
+.centered img[src="img/parchemin1.png"] {
+  max-height: 900px; 
+}
+
+.objectives-container {
+  padding: 20px;
+}
+
+img[src="img/parchemin2.png"] {
+  max-height: 900px; 
+}
+
+.centered img[src="img/parchemin2.png"] {
+  max-height: 900px; 
+}
+
+.controls-container {
+  padding: 20px;
+}

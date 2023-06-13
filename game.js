@@ -27,7 +27,9 @@ class Tile {
 
 class Board {
     constructor() {
-        this.rows = Array(30).fill().map((_, y) => Array(80).fill().map((_,x) => new Tile(x,y)))
+        this.width = 30
+        this.height = 30
+        this.rows = Array(this.height).fill().map((_, y) => Array( this.width ).fill().map((_,x) => new Tile(x,y)))
         // On pourra ajouter ce qui se trouve sur le plateau, par exemple:
         //this.monsters = []
         //this.items = []
@@ -38,40 +40,40 @@ class Board {
     generate(){
         this.rows[17][2].background = 'grass'
         this.rows[5][2].background = 'flower'
-        this.generateHouse(26,51)
+        this.generateHouse(10, 10)
     }
 
-    generateHouse(abs, ord){
-        this.rows[abs, ord].image ='0089'
-        this.rows[abs, ord].walkable = false
-        this.rows[abs,ord+1].image='0079'
-        this.rows[abs, ord+1].walkable = false
-        this.rows[abs,ord-1].image='0077'
-        this.rows[abs, ord-1].walkable = false
-        this.rows[abs,ord-2].image='0077'
-        this.rows[abs, ord-2].walkable = false
-        this.rows[abs,ord-3].image='0076'
-        this.rows[abs, ord-3].walkable = false
-        this.rows[abs-1,ord+1].image='0064'
-        this.rows[abs-1, ord+1].walkable = false
-        this.rows[abs-1,ord].image='0067'
-        this.rows[abs-1, ord].walkable = false
-        this.rows[abs-1,ord-1].image='0065'
-        this.rows[abs-1, ord-1].walkable = false
-        this.rows[abs-1,ord-2].image='0065'
-        this.rows[abs-1, ord-2].walkable = false
-        this.rows[abs-1,ord-3].image='0066'
-        this.rows[abs-1, ord-3].walkable = false
-        this.rows[abs-2,ord+1].image='0054'
-        this.rows[abs-2, ord+1].walkable = false
-        this.rows[abs-2,ord].image='0055'
-        this.rows[abs-2, ord].walkable = false
-        this.rows[abs-2,ord-1].image='0053'
-        this.rows[abs-2, ord-1].walkable = false
-        this.rows[abs-2,ord-2].image='0053'
-        this.rows[abs-2, ord-2].walkable = false
-        this.rows[abs-2,ord-3].image='0052'
-        this.rows[abs-2, ord-3].walkable = false  
+    generateHouse(abs, ord) {
+        this.rows[abs][ord].image ='0089';
+        this.rows[abs][ord].walkable = false;
+        this.rows[abs][ord+1].image='0079';
+        this.rows[abs][ord+1].walkable = false;
+        this.rows[abs][ord-1].image='0077';
+        this.rows[abs][ord-1].walkable = false;
+        this.rows[abs][ord-2].image='0077';
+        this.rows[abs][ord-2].walkable = false;
+        this.rows[abs][ord-3].image='0076';
+        this.rows[abs][ord-3].walkable = false;
+        this.rows[abs-1][ord+1].image='0066';
+        this.rows[abs-1][ord+1].walkable = false;
+        this.rows[abs-1][ord].image='0067';
+        this.rows[abs-1][ord].walkable = false;
+        this.rows[abs-1][ord-1].image='0065';
+        this.rows[abs-1][ord-1].walkable = false;
+        this.rows[abs-1][ord-2].image='0065';
+        this.rows[abs-1][ord-2].walkable = false;
+        this.rows[abs-1][ord-3].image='0064';
+        this.rows[abs-1][ord-3].walkable = false;
+        this.rows[abs-2][ord+1].image='0054';
+        this.rows[abs-2][ord+1].walkable = false;
+        this.rows[abs-2][ord].image='0055';
+        this.rows[abs-2][ord].walkable = false;
+        this.rows[abs-2][ord-1].image='0053';
+        this.rows[abs-2][ord-1].walkable = false;
+        this.rows[abs-2][ord-2].image='0053';
+        this.rows[abs-2][ord-2].walkable = false;
+        this.rows[abs-2][ord-3].image='0052';
+        this.rows[abs-2][ord-3].walkable = false;
     }
 }
 class Player {
@@ -92,7 +94,7 @@ class Player {
         // À implémenter : mettre à jour la position du joueur et gérer les interactions avec les objets/monstres
     }
     moveRight(){
-        if(this.position[1]<30){
+        if(this.position[1]<this.height){
             this.position[1] = this.position[1]+1
         }
         else{
@@ -109,7 +111,7 @@ class Player {
         }
     }
     moveDown(){
-        if(this.position[0]<80){
+        if(this.position[0]< this.width ){
             this.position[0] = this.position[0]+1
         }
         else{
@@ -194,14 +196,23 @@ function updateUI(game) {
     for (let row of game.board.rows) {
         gameBoardHTML += `<div class="row">`; // Début de la ligne
         for(let tile of row){
-            gameBoardHTML += `
+            if(tile.image){
+                gameBoardHTML += `
+                <div class="tile" >
+                    <img id="Player" src=kenney_tiny-town/Tiles/tile_${tile.image}.png></img>
+                </div>
+            `;
+            }
+            else {
+                gameBoardHTML += `
                 <div class="tile ${tile.background}" >
                     ${tile.character ? '<img id="Player" src="kenney_tiny-dungeon/Tiles/tile_0085.png"></img>' : ''}
                     ${tile.item ? tile.item.name : ''}
                     ${tile.monster ? tile.monster.name : ''}
-                    ${tile.image ? `<img id=Player src=kenney_tiny-dungeon/Tiles/tile_${tile.image}.png></img>` : ''}
                 </div>
             `;
+            }
+            
         }
         gameBoardHTML += '</div>'; // Fin de la ligne
     }

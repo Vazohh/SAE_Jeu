@@ -27,8 +27,8 @@ class Tile {
 
 class Board {
     constructor() {
-        this.width = 30
-        this.height = 30
+        this.width = 75
+        this.height = 40
         this.rows = Array(this.height).fill().map((_, y) => Array( this.width ).fill().map((_,x) => new Tile(x,y)))
         // On pourra ajouter ce qui se trouve sur le plateau, par exemple:
         //this.monsters = []
@@ -38,12 +38,82 @@ class Board {
     }
 
     generate(){
-        this.rows[17][2].background = 'grass'
-        this.rows[5][2].background = 'flower'
+
+        /*for(i=0;i<75;i++){
+            for(j=0;j<40;j++){
+                if(i%5==0 && j%5==0){
+                    this.generateGrassFlower(i,j)
+                }
+            }
+        }*/
+        
+        this.generateGrassFlower(5,5)
+        this.generateGrassFlower(5,10)
+        this.generateGrassFlower(5,20)
+        this.generateGrassFlower(5,25)
+        this.generateGrassFlower(10,5)
+        this.generateGrassFlower(10,10)
+        this.generateGrassFlower(10,20)
+        this.generateGrassFlower(10,25)
+        this.generateGrassFlower(20,5)
+        this.generateGrassFlower(20,10)
+        this.generateGrassFlower(20,20)
+        this.generateGrassFlower(20,25)
+        this.generateGrassFlower(25,5)
+        this.generateGrassFlower(25,10)
+        this.generateGrassFlower(25,20)
+        this.generateGrassFlower(25,25)
+        this.rows[11][10].background = 'gravel'
+        this.rows[12][10].background = 'gravel'
+        this.rows[11][11].background = 'gravel'
+        this.rows[11][8].background = 'gravel'
+        this.rows[11][9].background = 'gravel'
+        this.rows[11][7].background = 'gravel'
+        this.rows[14][18].background = 'entryEnclosure'
         this.generateHouse(10, 10)
+        this.generateTarget(11,7)
+        this.generateTree(15,2)
+        this.generateSource(12,9)
+        this.generateForest(25,25)
+        this.generateForest(27,25)
+        this.generateForest(29,26)
+
+        this.generateEnclosure(10,16)
     }
 
-    generateHouse(abs, ord) {
+    generateGrassFlower(abs,ord){
+        this.rows[abs][ord].background='grass'
+        this.rows[abs-1][ord+1].background='grass'
+        this.rows[abs+1][ord].background='grass'
+        this.rows[abs][ord+2].background='grass'
+        this.rows[abs-1][ord-1].background='grass'
+        this.rows[abs+2][ord-1].background='grass'
+        this.rows[abs+3][ord-3].background='grass'
+        this.rows[abs-3][ord].background='grass'
+        this.rows[abs-3][ord-2].background='grass'
+        this.rows[abs+4][ord-3].background='grass'
+        this.rows[abs-2][ord+4].background='grass'
+        this.rows[abs+2][ord-4].background='grass'
+        this.rows[abs-3][ord-3].background='grass'
+        this.rows[abs-4][ord-2].background='grass'
+        this.rows[abs-1][ord-4].background='grass'
+        this.rows[abs-2][ord-4].background='grass'
+        
+
+        this.rows[abs+3][ord-1].background='flower'
+        this.rows[abs-2][ord-1].background='flower'
+        this.rows[abs][ord-2].background='flower'
+        this.rows[abs-1][ord+2].background='flower'
+        
+        this.rows[abs-3][ord-3].background='flower'
+        this.rows[abs-4][ord+2].background='flower'
+        this.rows[abs-3][ord+2].background='flower'
+        this.rows[abs-3][ord+1].background='flower'
+        this.rows[abs+2][ord-2].background='flower'
+        this.rows[abs+2][ord-2].background='flower'
+    }
+
+    generateHouse(abs,ord) {
         this.rows[abs][ord].image ='0089';
         this.rows[abs][ord].walkable = false;
         this.rows[abs][ord+1].image='0079';
@@ -74,7 +144,108 @@ class Board {
         this.rows[abs-2][ord-2].walkable = false;
         this.rows[abs-2][ord-3].image='0052';
         this.rows[abs-2][ord-3].walkable = false;
+
+        this.rows[abs][ord+2].image ='0004';
+        this.rows[abs][ord+2].walkable = false;
+        this.rows[abs+1][ord+2].image='0016';
+        this.rows[abs+1][ord+2].walkable = true;
+
+        this.rows[abs-3][ord-5].image ='0004';
+        this.rows[abs-3][ord-5].walkable = false;
+        this.rows[abs-2][ord-5].image='0016';
+        this.rows[abs-2][ord-5].walkable = true;
     }
+
+    generateTree(abs,ord){
+        this.rows[abs][ord].image ='0004';
+        this.rows[abs][ord].walkable = false;
+        this.rows[abs+1][ord].image='0016';
+        this.rows[abs+1][ord].walkable = false;
+    }
+
+    generateForest(abs,ord){
+        this.rows[abs][ord].image ='0028';
+        this.rows[abs][ord].walkable = false;
+        this.rows[abs+1][ord].image='0028';
+        this.rows[abs+1][ord].walkable = true;
+        this.rows[abs-1][ord].image='0028';
+        this.rows[abs-1][ord].walkable = true;
+        this.rows[abs][ord+1].image='0028';
+        this.rows[abs][ord+1].walkable = true;
+        this.rows[abs][ord-1].image='0028';
+        this.rows[abs][ord-1].walkable = true;
+        this.rows[abs-1][ord-1].image='0028';
+        this.rows[abs-1][ord-1].walkable = true;
+        this.rows[abs+1][ord-1].image='0028';
+        this.rows[abs+1][ord-1].walkable = true;
+        this.rows[abs+1][ord+1].image='0028';
+        this.rows[abs+1][ord+1].walkable = true;
+        this.rows[abs-1][ord+1].image='0028';
+        this.rows[abs-1][ord+1].walkable = true;
+    }
+
+    generateSource(abs,ord){
+        this.rows[abs][ord].image ='0092';
+        this.rows[abs][ord].walkable = false;
+        this.rows[abs+1][ord].image='0104';
+        this.rows[abs+1][ord].walkable = false;
+    }
+
+    generateEnclosure(abs,ord){
+        this.rows[abs][ord].image ='0045';
+        this.rows[abs][ord].walkable = false;
+        this.rows[abs][ord-1].image ='0045';
+        this.rows[abs][ord-1].walkable = false;
+        this.rows[abs][ord+1].image ='0045';
+        this.rows[abs][ord+1].walkable = false;
+        this.rows[abs][ord+2].image ='0045';
+        this.rows[abs][ord+2].walkable = false;
+        this.rows[abs][ord+3].image ='0046';
+        this.rows[abs][ord+3].walkable = false;
+        this.rows[abs][ord-2].image ='0044';
+        this.rows[abs][ord-2].walkable = false;
+        this.rows[abs+1][ord+3].image ='0058';
+        this.rows[abs+1][ord+3].walkable = false;
+        this.rows[abs+2][ord+3].image ='0058';
+        this.rows[abs+2][ord+3].walkable = false;
+        this.rows[abs+3][ord+3].image ='0058';
+        this.rows[abs+3][ord+3].walkable = false;
+        this.rows[abs+4][ord+3].image ='0070';
+        this.rows[abs+4][ord+3].walkable = false;
+        this.rows[abs+4][ord+1].image ='0044';
+        this.rows[abs+4][ord+1].walkable = false;
+        this.rows[abs+5][ord+1].image ='0058';
+        this.rows[abs+5][ord+1].walkable = false;
+        this.rows[abs+6][ord+1].image ='0070';
+        this.rows[abs+6][ord+1].walkable = false
+        this.rows[abs+6][ord].image ='0045';
+        this.rows[abs+6][ord].walkable = false;
+        this.rows[abs+6][ord-1].image ='0045';
+        this.rows[abs+6][ord-1].walkable = false;
+        this.rows[abs+6][ord-2].image ='0045';
+        this.rows[abs+6][ord-2].walkable = false;
+        this.rows[abs+6][ord-3].image ='0068';
+        this.rows[abs+6][ord-3].walkable = false;
+        this.rows[abs+5][ord-3].image ='0056';
+        this.rows[abs+5][ord-3].walkable = false;
+        this.rows[abs+4][ord-3].image ='0056';
+        this.rows[abs+4][ord-3].walkable = false;
+        this.rows[abs+3][ord-3].image ='0056';
+        this.rows[abs+3][ord-3].walkable = false;
+        this.rows[abs+2][ord-3].image ='0044';
+        this.rows[abs+2][ord-3].walkable = false;
+        this.rows[abs+2][ord-2].image ='0070';
+        this.rows[abs+2][ord-2].walkable = false;
+        this.rows[abs+1][ord-2].image ='0056';
+        this.rows[abs+1][ord-2].walkable = false;
+    }
+
+    generateTarget(abs,ord){
+        this.rows[abs][ord].image ='0095';
+        this.rows[abs][ord].walkable = false;
+    }
+
+
 }
 class Player {
     constructor(name) {
@@ -85,7 +256,7 @@ class Player {
     }
 
     moveLeft() {
-        if(this.position[1]>0){
+        if(this.position[1]>0 || this.position.walkable==true){
             this.position[1] = this.position[1]-1
         }
         else{
@@ -94,7 +265,7 @@ class Player {
         // À implémenter : mettre à jour la position du joueur et gérer les interactions avec les objets/monstres
     }
     moveRight(){
-        if(this.position[1]<this.height){
+        if(this.position[1]<30 || this.position.walkable==true){
             this.position[1] = this.position[1]+1
         }
         else{
@@ -103,7 +274,7 @@ class Player {
 
     }
     moveUp(){
-        if(this.position[0]>0){
+        if(this.position[0]>0 || this.position.walkable==true){
             this.position[0] = this.position[0]-1
         }
         else{
@@ -111,7 +282,7 @@ class Player {
         }
     }
     moveDown(){
-        if(this.position[0]< this.width ){
+        if(this.position[0]<30 || this.position.walkable==true){
             this.position[0] = this.position[0]+1
         }
         else{
@@ -199,7 +370,7 @@ function updateUI(game) {
             if(tile.image){
                 gameBoardHTML += `
                 <div class="tile" >
-                    <img id="Player" src=kenney_tiny-town/Tiles/tile_${tile.image}.png></img>
+                    <img id="Board" src=kenney_tiny-town/Tiles/tile_${tile.image}.png></img>
                 </div>
             `;
             }

@@ -612,11 +612,18 @@ class Board {
 
 
 }
+
+class Invetory{
+    constructor(){
+        this.rows = Array(1).fill().map(() => Array(10).fill().map(() => new Tile()))
+    }
+}
+
 class Player {
     constructor(name) {
         this.name = name;
         this.health = 100;
-        this.items = [];
+        this.items = ["objets"];
         this.position = [11, 10];
     }
     
@@ -778,25 +785,95 @@ function updateUI(game) {
 
 }
 
-function updateInventory(inventory) {
+function updateInventory(game) {
+
+    let currentPlayer = game.currentPlayer
 
     // Afficher l'état de l'inventaire
     let inventoryHTML = '';
-    for (let row of inventory.rows) {
-        inventoryHTML += `<div class="row">`; // Début de la ligne
-        for(let tile of row){
-
+    inventoryHTML += `<div class="row">`; // Début de la ligne 
+    for (let item  of currentPlayer.items) {
             inventoryHTML += `
+                
                 <div class="inventory">
-                    ${tile.character ? tile.character.name : ''}
-                    ${tile.item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/pioche.png"></img>' : ''}
-                    ${tile.monster ? tile.monster.name : ''}
-                    ${tile.image ? tile.image : ''}
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0103.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0104.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0105.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0107.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0113.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0114.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0115.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0116.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0117.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0118.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0119.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0125.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0126.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0127.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0128.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0129.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0130.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0131.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0105.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0129.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0117.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0118.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0119.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0117.png"></img>' : ''}
+                </div>
+                <div class="inventory">
+                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0118.png"></img>' : ''}
                 </div>
             `;
-        }
-        inventoryHTML += '</div>'; // Fin de la ligne
+            
     }
+    inventoryHTML += '</div>'; // Fin de la ligne   
     document.getElementById('inventory-board').innerHTML = inventoryHTML;
 
     console.log(inventory);
@@ -811,9 +888,9 @@ document.getElementById('start-game').addEventListener('click', () => {
 });
 let inventory;
 document.getElementById('use-item-button').addEventListener('click', () => {
-    inventory = new Board(10);
-    drawInventoryBoard(inventory);
-    updateInventory(inventory);
+    inventory = new Invetory(10);
+    //drawInventoryBoard(inventory);
+    updateInventory(game);
 });
 
 function drawGameBoard(board) {

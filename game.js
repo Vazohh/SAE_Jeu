@@ -40,6 +40,17 @@ class Board {
 
     generate(){
 
+        /*
+        this.rows.map( (row, i) =>
+            row.map( (tile, j ) =>{
+                if( tile.image == '0000' && j>0 && i>0 && j<45 && j<70){
+                    if( j%5==0 && i%5==0)
+                    this.generateGrassFlower(i,j)
+                }
+            })
+        )
+        */
+
         this.generateGrassFlower(5,5)
         this.generateGrassFlower(5,10)
         this.generateGrassFlower(5,20)
@@ -1111,36 +1122,178 @@ class Board {
         this.rows[abs+39][ord+32].imgsrc=3;
         this.rows[abs+39][ord+32].walkable = false;
 
-
-
-
-        
-
-        
-        
-
-
     }
 
-    generateBorder(abs,ord){
+    generateBorder(abs,ord){    
 
         this.rows.map( (row, ord) =>
                 row.map( (tile, abs ) =>{
-                    if( tile.image == '0042' && abs >0 && ){
+                    if( tile.image == '0042' && abs >0 && ord>0 && abs<45 && ord<70){
 
-                        let herbeAGauche = this.rows[abs-1, ord].background == 'grass'
-                        let herbeEnBas = this.rows[abs, ord+1].background == 'grass'
-                        let herbeEnHaut = this.rows[abs, ord-1].background == 'grass'
-                        let herbeADroite = this.rows[abs+1,ord].background == 'grass'
-                        if(herbeAGauche && !herbeEnBas && !herbeEnHaut){
+                        let herbeAGauche = this.rows[abs-1, ord].background == 'grass' || this.rows[abs-1, ord].background == 'flower' || this.rows[abs-1, ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
+                        let herbeEnBas = this.rows[abs, ord+1].background == 'grass' || this.rows[abs-1, ord].background == 'flower' || this.rows[abs-1, ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
+                        let herbeEnHaut = this.rows[abs, ord-1].background == 'grass' || this.rows[abs-1, ord].background == 'flower' || this.rows[abs-1, ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
+                        let herbeADroite = this.rows[abs+1,ord].background == 'grass' ||this.rows[abs-1, ord].background == 'flower' || this.rows[abs-1, ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
+                        /*
+                        if (herbeAGauche && herbeADroite && herbeEnHaut && herbeEnBas) {
+                            // Si l'herbe est présente à gauche, à droite, en haut et en bas
+                            // Code à exécuter lorsque toutes les conditions sont remplies
+                        
+                        } else if (herbeAGauche && herbeADroite && herbeEnHaut) {
+                            // Si l'herbe est présente à gauche, à droite et en haut, mais pas en bas
+                            // Code à exécuter lorsque seules les conditions "herbeAGauche", "herbeADroite" et "herbeEnHaut" sont remplies
+                        
+                        } else if (herbeAGauche && herbeADroite && herbeEnBas) {
+                            // Si l'herbe est présente à gauche, à droite et en bas, mais pas en haut
+
+                        
+                        } */if (herbeAGauche && herbeEnHaut && herbeEnBas) {
+                            // Si l'herbe est présente à gauche, en haut et en bas, mais pas à droite
+                            this.rows[abs+1][ord].image ='0039';
+                            this.rows[abs+1][ord].imgsrc=3;
+                            this.rows[abs+1][ord].walkable = false;
+
+                            this.rows[abs+1][ord-1].image ='0052';
+                            this.rows[abs+1][ord-1].imgsrc=3;
+                            this.rows[abs+1][ord-1].walkable = false;
+
                             this.rows[abs][ord-1].image ='0051';
                             this.rows[abs][ord-1].imgsrc=3;
                             this.rows[abs][ord-1].walkable = false;
-                        }
-                        if(herbeADroite && !herbeEnBas && !herbeEnHaut){
-                            this.rows[abs][ord-1].image ='0049';
+
+                            this.rows[abs-1][ord-1].image ='0040';
+                            this.rows[abs-1][ord-1].imgsrc=3;
+                            this.rows[abs-1][ord-1].walkable = false;
+
+                            this.rows[abs][ord-1].image ='0062';
                             this.rows[abs][ord-1].imgsrc=3;
                             this.rows[abs][ord-1].walkable = false;
+                        
+                        } else if (herbeADroite && herbeEnHaut && herbeEnBas) {
+                            // Si l'herbe est présente à droite, en haut et en bas, mais pas à gauche
+                            this.rows[abs+1][ord].image ='0037';
+                            this.rows[abs+1][ord].imgsrc=3;
+                            this.rows[abs+1][ord].walkable = false;
+
+                            this.rows[abs][ord+1].image ='0049';
+                            this.rows[abs][ord+1].imgsrc=3;
+                            this.rows[abs][ord+1].walkable = false;
+
+                            this.rows[abs+1][ord+1].image ='0053';
+                            this.rows[abs+1][ord+1].imgsrc=3;
+                            this.rows[abs+1][ord+1].walkable = false;
+
+                            this.rows[abs-1][ord+1].image ='0041';
+                            this.rows[abs-1][ord+1].imgsrc=3;
+                            this.rows[abs-1][ord+1].walkable = false;
+
+                            this.rows[abs-1][ord].image ='0062';
+                            this.rows[abs-1][ord].imgsrc=3;
+                            this.rows[abs-1][ord].walkable = false;
+                        
+                        } else if (herbeAGauche && herbeADroite) {
+                            // Si l'herbe est présente à gauche et à droite, mais pas en haut ni en bas
+                            this.rows[abs][ord-1].image ='0051';
+                            this.rows[abs][ord-1].imgsrc=3;
+                            this.rows[abs][ord-1].walkable = false;
+
+                            this.rows[abs][ord+1].image ='0049';
+                            this.rows[abs][ord+1].imgsrc=3;
+                            this.rows[abs][ord+1].walkable = false;
+                        
+                        } else if (herbeAGauche && herbeEnHaut) {
+                            // Si l'herbe est présente à gauche et en haut, mais pas à droite ni en bas
+                            this.rows[abs][ord-1].image ='0051';
+                            this.rows[abs][ord-1].imgsrc=3;
+                            this.rows[abs][ord-1].walkable = false;
+
+                            this.rows[abs-1][ord-1].image ='0040';
+                            this.rows[abs-1][ord-1].imgsrc=3;
+                            this.rows[abs-1][ord-1].walkable = false;
+
+                            this.rows[abs-1][ord].image ='0062';
+                            this.rows[abs-1][ord].imgsrc=3;
+                            this.rows[abs-1][ord].walkable = false;
+                        
+                        } else if (herbeAGauche && herbeEnBas) {
+                            // Si l'herbe est présente à gauche et en bas, mais pas à droite ni en haut
+                            this.rows[abs][ord-1].image ='0051';
+                            this.rows[abs][ord-1].imgsrc=3;
+                            this.rows[abs][ord-1].walkable = false;
+
+                            this.rows[abs+1][ord-1].image ='0052';
+                            this.rows[abs+1][ord-1].imgsrc=3;
+                            this.rows[abs+1][ord-1].walkable = false;
+
+                            this.rows[abs-1][ord].image ='0039';
+                            this.rows[abs-1][ord].imgsrc=3;
+                            this.rows[abs-1][ord].walkable = false;
+                        
+                        } else if (herbeADroite && herbeEnHaut) {
+                            // Si l'herbe est présente à droite et en haut, mais pas à gauche ni en bas
+                            this.rows[abs][ord+1].image ='0049';
+                            this.rows[abs][ord+1].imgsrc=3;
+                            this.rows[abs][ord+1].walkable = false;
+
+                            this.rows[abs-1][ord+1].image ='0041';
+                            this.rows[abs-1][ord+1].imgsrc=3;
+                            this.rows[abs-1][ord+1].walkable = false;
+
+                            this.rows[abs-1][ord].image ='0049';
+                            this.rows[abs-1][ord].imgsrc=3;
+                            this.rows[abs-1][ord].walkable = false;
+                        
+                        } else if (herbeADroite && herbeEnBas) {
+                            // Si l'herbe est présente à droite et en bas, mais pas à gauche ni en haut
+                            this.rows[abs+1][ord].image ='0049';
+                            this.rows[abs+1][ord].imgsrc=3;
+                            this.rows[abs+1][ord].walkable = false;
+
+                            this.rows[abs+1][ord+1].image ='0053';
+                            this.rows[abs+1][ord+1].imgsrc=3;
+                            this.rows[abs+1][ord+1].walkable = false;
+
+                            this.rows[abs][ord+1].image ='0037';
+                            this.rows[abs][ord+1].imgsrc=3;
+                            this.rows[abs][ord+1].walkable = false;
+                        
+                        } else if (herbeEnHaut && herbeEnBas) {
+                            // Si l'herbe est présente en haut et en bas, mais pas à gauche ni à droite
+                            this.rows[abs+1][ord].image ='0038';
+                            this.rows[abs+1][ord].imgsrc=3;
+                            this.rows[abs+1][ord].walkable = false;
+
+                            this.rows[abs-1][ord].image ='0062';
+                            this.rows[abs-1][ord].imgsrc=3;
+                            this.rows[abs-1][ord].walkable = false;
+                        
+                        } else if (herbeAGauche) {
+                            // Si l'herbe est présente à gauche, mais pas à droite, en haut ni en bas
+                            this.rows[abs][ord-1].image ='0051';
+                            this.rows[abs][ord-1].imgsrc=3;
+                            this.rows[abs][ord-1].walkable = false;
+                        
+                        } else if (herbeADroite) {
+                            // Si l'herbe est présente à droite, mais pas à gauche, en haut ni en bas
+                            this.rows[abs][ord+1].image ='0049';
+                            this.rows[abs][ord+1].imgsrc=3;
+                            this.rows[abs][ord+1].walkable = false;
+                        
+                        } else if (herbeEnHaut) {
+                            // Si l'herbe est présente en haut, mais pas à gauche, à droite ni en bas
+                            this.rows[abs-1][ord].image ='0062';
+                            this.rows[abs-1][ord].imgsrc=3;
+                            this.rows[abs-1][ord].walkable = false;
+                        
+                        } else if (herbeEnBas) {
+                            // Si l'herbe est présente en bas, mais pas à gauche, à droite ni en haut
+                            this.rows[abs+1][ord].image ='0038';
+                            this.rows[abs+1][ord].imgsrc=3;
+                            this.rows[abs+1][ord].walkable = false;
+                        
+                        } else {
+                            // Si l'herbe n'est pas présente dans aucune des positions
+
                         }
 
 
@@ -1155,92 +1308,9 @@ class Board {
             
             
         )
-        this.rows[abs][ord-1].image ='0051';
-        this.rows[abs][ord-1].imgsrc=3;
-        this.rows[abs][ord-1].walkable = false;
-        this.rows[abs][ord+3].image ='0049';
-        this.rows[abs][ord+3].imgsrc=3;
-        this.rows[abs][ord+3].walkable = false;
-
-        this.rows[abs+1][ord-1].image ='0051';
-        this.rows[abs+1][ord-1].imgsrc=3;
-        this.rows[abs+1][ord-1].walkable = false;
-        this.rows[abs+1][ord+3].image ='0049';
-        this.rows[abs+1][ord+3].imgsrc=3;
-        this.rows[abs+1][ord+3].walkable = false;
-
-        this.rows[abs+2][ord-1].image ='0051';
-        this.rows[abs+2][ord-1].imgsrc=3;
-        this.rows[abs+2][ord-1].walkable = false;
-        this.rows[abs+2][ord+3].image ='0049';
-        this.rows[abs+2][ord+3].imgsrc=3;
-        this.rows[abs+2][ord+3].walkable = false;
-
-        this.rows[abs+3][ord-1].image ='0051';
-        this.rows[abs+3][ord-1].imgsrc=3;
-        this.rows[abs+3][ord-1].walkable = false;
-        this.rows[abs+3][ord+3].image ='0061';
-        this.rows[abs+3][ord+3].imgsrc=3;
-        this.rows[abs+3][ord+3].walkable = false;
-        this.rows[abs+3][ord+4].image ='0041';
-        this.rows[abs+3][ord+4].imgsrc=3;
-        this.rows[abs+3][ord+4].walkable = false;
-
-        this.rows[abs+4][ord-1].image ='0051';
-        this.rows[abs+4][ord-1].imgsrc=3;
-        this.rows[abs+4][ord-1].walkable = false;
-        this.rows[abs+4][ord+4].image ='0049';
-        this.rows[abs+4][ord+4].imgsrc=3;
-        this.rows[abs+4][ord+4].walkable = false;
-
-        this.rows[abs+5][ord-1].image ='0052';
-        this.rows[abs+5][ord-1].imgsrc=3;
-        this.rows[abs+5][ord-1].walkable = false;
-        this.rows[abs+5][ord].image ='0039';
-        this.rows[abs+5][ord].imgsrc=3;
-        this.rows[abs+5][ord].walkable = false;
-        this.rows[abs+5][ord+4].image ='0061';
-        this.rows[abs+5][ord+4].imgsrc=3;
-        this.rows[abs+5][ord+4].walkable = false;
-        this.rows[abs+5][ord+5].image ='0041';
-        this.rows[abs+5][ord+5].imgsrc=3;
-        this.rows[abs+5][ord+5].walkable = false;
-
-        this.rows[abs+6][ord].image ='0051';
-        this.rows[abs+6][ord].imgsrc=3;
-        this.rows[abs+6][ord].walkable = false;
-        this.rows[abs+6][ord+5].image ='0049';
-        this.rows[abs+6][ord+5].imgsrc=3;
-        this.rows[abs+6][ord+5].walkable = false;
-
-        this.rows[abs+7][ord].image ='0052';
-        this.rows[abs+7][ord].imgsrc=3;
-        this.rows[abs+7][ord].walkable = false;
-        this.rows[abs+7][ord+1].image ='0039';
-        this.rows[abs+7][ord+1].imgsrc=3;
-        this.rows[abs+7][ord+1].walkable = false;
-        this.rows[abs+7][ord+5].image ='0049';
-        this.rows[abs+7][ord+5].imgsrc=3;
-        this.rows[abs+7][ord+5].walkable = false;
-
-        this.rows[abs+8][ord+1].image ='0051';
-        this.rows[abs+8][ord+1].imgsrc=3;
-        this.rows[abs+8][ord+1].walkable = false;
-        this.rows[abs+8][ord+5].image ='0049';
-        this.rows[abs+8][ord+5].imgsrc=3;
-        this.rows[abs+8][ord+5].walkable = false;
-
-        this.rows[abs+9][ord+1].image ='0051';
-        this.rows[abs+9][ord+1].imgsrc=3;
-        this.rows[abs+9][ord+1].walkable = false;
-        this.rows[abs+9][ord+5].image ='0061';
-        this.rows[abs+9][ord+5].imgsrc=3;
-        this.rows[abs+9][ord+5].walkable = false;
-        this.rows[abs+9][ord+6].image ='0041';
-        this.rows[abs+9][ord+6].imgsrc=3;
-        this.rows[abs+9][ord+6].walkable = false;
     }
 }
+
 
 
 

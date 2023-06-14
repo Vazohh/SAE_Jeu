@@ -8,7 +8,9 @@
 body {
   font-family: 'Poppins', sans-serif;
   text-align: center;
-  background-color: #ffcc8e;
+  background-image: url(/img/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .rules {
@@ -214,6 +216,7 @@ img[src="img/parchemin2.png"] {
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
+  margin: auto;
 }
 
 #attack-button:hover {
@@ -250,6 +253,7 @@ img[src="img/parchemin2.png"] {
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
+  margin: auto;
 }
 
 #defend-button:hover {
@@ -286,6 +290,7 @@ img[src="img/parchemin2.png"] {
   white-space: nowrap;
   will-change: box-shadow,transform;
   font-size: 18px;
+  margin: auto;
 }
 
 #use-item-button:hover {
@@ -294,9 +299,10 @@ img[src="img/parchemin2.png"] {
 }
 
 #game-board {
-  align-items: center;
+  margin: auto;
 }
 
-#game-container {
-  align-items: center;
+#inventory-board {
+  margin: auto;
 }
+

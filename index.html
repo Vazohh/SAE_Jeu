@@ -61,14 +61,14 @@
         <!-- Le plateau de jeu sera généré dynamiquement ici -->
     </div>
     
-    <button id="start-game">Commencer le jeu</button>
-    <div id="action-buttons">
-        <button id="attack-button">Attaquer</button>
-        <button id="defend-button">Défendre</button>
-        <button id="use-item-button">Utiliser un objet</button>
-    </div>
-
-    <p>Appuyez sur "C" pour afficher les contrôles du Jeu</p>
+    <div id="menu">
+        <button id="start-game" onclick="disparaitre(); afficher();">Start Zeldo</button>
+        <div id="action-buttons">
+            <button id="attack-button" style="display: none;">Règles</button>
+            <button id="defend-button" style="display: none;">Controles</button>
+            <button id="use-item-button" style="display: none;">Inventaire</button>
+        </div>
+    </div>  
 
     <div id="rules" class="rules">
         <div class="rules-content">
@@ -109,11 +109,8 @@
                 </div>
             </div>    
         </div>
-
     </div>
     </div>
-
-    <span id="timer-display">0:00</span>
     
     <script src="game.js"></script>
 </body>

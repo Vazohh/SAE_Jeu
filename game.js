@@ -1361,7 +1361,7 @@ class Game {
 
 function updateUI(game) {
     // Afficher les statistiques des personnages
-    let playerStatsHTML = `<p>stats sur les joueurs</p>`
+    let playerStatsHTML = ``
         
     document.getElementById('player-stats').innerHTML = playerStatsHTML;
 
@@ -1412,7 +1412,7 @@ function updateUI(game) {
     document.getElementById('game-board').innerHTML = gameBoardHTML;
 
     // Afficher le tour actuel
-    document.getElementById('current-turn').textContent = `Current turn: ${game.currentPlayer.name}`;
+    document.getElementById('current-turn').textContent = ``;
 
 }
 
@@ -1637,52 +1637,16 @@ closeControlsButton.addEventListener('click', function() {
     controls.style.display = 'none';
 });
 
-// Timer
-const startButton = document.getElementById('start-game');
-const timerDisplay = document.getElementById('timer-display');
-
-let timerInterval; // Variable pour stocker l'ID de l'intervalle du timer
-let timerSeconds = 0; // Variable pour stocker le nombre de secondes écoulées
-
-startButton.addEventListener('click', function() {
-  startTimer();
-});
-
-function startTimer() {
-  timerSeconds = 0;
-
-  console.log('Le timer a commencé !');
-
-  updateTimerDisplay();
-
-  timerInterval = setInterval(function() {
-    timerSeconds++;
-
-    console.log('Le timer continue...');
-
-    updateTimerDisplay();
-
-    if (jeuTermine()) {
-      clearInterval(timerInterval);
-      console.log('Le jeu est terminé !');
-      // Ajoutez la logique de fin de jeu
-    }
-  }, 1000); 
+function disparaitre() {
+    var bouton = document.getElementById("start-game");
+    bouton.style.display = "none";
 }
 
-function updateTimerDisplay() {
-  const minutes = Math.floor(timerSeconds / 60);
-  const seconds = timerSeconds % 60;
-
-  const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-
-  timerDisplay.textContent = formattedTime;
-}
-
-function jeuTermine() {
-  // Implémentez votre logique pour vérifier si le jeu est terminé
-  // Renvoyez true si le jeu est terminé, sinon renvoyez false
-  // Par exemple, vous pouvez vérifier si toutes les conditions de fin du jeu sont remplies
-  // et renvoyer true dans ce cas
-  return false;
+function afficher() {
+    var attackButton = document.getElementById("attack-button");
+    var defendButton = document.getElementById("defend-button");
+    var inventoryButton = document.getElementById("use-item-button");
+    attackButton.style.display = "block";
+    defendButton.style.display = "block";
+    inventoryButton.style.display = "block";
 }

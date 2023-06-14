@@ -416,6 +416,9 @@ class Board {
         this.rows[abs+4][ord+2].image ='0042';
         this.rows[abs+4][ord+2].imgsrc=3;
         this.rows[abs+4][ord+2].walkable = false;
+        this.rows[abs+4][ord+3].image ='0042';
+        this.rows[abs+4][ord+3].imgsrc=3;
+        this.rows[abs+4][ord+3].walkable = false;
 
         this.rows[abs+5][ord+1].image ='0042';
         this.rows[abs+5][ord+1].imgsrc=3;
@@ -436,6 +439,9 @@ class Board {
         this.rows[abs+6][ord+3].image ='0042';
         this.rows[abs+6][ord+3].imgsrc=3;
         this.rows[abs+6][ord+3].walkable = false;
+        this.rows[abs+6][ord+4].image ='0042';
+        this.rows[abs+6][ord+4].imgsrc=3;
+        this.rows[abs+6][ord+4].walkable = false;
 
         this.rows[abs+7][ord+2].image ='0042';
         this.rows[abs+7][ord+2].imgsrc=3;
@@ -466,6 +472,9 @@ class Board {
         this.rows[abs+9][ord+4].image ='0042';
         this.rows[abs+9][ord+4].imgsrc=3;
         this.rows[abs+9][ord+4].walkable = false;
+        this.rows[abs+9][ord+12].image ='0042';
+        this.rows[abs+9][ord+12].imgsrc=3;
+        this.rows[abs+9][ord+12].walkable = false;
 
         this.rows[abs+10][ord+2].image ='0042';
         this.rows[abs+10][ord+2].imgsrc=3;
@@ -476,7 +485,22 @@ class Board {
         this.rows[abs+10][ord+4].image ='0042';
         this.rows[abs+10][ord+4].imgsrc=3;
         this.rows[abs+10][ord+4].walkable = false;
+        this.rows[abs+10][ord+5].image ='0042';
+        this.rows[abs+10][ord+5].imgsrc=3;
+        this.rows[abs+10][ord+5].walkable = false;
+        this.rows[abs+10][ord+10].image ='0042';
+        this.rows[abs+10][ord+10].imgsrc=3;
+        this.rows[abs+10][ord+10].walkable = false;
+        this.rows[abs+10][ord+11].image ='0042';
+        this.rows[abs+10][ord+11].imgsrc=3;
+        this.rows[abs+10][ord+11].walkable = false;
+        this.rows[abs+10][ord+12].image ='0042';
+        this.rows[abs+10][ord+12].imgsrc=3;
+        this.rows[abs+10][ord+12].walkable = false;
 
+        this.rows[abs+11][ord+3].image ='0042';
+        this.rows[abs+11][ord+3].imgsrc=3;
+        this.rows[abs+11][ord+3].walkable = false;
         this.rows[abs+11][ord+4].image ='0042';
         this.rows[abs+11][ord+4].imgsrc=3;
         this.rows[abs+11][ord+4].walkable = false;
@@ -486,6 +510,21 @@ class Board {
         this.rows[abs+11][ord+6].image ='0042';
         this.rows[abs+11][ord+6].imgsrc=3;
         this.rows[abs+11][ord+6].walkable = false;
+        this.rows[abs+11][ord+9].image ='0042';
+        this.rows[abs+11][ord+9].imgsrc=3;
+        this.rows[abs+11][ord+9].walkable = false;
+        this.rows[abs+11][ord+10].image ='0042';
+        this.rows[abs+11][ord+10].imgsrc=3;
+        this.rows[abs+11][ord+10].walkable = false;
+        this.rows[abs+11][ord+11].image ='0042';
+        this.rows[abs+11][ord+11].imgsrc=3;
+        this.rows[abs+11][ord+11].walkable = false;
+        this.rows[abs+11][ord+12].image ='0042';
+        this.rows[abs+11][ord+12].imgsrc=3;
+        this.rows[abs+11][ord+12].walkable = false;
+        this.rows[abs+11][ord+13].image ='0042';
+        this.rows[abs+11][ord+13].imgsrc=3;
+        this.rows[abs+11][ord+13].walkable = false;
 
         this.rows[abs+12][ord+4].image ='0042';
         this.rows[abs+12][ord+4].imgsrc=3;
@@ -496,6 +535,30 @@ class Board {
         this.rows[abs+12][ord+6].image ='0042';
         this.rows[abs+12][ord+6].imgsrc=3;
         this.rows[abs+12][ord+6].walkable = false;
+        this.rows[abs+12][ord+7].image ='0042';
+        this.rows[abs+12][ord+7].imgsrc=3;
+        this.rows[abs+12][ord+7].walkable = false;
+        this.rows[abs+12][ord+8].image ='0042';
+        this.rows[abs+12][ord+8].imgsrc=3;
+        this.rows[abs+12][ord+8].walkable = false;
+        this.rows[abs+12][ord+9].image ='0042';
+        this.rows[abs+12][ord+9].imgsrc=3;
+        this.rows[abs+12][ord+9].walkable = false;
+        this.rows[abs+12][ord+10].image ='0042';
+        this.rows[abs+12][ord+10].imgsrc=3;
+        this.rows[abs+12][ord+10].walkable = false;
+        this.rows[abs+12][ord+11].image ='0042';
+        this.rows[abs+12][ord+11].imgsrc=3;
+        this.rows[abs+12][ord+11].walkable = false;
+        this.rows[abs+12][ord+12].image ='0042';
+        this.rows[abs+12][ord+12].imgsrc=3;
+        this.rows[abs+12][ord+12].walkable = false;
+        this.rows[abs+12][ord+13].image ='0042';
+        this.rows[abs+12][ord+13].imgsrc=3;
+        this.rows[abs+12][ord+13].walkable = false;
+        this.rows[abs+12][ord+14].image ='0042';
+        this.rows[abs+12][ord+14].imgsrc=3;
+        this.rows[abs+12][ord+14].walkable = false;
 
         this.rows[abs+13][ord+4].image ='0042';
         this.rows[abs+13][ord+4].imgsrc=3;
@@ -506,6 +569,30 @@ class Board {
         this.rows[abs+13][ord+6].image ='0042';
         this.rows[abs+13][ord+6].imgsrc=3;
         this.rows[abs+13][ord+6].walkable = false;
+        this.rows[abs+13][ord+7].image ='0042';
+        this.rows[abs+13][ord+7].imgsrc=3;
+        this.rows[abs+13][ord+7].walkable = false;
+        this.rows[abs+13][ord+8].image ='0042';
+        this.rows[abs+13][ord+8].imgsrc=3;
+        this.rows[abs+13][ord+8].walkable = false;
+        this.rows[abs+13][ord+9].image ='0042';
+        this.rows[abs+13][ord+9].imgsrc=3;
+        this.rows[abs+13][ord+9].walkable = false;
+        this.rows[abs+13][ord+10].image ='0042';
+        this.rows[abs+13][ord+10].imgsrc=3;
+        this.rows[abs+13][ord+10].walkable = false;
+        this.rows[abs+13][ord+11].image ='0042';
+        this.rows[abs+13][ord+11].imgsrc=3;
+        this.rows[abs+13][ord+11].walkable = false;
+        this.rows[abs+13][ord+12].image ='0042';
+        this.rows[abs+13][ord+12].imgsrc=3;
+        this.rows[abs+13][ord+12].walkable = false;
+        this.rows[abs+13][ord+13].image ='0042';
+        this.rows[abs+13][ord+13].imgsrc=3;
+        this.rows[abs+13][ord+13].walkable = false;
+        this.rows[abs+13][ord+14].image ='0042';
+        this.rows[abs+13][ord+14].imgsrc=3;
+        this.rows[abs+13][ord+14].walkable = false;
         
         this.rows[abs+14][ord+6].image ='0042';
         this.rows[abs+14][ord+6].imgsrc=3;
@@ -519,7 +606,28 @@ class Board {
         this.rows[abs+14][ord+9].image ='0042';
         this.rows[abs+14][ord+9].imgsrc=3;
         this.rows[abs+14][ord+9].walkable = false;
+        this.rows[abs+14][ord+10].image ='0042';
+        this.rows[abs+14][ord+10].imgsrc=3;
+        this.rows[abs+14][ord+10].walkable = false;
+        this.rows[abs+14][ord+11].image ='0042';
+        this.rows[abs+14][ord+11].imgsrc=3;
+        this.rows[abs+14][ord+11].walkable = false;
+        this.rows[abs+14][ord+12].image ='0042';
+        this.rows[abs+14][ord+12].imgsrc=3;
+        this.rows[abs+14][ord+12].walkable = false;
+        this.rows[abs+14][ord+13].image ='0042';
+        this.rows[abs+14][ord+13].imgsrc=3;
+        this.rows[abs+14][ord+13].walkable = false;
+        this.rows[abs+14][ord+14].image ='0042';
+        this.rows[abs+14][ord+14].imgsrc=3;
+        this.rows[abs+14][ord+14].walkable = false;
 
+        this.rows[abs+15][ord+5].image ='0042';
+        this.rows[abs+15][ord+5].imgsrc=3;
+        this.rows[abs+15][ord+5].walkable = false;
+        this.rows[abs+15][ord+6].image ='0042';
+        this.rows[abs+15][ord+6].imgsrc=3;
+        this.rows[abs+15][ord+6].walkable = false;
         this.rows[abs+15][ord+7].image ='0042';
         this.rows[abs+15][ord+7].imgsrc=3;
         this.rows[abs+15][ord+7].walkable = false;
@@ -529,6 +637,21 @@ class Board {
         this.rows[abs+15][ord+9].image ='0042';
         this.rows[abs+15][ord+9].imgsrc=3;
         this.rows[abs+15][ord+9].walkable = false;
+        this.rows[abs+15][ord+10].image ='0042';
+        this.rows[abs+15][ord+10].imgsrc=3;
+        this.rows[abs+15][ord+10].walkable = false;
+        this.rows[abs+15][ord+11].image ='0042';
+        this.rows[abs+15][ord+11].imgsrc=3;
+        this.rows[abs+15][ord+11].walkable = false;
+        this.rows[abs+15][ord+12].image ='0042';
+        this.rows[abs+15][ord+12].imgsrc=3;
+        this.rows[abs+15][ord+12].walkable = false;
+        this.rows[abs+15][ord+13].image ='0042';
+        this.rows[abs+15][ord+13].imgsrc=3;
+        this.rows[abs+15][ord+13].walkable = false;
+        this.rows[abs+15][ord+14].image ='0042';
+        this.rows[abs+15][ord+14].imgsrc=3;
+        this.rows[abs+15][ord+14].walkable = false;
 
         this.rows[abs+16][ord+7].image ='0042';
         this.rows[abs+16][ord+7].imgsrc=3;
@@ -539,6 +662,21 @@ class Board {
         this.rows[abs+16][ord+9].image ='0042';
         this.rows[abs+16][ord+9].imgsrc=3;
         this.rows[abs+16][ord+9].walkable = false;
+        this.rows[abs+16][ord+10].image ='0042';
+        this.rows[abs+16][ord+10].imgsrc=3;
+        this.rows[abs+16][ord+10].walkable = false;
+        this.rows[abs+16][ord+11].image ='0042';
+        this.rows[abs+16][ord+11].imgsrc=3;
+        this.rows[abs+16][ord+11].walkable = false;
+        this.rows[abs+16][ord+12].image ='0042';
+        this.rows[abs+16][ord+12].imgsrc=3;
+        this.rows[abs+16][ord+12].walkable = false;
+        this.rows[abs+16][ord+13].image ='0042';
+        this.rows[abs+16][ord+13].imgsrc=3;
+        this.rows[abs+16][ord+13].walkable = false;
+        this.rows[abs+16][ord+14].image ='0042';
+        this.rows[abs+16][ord+14].imgsrc=3;
+        this.rows[abs+16][ord+14].walkable = false;
 
 
         this.rows[abs+17][ord+6].image ='0042';
@@ -550,6 +688,19 @@ class Board {
         this.rows[abs+17][ord+8].image ='0042';
         this.rows[abs+17][ord+8].imgsrc=3;
         this.rows[abs+17][ord+8].walkable = false;
+        this.rows[abs+17][ord+10].image ='0042';
+        this.rows[abs+17][ord+10].imgsrc=3;
+        this.rows[abs+17][ord+10].walkable = false;
+        this.rows[abs+17][ord+11].image ='0042';
+        this.rows[abs+17][ord+11].imgsrc=3;
+        this.rows[abs+17][ord+11].walkable = false;
+        this.rows[abs+17][ord+12].image ='0042';
+        this.rows[abs+17][ord+12].imgsrc=3;
+        this.rows[abs+17][ord+12].walkable = false;
+        this.rows[abs+17][ord+13].image ='0042';
+        this.rows[abs+17][ord+13].imgsrc=3;
+        this.rows[abs+17][ord+13].walkable = false;
+
 
         this.rows[abs+18][ord+6].image ='0042';
         this.rows[abs+18][ord+6].imgsrc=3;
@@ -560,40 +711,22 @@ class Board {
         this.rows[abs+18][ord+8].image ='0042';
         this.rows[abs+18][ord+8].imgsrc=3;
         this.rows[abs+18][ord+8].walkable = false;
-
-        this.rows[abs+19][ord+6].image ='0042';
-        this.rows[abs+19][ord+6].imgsrc=3;
-        this.rows[abs+19][ord+6].walkable = false;
-        this.rows[abs+19][ord+7].image ='0042';
-        this.rows[abs+19][ord+7].imgsrc=3;
-        this.rows[abs+19][ord+7].walkable = false;
-        this.rows[abs+19][ord+8].image ='0042';
-        this.rows[abs+19][ord+8].imgsrc=3;
-        this.rows[abs+19][ord+8].walkable = false;
-
-        
-
-
-        this.rows[abs+17][ord+9].image ='0042';
-        this.rows[abs+17][ord+9].imgsrc=3;
-        this.rows[abs+17][ord+9].walkable = false;
-        this.rows[abs+17][ord+10].image ='0042';
-        this.rows[abs+17][ord+10].imgsrc=3;
-        this.rows[abs+17][ord+10].walkable = false;
-        this.rows[abs+17][ord+11].image ='0042';
-        this.rows[abs+17][ord+11].imgsrc=3;
-        this.rows[abs+17][ord+11].walkable = false;
-
-        this.rows[abs+18][ord+9].image ='0042';
-        this.rows[abs+18][ord+9].imgsrc=3;
-        this.rows[abs+18][ord+9].walkable = false;
         this.rows[abs+18][ord+10].image ='0042';
         this.rows[abs+18][ord+10].imgsrc=3;
         this.rows[abs+18][ord+10].walkable = false;
         this.rows[abs+18][ord+11].image ='0042';
         this.rows[abs+18][ord+11].imgsrc=3;
         this.rows[abs+18][ord+11].walkable = false;
-
+        this.rows[abs+18][ord+12].image ='0042';
+        this.rows[abs+18][ord+12].imgsrc=3;
+        this.rows[abs+18][ord+12].walkable = false;
+  
+        this.rows[abs+19][ord+7].image ='0042';
+        this.rows[abs+19][ord+7].imgsrc=3;
+        this.rows[abs+19][ord+7].walkable = false;
+        this.rows[abs+19][ord+8].image ='0042';
+        this.rows[abs+19][ord+8].imgsrc=3;
+        this.rows[abs+19][ord+8].walkable = false;
         this.rows[abs+19][ord+9].image ='0042';
         this.rows[abs+19][ord+9].imgsrc=3;
         this.rows[abs+19][ord+9].walkable = false;
@@ -603,6 +736,18 @@ class Board {
         this.rows[abs+19][ord+11].image ='0042';
         this.rows[abs+19][ord+11].imgsrc=3;
         this.rows[abs+19][ord+11].walkable = false;
+
+        this.rows[abs+20][ord+8].image ='0042';
+        this.rows[abs+20][ord+8].imgsrc=3;
+        this.rows[abs+20][ord+8].walkable = false;
+        this.rows[abs+20][ord+10].image ='0042';
+        this.rows[abs+20][ord+10].imgsrc=3;
+        this.rows[abs+20][ord+10].walkable = false;
+
+        this.rows[abs+21][ord+10].image ='0042';
+        this.rows[abs+21][ord+10].imgsrc=3;
+        this.rows[abs+21][ord+10].walkable = false;
+        
 
         
         
@@ -750,7 +895,7 @@ function updateUI(game) {
                 if(tile.imgsrc==3){
                     gameBoardHTML += `
                         <div class="tile" >
-                            <img id="Board" src=mer/Tiles3/tile_${tile.image}.png></img>
+                            <img id="Board" src=water/Tiles/tile_${tile.image}.png></img>
                         </div>
                     `;
                 }

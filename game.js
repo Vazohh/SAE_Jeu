@@ -127,7 +127,7 @@ class Board {
         this.generateChest(38,30)
         this.generateWater(0,20)
         this.generateBorder(0,20)
-    }
+        this.generateKey(38, 31)    }
 
     generateGrassFlower(abs,ord){
         this.rows[abs][ord].background='grass'
@@ -1124,6 +1124,12 @@ class Board {
 
     }
 
+    generateKey(abs,ord) {
+        this.rows[abs][ord].image ='0117';
+        this.rows[abs][ord].imgsrc=2;
+        this.rows[abs][ord].walkable = true;
+    }
+
     generateBorder(abs,ord){    
 
         this.rows.map( (row, ord) =>
@@ -1344,7 +1350,6 @@ class Player {
         else{
 
         }
-
     }
     moveUp(){
         if(this.position[0]>0 || this.position.walkable==true){
@@ -1354,15 +1359,16 @@ class Player {
 
         }
     }
+
     moveDown(){
         if(this.position[0]<40 || this.position.walkable==true){
-            this.position[0] = this.position[0]+1
+            this.position[0] = this.position[0]+1;
         }
         else{
 
         }
     }
-
+      
     attack(target) {
         // À implémenter : attaquer un monstre
     }

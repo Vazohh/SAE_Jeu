@@ -864,12 +864,7 @@ function updateInventory(game) {
                 <div class="inventory">
                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0119.png"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0117.png"></img>' : ''}
-                </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0118.png"></img>' : ''}
-                </div>
+                
             `;
             
     }

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zeldo</title>
+    <style>
+        .row {
+    display: flex;
+}
+
+.tile {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    background-image: url('kenney_tiny-town/Tiles/tile_0000.png');
+    text-align: center;
+}
+.grass{
+    background-image: url('kenney_tiny-town/Tiles/tile_0001.png');
+}
+.flower{
+    background-image: url('kenney_tiny-town/Tiles/tile_0002.png');
+}
+.gravel{
+    background-image: url('kenney_tiny-town/Tiles/tile_0043.png');
+}
+.entryEnclosure{
+    background-image: url('kenney_tiny-town/Tiles/tile_0132.png');
+}
+.BridgeA{
+    background-image: url('kenney_tiny-town/Tiles/tile_0097.png');
+}
+.BridgeB{
+    background-image: url('kenney_tiny-town/Tiles/tile_0109.png');
+}
+.BridgeC{
+    background-image: url('kenney_tiny-town/Tiles/tile_0121.png');
+}
+
+.inventory {
+    margin-top: 5px;
+    border: solid 1px;
+    width: 22.50px;
+    height: 22.50px;
+
+}
+.inventory > img {
+   width: 100%;
+   height: 100%;
+}
+    </style>
+
+    <link href="style.css" rel="stylesheet">
+    <link rel="icon" href="kenney_tiny-dungeon/Tiles/tile_0085.png">
+
+</head>
+<body>
+
+    <div style="display:flex" >
+        <div id="game-board"></div>
+    </div>
+
+    <div style="display:flex" >
+        <div id="inventory-board"></div>
+    </div> 
+    
+    <div id="game-container">
+        <!-- Le plateau de jeu sera généré dynamiquement ici     ;
+-->
+    </div>
+
+<div id="player-stats">
+        <!-- Le plateau de jeu sera généré dynamiquement ici -->
+    </div>
+
+    <div id="current-turn">
+        <!-- Le plateau de jeu sera généré dynamiquement ici -->
+    </div>
+    
+    <div id="menu">
+        <button id="start-game" onclick="disparaitre(); afficher();">Start Zeldo</button>
+        <div id="action-buttons">
+            <button id="attack-button" style="display: none;">Règles</button>
+            <button id="defend-button" style="display: none;">Controles</button>
+            <button id="use-item-button" style="display: none;">Inventaire</button>
+        </div>
+    </div>  
+
+    <div id="rules" class="rules">
+        <div class="rules-content">
+            <span class="close">&times;</span>
+
+            <img src="img/parchemin1.png" alt="Parchemin" style="width:100%;">
+            <div class="centered">
+                <div class="objectives-container">
+                    <h2>Objectifs</h2>
+                    <p>Règle 1</p>
+                    <p>Règle 2</p>
+                    <p>Règle 3</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="controls" class="controls">
+        <div class="controls-content">
+            <span class="closeControls">&times;</span>
+
+            <img src="img/parchemin2.png" alt="Parchemin" style="width:100%;">
+            <div class="centered">
+                <div class="key-containers">
+                    <img id='upArrow' src="img/upArrow.png">
+                    <br>
+                    <img src="img/leftArrow.png">
+                    <img src="img/downArrow.png">
+                    <img src="img/rightArrow.png">
+                    <br>
+                    <div class="iKey">
+                        <img id="iKey" src="img/iKey.png">
+                        <p>Inventaire</p>
+                    </div>
+                    <p>Le jeu se joue avec les touches directives du clavier.</p>
+                    <p>Pour découvrir les objectifs du jeu, appuyez sur la touche "R"</p>
+                </div>
+            </div>    
+        </div>
+    </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

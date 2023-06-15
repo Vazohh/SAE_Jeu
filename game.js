@@ -154,7 +154,7 @@ class Board {
         this.generateWater(0,20)
 
         this.generateBorder(0,20)
-        this.generateKey(38, 31)    
+        this.generateKey(38, 31)   
 
         this.generateWaterBorder(0,20)
         this.generateBridge(29,48)
@@ -1202,6 +1202,7 @@ class Board {
 
     }
 
+<<<<<<< HEAD
     generateKey(abs,ord) {
         this.rows[abs][ord].image ='0117';
         this.rows[abs][ord].imgsrc=2;
@@ -1209,7 +1210,9 @@ class Board {
     }
 
     generateBorder(abs,ord){    
+=======
     generateWaterBorder(abs,ord){    
+>>>>>>> 4007b216a291db68b9051ababeec96b310ef7dae
 
         this.rows.map( (row, ord) =>
                 row.map( (tile, abs ) =>{

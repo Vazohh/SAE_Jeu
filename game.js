@@ -152,10 +152,7 @@ class Board {
 
         this.generateChest(38,30)
         this.generateWater(0,20)
-
-        this.generateBorder(0,20)
         this.generateKey(38, 31)    
-
         this.generateWaterBorder(0,20)
         this.generateBridge(29,48)
         this.generateCastle(12,65)
@@ -1208,9 +1205,7 @@ class Board {
         this.rows[abs][ord].walkable = true;
     }
 
-    generateBorder(abs,ord){    
-    generateWaterBorder(abs,ord){    
-
+    generateWaterBorder(abs,ord){   
         this.rows.map( (row, ord) =>
                 row.map( (tile, abs ) =>{
                     if( tile.image == '0042' && abs >0 && ord>0 && abs<45 && ord<70){

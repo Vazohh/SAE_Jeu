@@ -152,6 +152,10 @@ class Board {
 
         this.generateChest(38,30)
         this.generateWater(0,20)
+
+        this.generateBorder(0,20)
+        this.generateKey(38, 31)    
+
         this.generateWaterBorder(0,20)
         this.generateBridge(29,48)
         this.generateCastle(12,65)
@@ -1198,6 +1202,13 @@ class Board {
 
     }
 
+    generateKey(abs,ord) {
+        this.rows[abs][ord].image ='0117';
+        this.rows[abs][ord].imgsrc=2;
+        this.rows[abs][ord].walkable = true;
+    }
+
+    generateBorder(abs,ord){    
     generateWaterBorder(abs,ord){    
 
         this.rows.map( (row, ord) =>
@@ -1519,7 +1530,6 @@ class Player {
         else{
 
         }
-
     }
     moveUp(){
         if(this.position[0]>0 || this.position.walkable==true){
@@ -1529,15 +1539,16 @@ class Player {
 
         }
     }
+
     moveDown(){
         if(this.position[0]<40 || this.position.walkable==true){
-            this.position[0] = this.position[0]+1
+            this.position[0] = this.position[0]+1;
         }
         else{
 
         }
     }
-
+      
     attack(target) {
         // À implémenter : attaquer un monstre
     }
@@ -1618,21 +1629,21 @@ function updateUI(game) {
             if(tile.image){
                 if(tile.imgsrc==1){
                     gameBoardHTML += `
-                        <div class="tile" >
+                        <div class="tile" id="drop-zone" >
                             <img id="Board" src=kenney_tiny-dungeon/Tiles/tile_${tile.image}.png></img>
                         </div>
                     `;
                 }
                 if(tile.imgsrc==2){
                     gameBoardHTML += `
-                        <div class="tile" >
+                        <div class="tile" id="drop-zone">
                             <img id="Board" src=kenney_tiny-town/Tiles/tile_${tile.image}.png></img>
                         </div>
                     `;
                 }
                 if(tile.imgsrc==3){
                     gameBoardHTML += `
-                        <div class="tile" >
+                        <div class="tile" id="drop-zone">
                             <img id="Board" src=water/Tiles/tile_${tile.image}.png></img>
                         </div>
                     `;
@@ -1643,7 +1654,7 @@ function updateUI(game) {
             }
             else {
                 gameBoardHTML += `
-                <div class="tile ${tile.background}" >
+                <div class="tile ${tile.background}" id="drop-zone" >
                     ${tile.character ? '<img id="Player" src="kenney_tiny-dungeon/Tiles/tile_0085.png"></img>' : ''}
                     ${tile.item ? tile.item.name : ''}
                     ${tile.monster ? tile.monster.name : ''}
@@ -1671,81 +1682,76 @@ function updateInventory(game) {
     for (let item  of currentPlayer.items) {
             inventoryHTML += `
                 
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0103.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true"> 
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0103.png" alt="poignard"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0104.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0104.png" alt="épée"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0105.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0105.png" alt="épée large"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0107.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0107.png" alt="épée bronze"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0113.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0113.png" alt="potion sante"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0114.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0114.png" alt="potion vitesse"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0115.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0115.png" alt="potion force"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0116.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0116.png" alt="potion defense"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0117.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0117.png" alt="marteau"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0118.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0118.png" alt="double hache"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0119.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0119.png" alt="sort gel"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0125.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0125.png" alt="sort seisme"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0126.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0126.png" alt="sort poison"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0127.png"></img>' : ''}
+                <div class="inventory" id="drag-item" draggable="true">
+                    ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0127.png" alt="sort foudre"></img>' : ''}
                 </div>
-                <div class="inventory">
+                <div class="inventory" id="drag-item" draggable="true" >
                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0128.png"></img>' : ''}
                 </div>
-                <div class="inventory">
+                <div class="inventory" id="drag-item" draggable="true">
                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0129.png"></img>' : ''}
                 </div>
-                <div class="inventory">
+                <div class="inventory" id="drag-item" draggable="true">
                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0130.png"></img>' : ''}
                 </div>
-                <div class="inventory">
+                <div class="inventory" id="drag-item" draggable="true">
                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0131.png"></img>' : ''}
                 </div>
-                <div class="inventory">
+                <div class="inventory" id="drag-item" draggable="true">
                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0105.png"></img>' : ''}
                 </div>
-                <div class="inventory">
+                <div class="inventory" id="drag-item" draggable="true">
                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0129.png"></img>' : ''}
                 </div>
-                <div class="inventory">
+                <div class="inventory" id="drag-item" draggable="true">
                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0117.png"></img>' : ''}
                 </div>
-                <div class="inventory">
+                <div class="inventory" id="drag-item" draggable="true">
                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0118.png"></img>' : ''}
                 </div>
-                <div class="inventory">
+                <div class="inventory" id="drag-item" draggable="true">
                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0119.png"></img>' : ''}
                 </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0117.png"></img>' : ''}
-                </div>
-                <div class="inventory">
-                    ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0118.png"></img>' : ''}
-                </div>
+                
             `;
             
     }
@@ -1761,12 +1767,46 @@ document.getElementById('start-game').addEventListener('click', () => {
     game.start();
     drawGameBoard(game.board);
     updateUI(game);
+
 });
 let inventory;
 document.getElementById('use-item-button').addEventListener('click', () => {
     inventory = new Invetory(10);
     //drawInventoryBoard(inventory);
     updateInventory(game);
+
+
+    let dragItem = document.querySelectorAll('#drag-item');
+    let dropZone = document.querySelectorAll('#drop-zone');
+
+
+    
+    dragItem.forEach( (item, index) => {
+        
+        item.addEventListener('dragstart', (e) => {
+            console.log('pris !', index);
+            e.dataTransfer.setData('text/plain', e.target.id);
+        });
+
+    })
+
+
+
+    dropZone.forEach( tuile => {
+        
+        tuile.addEventListener('dragover', e => {
+            e.preventDefault(); // cela permet à l'élément d'être déposé
+            console.log("bougé !");
+        })
+        tuile.addEventListener('drop', e => {
+            e.preventDefault(); // pour éviter l'action par défaut du navigateur
+            let data = e.dataTransfer.getData('text/plain');
+            console.log("laché !", e.target);
+        });
+
+    });
+
+
 });
 
 function drawGameBoard(board) {
@@ -1894,4 +1934,23 @@ function afficher() {
     attackButton.style.display = "block";
     defendButton.style.display = "block";
     inventoryButton.style.display = "block";
+}
+function updateTimerDisplay() {
+  const minutes = Math.floor(timerSeconds / 60);
+  const seconds = timerSeconds % 60;
+
+  const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+  timerDisplay.textContent = formattedTime;
+}
+
+//Drag & Drop
+
+
+function jeuTermine() {
+  // Implémentez votre logique pour vérifier si le jeu est terminé
+  // Renvoyez true si le jeu est terminé, sinon renvoyez false
+  // Par exemple, vous pouvez vérifier si toutes les conditions de fin du jeu sont remplies
+  // et renvoyer true dans ce cas
+  return false;
 }

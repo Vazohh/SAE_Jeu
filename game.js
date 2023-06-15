@@ -149,7 +149,6 @@ class Board {
             })
         )
 
-
         this.generateChest(38,30)
         this.generateWater(0,20)
         this.generateKey(38, 31)   
@@ -203,7 +202,7 @@ class Board {
         this.rows[abs][ord-1].image='0077';
         this.rows[abs][ord-1].imgsrc=2;
         this.rows[abs][ord-1].walkable = false;
-        this.rows[abs][ord-2].image='0077';
+        this.rows[abs][ord-2].image='0088';
         this.rows[abs][ord-2].imgsrc=2;
         this.rows[abs][ord-2].walkable = false;
         this.rows[abs][ord-3].image='0076';
@@ -239,6 +238,10 @@ class Board {
         this.rows[abs-2][ord-3].image='0052';
         this.rows[abs-2][ord-3].imgsrc=2;
         this.rows[abs-2][ord-3].walkable = false;
+
+        this.rows[abs+1][ord-1].image='0100';
+        this.rows[abs+1][ord-1].imgsrc=1;
+        this.rows[abs+1][ord-1].walkable = false;
 
         this.rows[abs+1][ord].background = 'gravel'
         this.rows[abs+2][ord].background = 'gravel'
@@ -276,6 +279,10 @@ class Board {
         this.rows[abs-2][ord-1].image='0052';
         this.rows[abs-2][ord-1].imgsrc=2;
         this.rows[abs-2][ord-1].walkable = false;
+
+        this.rows[abs+1][ord-1].image='0088';
+        this.rows[abs+1][ord-1].imgsrc=1;
+        this.rows[abs+1][ord-1].walkable = false;
 
         this.rows[abs+1][ord].background = 'gravel'
         this.rows[abs+2][ord].background = 'gravel'
@@ -471,6 +478,16 @@ class Board {
         this.rows[abs+5][ord].image ='0017';
         this.rows[abs+5][ord].imgsrc=2;
         this.rows[abs+5][ord].walkable = true;
+
+        this.rows[abs+6][ord+2].image ='0057';
+        this.rows[abs+6][ord+2].imgsrc=2;
+        this.rows[abs+6][ord+2].walkable = true;
+
+        this.rows[abs+4][ord-1].image ='0086';
+        this.rows[abs+4][ord-1].imgsrc=1;
+        this.rows[abs+4][ord-1].walkable = true;
+
+
     }
 
     generateTarget(abs,ord){
@@ -1429,6 +1446,12 @@ class Board {
         this.rows[abs][ord+1].background="BridgeC"
         this.rows[abs][ord+2].background="BridgeC"
         this.rows[abs][ord+3].background="BridgeC"
+
+        this.rows[abs-2][ord-2].image ='0084';
+        this.rows[abs-2][ord-2].imgsrc=1;
+        this.rows[abs-2][ord-2].walkable = false;
+
+
     }
 
     generateCastle(abs,ord){
@@ -1597,9 +1620,43 @@ class Board {
         this.rows[abs][ord-2].imgsrc=1;
         this.rows[abs][ord-2].walkable = false;
 
+        this.generateTombstone1(abs+6,ord-2)
+        this.generateTombstone1(abs+8,ord-12)
+        this.generateTombstone1(abs,ord+6)
+        this.generateTombstone1(abs+10,ord-1)
+        this.generateTombstone1(abs+8,ord+3)
+
+        this.generateTombstone2(abs-3,ord-14)
+        this.generateTombstone2(abs-10,ord-9)
+        this.generateTombstone2(abs-6,ord-5)
+        this.generateTombstone2(abs,ord-12)
 
 
 
+
+    }
+
+    generateTombstone1(abs,ord){
+
+        this.rows[abs][ord].image ='0064';
+        this.rows[abs][ord].imgsrc=1;
+        this.rows[abs][ord].walkable = false;
+
+        this.rows[abs+1][ord].image ='0066';
+        this.rows[abs+1][ord].imgsrc=1;
+        this.rows[abs+1][ord].walkable = false;
+
+    }
+
+    generateTombstone2(abs,ord){
+
+        this.rows[abs][ord].image ='0065';
+        this.rows[abs][ord].imgsrc=1;
+        this.rows[abs][ord].walkable = false;
+
+        this.rows[abs+1][ord].image ='0066';
+        this.rows[abs+1][ord].imgsrc=1;
+        this.rows[abs+1][ord].walkable = false;
     }
 }
 

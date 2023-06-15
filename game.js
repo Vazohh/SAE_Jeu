@@ -153,7 +153,7 @@ class Board {
         this.generateChest(38,30)
         this.generateWater(0,20)
         this.generateKey(38, 31)    
-        this.generateWaterBorder(0,20)
+        this.generateWaterBorder()
         this.generateBridge(29,48)
         this.generateCastle(12,65)
 
@@ -1198,22 +1198,24 @@ class Board {
         this.rows[abs+39][ord+32].walkable = false;
 
     }
-
+    
     generateKey(abs,ord) {
         this.rows[abs][ord].image ='0117';
         this.rows[abs][ord].imgsrc=2;
         this.rows[abs][ord].walkable = true;
     }
 
-    generateWaterBorder(abs,ord){   
+    generateWaterBorder( ){    
         this.rows.map( (row, ord) =>
                 row.map( (tile, abs ) =>{
-                    if( tile.image == '0042' && abs >0 && ord>0 && abs<45 && ord<70){
+                    if( tile.imgsrc==3 && tile.image == '0042' && abs >0 && ord>0 && abs<39 && ord<70){
+                        console.log(abs, ord);
+                        console.log("test", this.rows[abs-1][ord].background);
 
-                        let herbeAGauche = this.rows[abs-1, ord].background == 'grass' || this.rows[abs-1, ord].background == 'flower' || this.rows[abs-1, ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
-                        let herbeEnBas = this.rows[abs, ord+1].background == 'grass' || this.rows[abs-1, ord].background == 'flower' || this.rows[abs-1, ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
-                        let herbeEnHaut = this.rows[abs, ord-1].background == 'grass' || this.rows[abs-1, ord].background == 'flower' || this.rows[abs-1, ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
-                        let herbeADroite = this.rows[abs+1,ord].background == 'grass' ||this.rows[abs-1, ord].background == 'flower' || this.rows[abs-1, ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
+                        let herbeEnHaut = this.rows[abs-1][ ord].background == 'grass' || this.rows[abs-1][ord].background == 'flower' || this.rows[abs-1][ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
+                        let herbeEnBas = this.rows[abs][ord+1].background == 'grass' || this.rows[abs][ord+1].background == 'flower' || this.rows[abs][ord+1].background == 'kenney_tiny-town/Tiles/tile_0000.png'
+                        let herbeAGauche = this.rows[abs][ord-1].background == 'grass' || this.rows[abs][ord-1].background == 'flower' || this.rows[abs][ord-1].background == 'kenney_tiny-town/Tiles/tile_0000.png'
+                        let herbeADroite = this.rows[abs+1][ord].background == 'grass' ||this.rows[abs+1][ ord].background == 'flower' || this.rows[abs+1][ord].background == 'kenney_tiny-town/Tiles/tile_0000.png'
                         /*
                         if (herbeAGauche && herbeADroite && herbeEnHaut && herbeEnBas) {
                             // Si l'herbe est présente à gauche, à droite, en haut et en bas
@@ -1227,7 +1229,9 @@ class Board {
                             // Si l'herbe est présente à gauche, à droite et en bas, mais pas en haut
 
                         
-                        } */if (herbeAGauche && herbeEnHaut && herbeEnBas) {
+                        } */
+                        console.log("eau", abs, ord, herbeAGauche, herbeEnBas,herbeEnHaut,  herbeADroite);
+                        if (herbeAGauche && herbeEnHaut && herbeEnBas) {
                             // Si l'herbe est présente à gauche, en haut et en bas, mais pas à droite
                             this.rows[abs+1][ord].image ='0039';
                             this.rows[abs+1][ord].imgsrc=3;
@@ -1348,6 +1352,7 @@ class Board {
                             this.rows[abs-1][ord].walkable = false;
                         
                         } else if (herbeAGauche) {
+                            console.log("bordure", abs, ord);
                             // Si l'herbe est présente à gauche, mais pas à droite, en haut ni en bas
                             this.rows[abs][ord-1].image ='0051';
                             this.rows[abs][ord-1].imgsrc=3;
@@ -1761,6 +1766,7 @@ document.getElementById('start-game').addEventListener('click', () => {
     game = new Game([new Player("Joueur 1"), new Player("Joueur 2")], new Board(10));
     game.start();
     drawGameBoard(game.board);
+    console.log(game.board)
     updateUI(game);
 
 });

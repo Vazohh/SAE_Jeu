@@ -40,94 +40,127 @@ class Board {
 
     generate(){
 
-        /*
+        //boucle pour poser l'herbe et les fleurs
         this.rows.map( (row, i) =>
             row.map( (tile, j ) =>{
-                if( tile.image == '0000' && j>0 && i>0 && j<45 && j<70){
-                    if( j%5==0 && i%5==0)
-                    this.generateGrassFlower(i,j)
+                if( tile.image == '' && j>0 && i>0 && i<41 && j<71){
+                    if( j%5==0 && i%5==0){
+                        this.generateGrassFlower(i,j) 
+                    }
                 }
             })
         )
-        */
-
-        this.generateGrassFlower(5,5)
-        this.generateGrassFlower(5,10)
-        this.generateGrassFlower(5,20)
-        this.generateGrassFlower(5,25)
-        this.generateGrassFlower(5,30)
-        this.generateGrassFlower(5,40)
-        this.generateGrassFlower(5,50)
-        this.generateGrassFlower(5,60)
-        this.generateGrassFlower(5,70)
-
-        this.generateGrassFlower(10,5)
-        this.generateGrassFlower(10,10)
-        this.generateGrassFlower(10,20)
-        this.generateGrassFlower(10,25)
-        this.generateGrassFlower(10,30)
-        this.generateGrassFlower(10,40)
-        this.generateGrassFlower(10,50)
-        this.generateGrassFlower(10,60)
-        this.generateGrassFlower(10,70)
-
-        this.generateGrassFlower(20,5)
-        this.generateGrassFlower(20,10)
-        this.generateGrassFlower(20,20)
-        this.generateGrassFlower(20,25)
-        this.generateGrassFlower(20,30)
-        this.generateGrassFlower(35,35)
-        this.generateGrassFlower(20,40)
-        this.generateGrassFlower(20,50)
-        this.generateGrassFlower(20,60)
-        this.generateGrassFlower(20,70)
-
-        this.generateGrassFlower(25,5)
-        this.generateGrassFlower(25,10)
-        this.generateGrassFlower(25,20)
-        this.generateGrassFlower(25,25)
-        this.generateGrassFlower(25,30)
-        this.generateGrassFlower(25,40)
-        this.generateGrassFlower(35,45)
-        this.generateGrassFlower(25,50)
-        this.generateGrassFlower(25,60)
-        this.generateGrassFlower(25,70)
-
-        this.generateGrassFlower(35,5)
-        this.generateGrassFlower(35,10)
-        this.generateGrassFlower(35,20)
-        this.generateGrassFlower(35,25)
-        this.generateGrassFlower(35,30)
-        this.generateGrassFlower(35,40)
-        this.generateGrassFlower(35,50)
-        this.generateGrassFlower(35,55)
-        this.generateGrassFlower(35,60)
-        this.generateGrassFlower(35,70)
-
-
-        this.rows[11][10].background = 'gravel'
-        this.rows[12][10].background = 'gravel'
-        this.rows[11][11].background = 'gravel'
-        this.rows[11][8].background = 'gravel'
-        this.rows[11][9].background = 'gravel'
-        this.rows[11][7].background = 'gravel'
-        this.rows[14][18].background = 'entryEnclosure'
-
-        this.generateHouse(10, 10)
-        this.generateTarget(11,7)
-        this.generateTree(15,2)
-        this.generateSource(12,9)
-        this.generateForest(25,25)
-        this.generateForest(35,25)
-        this.generateForest(30,22)
-        this.generateForest(32,30)
-        this.generateForest(35,37)
-        this.generateForest(33,44)
+        
+        //boucle pour placer les maisons
+        this.rows.map( (row, i) =>
+            row.map( (tile, j ) =>{
+                if( tile.image == '' && j>0 && i>0 && i<41 && j<71){
+                    if( j==10 && i==10){
+                        this.generateHouse1(i,j)
+                        this.generateTarget(i+1,i-3)
+                    }
+                    if(j==8 && i==17){
+                        this.generateHouse1(i,j)
+                    }
+                    if(j==4 && i==12){
+                        this.generateHouse2(i,j) 
+                    }
+                    if(j==22 && i==16){
+                        this.generateHouse2(i,j) 
+                    }
+                }
+            })
+        )  
+        //Pb avec le gravel dans House et dans WaterSource
+        this.generateWaterSource(12,9)
         this.generateEnclosure(10,16)
+        
+        //boucle pour générer foret
+        this.rows.map( (row, i) =>
+            row.map( (tile, j ) =>{
+                if( tile.image == '' && j>0 && i>0 && i<41 && j<71){
+                    if(j==3 && i==6){
+                        this.generateForest(i,j)
+                        this.generateMushroom(i+2,j-1)
+                    }
+                    if(j==10 && i==3){
+                        this.generateForest(i,j) 
+                    }
+                    if( j==6 && i==35){
+                        this.generateForest(i,j)
+                        this.generateMushroom(i+2,j-1)
+                        this.generateMushroom(i-2,j+1)
+                    }
+                    if(j==3 && i==23){
+                        this.generateForest(i,j) 
+                    }
+                    if(j==4 && i==30){
+                        this.generateForest(i,j)
+                        this.generateMushroom(i-2,j+1)
+                    }
+                    if(j==15 && i==35){
+                        this.generateForest(i,j) 
+                    }
+                    if(j==10 && i==30){
+                        this.generateForest(i,j) 
+                    }
+                    if(j==20 && i==28){
+                        this.generateForest(i,j)
+                        this.generateMushroom(i+2,j-1)
+                    }
+                    if(j==25 && i==36){
+                        this.generateForest(i,j) 
+                    }
+                    if(j==33 && i==36){
+                        this.generateForest(i,j)
+                        this.generateMushroom(i+2,j-1)
+                        this.generateMushroom(i-4,j-1)
+                        this.generateMushroom(i+1,j+1)
+                    }
+                    if(j==30 && i==30){
+                        this.generateForest(i,j) 
+                    }
+                    if(j==40 && i==35){
+                        this.generateForest(i,j) 
+                    }
+                }
+            })
+        )
+        
+        //boucle pour générer des arbres et buissons
+        this.rows.map( (row, i) =>
+            row.map( (tile, j ) =>{
+                if( tile.image == '' && j>0 && i>0 && i<41 && j<71){
+                    if( j%24==0 && i%24==0 || j==38 && i==9 || j==45 && i==25 || j==25 && i==26 || j==58 && i==24 || j==50&& i==4){
+                        this.generateTree(i,j)
+                        this.generateBush(i-2,j)
+                        this.generateBush(i+1,j-2) 
+                    }
+                    if( j%35==0 && i%35==0 || j==30 && i==20 || j==55 && i==28 || j==40 && i==26 || j==4 && i==24 || j==56&& i==4){
+                        this.generateTree(i,j)
+                        this.generateBush(i-3,j+2)
+
+                    }
+                    if( j%20==0 && i%18==0 || j==35 && i==6 || j==50 && i==15 || j==45 && i==35 || j==32 && i==2 || j==40&& i==35){
+                        this.generateTree(i,j)
+
+                    }
+                }
+            })
+        )
+
+
         this.generateChest(38,30)
         this.generateWater(0,20)
+
         this.generateBorder(0,20)
-        this.generateKey(38, 31)    }
+        this.generateKey(38, 31)    
+
+        this.generateWaterBorder(0,20)
+        this.generateBridge(29,48)
+        this.generateCastle(12,65)
+
+    }
 
     generateGrassFlower(abs,ord){
         this.rows[abs][ord].background='grass'
@@ -161,7 +194,7 @@ class Board {
         this.rows[abs+2][ord-2].background='flower'
     }
 
-    generateHouse(abs,ord) {
+    generateHouse1(abs,ord) {
         this.rows[abs][ord].image ='0089';
         this.rows[abs][ord].imgsrc=2;
         this.rows[abs][ord].walkable = false;
@@ -208,18 +241,47 @@ class Board {
         this.rows[abs-2][ord-3].imgsrc=2;
         this.rows[abs-2][ord-3].walkable = false;
 
-        this.rows[abs][ord+2].image ='0004';
-        this.rows[abs][ord+2].imgsrc=2;
-        this.rows[abs][ord+2].walkable = false;
-        this.rows[abs+1][ord+2].image='0016';
-        this.rows[abs+1][ord+2].imgsrc=2;
-        this.rows[abs+1][ord+2].walkable = true;
-        this.rows[abs-3][ord-5].image ='0004';
-        this.rows[abs-3][ord-5].imgsrc=2;
-        this.rows[abs-3][ord-5].walkable = false;
-        this.rows[abs-2][ord-5].image='0016';
-        this.rows[abs-2][ord-5].imgsrc=2;
-        this.rows[abs-2][ord-5].walkable = true;
+        this.rows[abs+1][ord].background = 'gravel'
+        this.rows[abs+2][ord].background = 'gravel'
+        this.rows[abs+1][ord+1].background = 'gravel'
+        this.rows[abs+1][ord-2].background = 'gravel'
+        this.rows[abs+1][ord-1].background = 'gravel'
+        this.rows[abs+1][ord-3].background = 'gravel'
+    }
+
+    generateHouse2(abs,ord) {
+        this.rows[abs][ord].image ='0089';
+        this.rows[abs][ord].imgsrc=2;
+        this.rows[abs][ord].walkable = false;
+        this.rows[abs][ord+1].image='0079';
+        this.rows[abs][ord+1].imgsrc=2;
+        this.rows[abs][ord+1].walkable = false;
+        this.rows[abs][ord-1].image='0076';
+        this.rows[abs][ord-1].imgsrc=2;
+        this.rows[abs][ord-1].walkable = false;
+        this.rows[abs-1][ord+1].image='0066';
+        this.rows[abs-1][ord+1].imgsrc=2;
+        this.rows[abs-1][ord+1].walkable = false;
+        this.rows[abs-1][ord].image='0067';
+        this.rows[abs-1][ord].imgsrc=2;
+        this.rows[abs-1][ord].walkable = false;
+        this.rows[abs-1][ord-1].image='0064';
+        this.rows[abs-1][ord-1].imgsrc=2;
+        this.rows[abs-1][ord-1].walkable = false;
+        this.rows[abs-2][ord+1].image='0054';
+        this.rows[abs-2][ord+1].imgsrc=2;
+        this.rows[abs-2][ord+1].walkable = false;
+        this.rows[abs-2][ord].image='0055';
+        this.rows[abs-2][ord].imgsrc=2;
+        this.rows[abs-2][ord].walkable = false;
+        this.rows[abs-2][ord-1].image='0052';
+        this.rows[abs-2][ord-1].imgsrc=2;
+        this.rows[abs-2][ord-1].walkable = false;
+
+        this.rows[abs+1][ord].background = 'gravel'
+        this.rows[abs+2][ord].background = 'gravel'
+        this.rows[abs+1][ord+1].background = 'gravel'
+        this.rows[abs+1][ord-1].background = 'gravel'
     }
 
     generateTree(abs,ord){
@@ -229,6 +291,18 @@ class Board {
         this.rows[abs+1][ord].image='0016';
         this.rows[abs+1][ord].imgsrc=2;
         this.rows[abs+1][ord].walkable = false;
+    }
+
+    generateBush(abs,ord){
+        this.rows[abs][ord].image ='0005';
+        this.rows[abs][ord].imgsrc=2;
+        this.rows[abs][ord].walkable = true;
+    }
+
+    generateMushroom(abs,ord){
+        this.rows[abs][ord].image ='0029';
+        this.rows[abs][ord].imgsrc=2;
+        this.rows[abs][ord].walkable = true;
     }
 
     generateForest(abs,ord){
@@ -285,13 +359,20 @@ class Board {
 
     }
 
-    generateSource(abs,ord){
+    generateWaterSource(abs,ord){
         this.rows[abs][ord].image ='0092';
         this.rows[abs][ord].imgsrc=2;
         this.rows[abs][ord].walkable = false;
         this.rows[abs+1][ord].image='0104';
         this.rows[abs+1][ord].imgsrc=2;
         this.rows[abs+1][ord].walkable = false;
+
+        this.rows[abs+1][ord].background = 'gravel'
+        this.rows[abs-1][ord].background = 'gravel'
+        this.rows[abs+1][ord+1].background = 'gravel'
+        this.rows[abs+1][ord-1].background = 'gravel'
+        this.rows[abs-1][ord+1].background = 'gravel'
+        this.rows[abs-1][ord-1].background = 'gravel'
     }
 
     generateEnclosure(abs,ord){
@@ -364,6 +445,33 @@ class Board {
         this.rows[abs+1][ord-2].image ='0056';
         this.rows[abs+1][ord-2].imgsrc=2;
         this.rows[abs+1][ord-2].walkable = false;
+
+        this.rows[abs+4][ord+2].background = 'entryEnclosure'
+
+        this.rows[abs+1][ord].image ='0017';
+        this.rows[abs+1][ord].imgsrc=2;
+        this.rows[abs+1][ord].walkable = true;
+        this.rows[abs+2][ord].image ='0017';
+        this.rows[abs+2][ord].imgsrc=2;
+        this.rows[abs+2][ord].walkable = true;
+        this.rows[abs+1][ord+1].image ='0017';
+        this.rows[abs+1][ord+1].imgsrc=2;
+        this.rows[abs+1][ord+1].walkable = true;
+        this.rows[abs+2][ord+1].image ='0017';
+        this.rows[abs+2][ord+1].imgsrc=2;
+        this.rows[abs+2][ord+1].walkable = true;
+        this.rows[abs+3][ord-2].image ='0017';
+        this.rows[abs+3][ord-2].imgsrc=2;
+        this.rows[abs+3][ord-2].walkable = true;
+        this.rows[abs+3][ord-1].image ='0017';
+        this.rows[abs+3][ord-1].imgsrc=2;
+        this.rows[abs+3][ord-1].walkable = true;
+        this.rows[abs+4][ord-2].image ='0017';
+        this.rows[abs+4][ord-2].imgsrc=2;
+        this.rows[abs+4][ord-2].walkable = true;
+        this.rows[abs+5][ord].image ='0017';
+        this.rows[abs+5][ord].imgsrc=2;
+        this.rows[abs+5][ord].walkable = true;
     }
 
     generateTarget(abs,ord){
@@ -996,37 +1104,7 @@ class Board {
         this.rows[abs+26][ord+29].walkable = false;
         this.rows[abs+26][ord+30].image ='0042';
         this.rows[abs+26][ord+30].imgsrc=3;
-        this.rows[abs+26][ord+30].walkable = false;
-
-        this.rows[abs+27][ord+28].image ='0042';
-        this.rows[abs+27][ord+28].imgsrc=3;
-        this.rows[abs+27][ord+28].walkable = false;
-        this.rows[abs+27][ord+29].image ='0042';
-        this.rows[abs+27][ord+29].imgsrc=3;
-        this.rows[abs+27][ord+29].walkable = false;
-        this.rows[abs+27][ord+30].image ='0042';
-        this.rows[abs+27][ord+30].imgsrc=3;
-        this.rows[abs+27][ord+30].walkable = false;
-
-        this.rows[abs+28][ord+28].image ='0042';
-        this.rows[abs+28][ord+28].imgsrc=3;
-        this.rows[abs+28][ord+28].walkable = false;
-        this.rows[abs+28][ord+29].image ='0042';
-        this.rows[abs+28][ord+29].imgsrc=3;
-        this.rows[abs+28][ord+29].walkable = false;
-        this.rows[abs+28][ord+30].image ='0042';
-        this.rows[abs+28][ord+30].imgsrc=3;
-        this.rows[abs+28][ord+30].walkable = false;
-        
-        this.rows[abs+29][ord+28].image ='0042';
-        this.rows[abs+29][ord+28].imgsrc=3;
-        this.rows[abs+29][ord+28].walkable = false;
-        this.rows[abs+29][ord+29].image ='0042';
-        this.rows[abs+29][ord+29].imgsrc=3;
-        this.rows[abs+29][ord+29].walkable = false;
-        this.rows[abs+29][ord+30].image ='0042';
-        this.rows[abs+29][ord+30].imgsrc=3;
-        this.rows[abs+29][ord+30].walkable = false;
+        this.rows[abs+26][ord+30].walkable = false      
 
         this.rows[abs+30][ord+28].image ='0042';
         this.rows[abs+30][ord+28].imgsrc=3;
@@ -1131,6 +1209,7 @@ class Board {
     }
 
     generateBorder(abs,ord){    
+    generateWaterBorder(abs,ord){    
 
         this.rows.map( (row, ord) =>
                 row.map( (tile, abs ) =>{
@@ -1314,6 +1393,43 @@ class Board {
             
             
         )
+    }
+
+    generateBridge(abs,ord){
+        this.rows[abs-2][ord-1].background="BridgeA"
+        this.rows[abs-2][ord].background="BridgeA"
+        this.rows[abs-2][ord+1].background="BridgeA"
+        this.rows[abs-2][ord+2].background="BridgeA"
+        this.rows[abs-2][ord+3].background="BridgeA"
+
+        this.rows[abs-1][ord-1].background="gravel"
+        this.rows[abs-1][ord].background="BridgeB"
+        this.rows[abs-1][ord+1].background="BridgeB"
+        this.rows[abs-1][ord+2].background="BridgeB"
+        this.rows[abs-1][ord+3].background="gravel"
+
+        this.rows[abs][ord-1].background="BridgeC"
+        this.rows[abs][ord].background="BridgeC"
+        this.rows[abs][ord+1].background="BridgeC"
+        this.rows[abs][ord+2].background="BridgeC"
+        this.rows[abs][ord+3].background="BridgeC"
+    }
+
+    generateCastle(abs,ord){
+        this.rows[abs][ord].image ='00123';
+        this.rows[abs][ord].imgsrc=2;
+        this.rows[abs][ord].walkable = false;
+        this.rows[abs][ord+1].image ='00124';
+        this.rows[abs][ord+1].imgsrc=2;
+        this.rows[abs][ord+1].walkable = false;
+        this.rows[abs][ord+2].image ='00126';
+        this.rows[abs][ord+2].imgsrc=2;
+        this.rows[abs][ord+2].walkable = false;
+        this.rows[abs][ord-1].image ='00126';
+        this.rows[abs][ord-1].imgsrc=2;
+        this.rows[abs][ord-1].walkable = false;
+
+
     }
 }
 

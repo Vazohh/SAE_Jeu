@@ -152,7 +152,7 @@ class Board {
 
         this.generateChest(38,30)
         this.generateWater(0,20)
-        this.generateKey(38, 31)    
+        this.generateKey(38, 31)   
         this.generateWaterBorder()
         this.generateBridge(29,48)
         this.generateCastle(12,65)
@@ -1205,6 +1205,13 @@ class Board {
         this.rows[abs][ord].walkable = true;
     }
 
+    deleteKey(abs, ord) {
+        this.rows[abs][ord].image = null; // Supprimer l'image de la clé
+        this.rows[abs][ord].imgsrc = null; // Supprimer la source de l'image
+        this.rows[abs][ord].walkable = true; // Rendre la case à nouveau praticable
+    }
+      
+
     generateWaterBorder( ){    
         this.rows.map( (row, ord) =>
                 row.map( (tile, abs ) =>{
@@ -1526,6 +1533,7 @@ class Player {
     moveRight(){
         if(this.position[1]<75 || this.position.walkable==true){
             this.position[1] = this.position[1]+1
+            console.log(this.position)
         }
         else{
 
@@ -1596,6 +1604,12 @@ class Game {
 
     }
 
+    checkPos() {
+        if(this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 31) {
+            this.board.deleteKey(38, 31)
+        }
+    }
+
     keyboardControl(touche){
         if(touche == "ArrowLeft"){
             this.currentPlayer.moveLeft()
@@ -1609,7 +1623,9 @@ class Game {
         if(touche == "ArrowDown"){
             this.currentPlayer.moveDown()
         }
-    
+
+        console.log(this)
+        this.checkPos()
         this.update()
     }
 }

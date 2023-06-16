@@ -151,7 +151,7 @@ class Board {
 
         this.generateChest(38,30)
         this.generateWater(0,20)
-        this.generateKey(38, 31)   
+        this.generateKey(36, 8)   
         this.generateWaterBorder()
         this.generateRestWaterBorder(0,20)
         this.generateRestWaterBorder(39,50)
@@ -1680,7 +1680,7 @@ class Player {
         this.name = name;
         this.health = 100;
         this.items = ["objets"];
-        this.position = [35, 29];
+        this.position = [11, 10];
         this.hasKey = false
     }
     
@@ -1772,12 +1772,12 @@ class Game {
 
     checkPos() {
 
-        if (this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 31) {
-            this.board.deleteKey(38, 31);
+        if (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 8) {
+            this.board.deleteKey(36, 8);
             this.currentPlayer.hasKey = true;
         }
 
-        if (this.currentPlayer.position[0] == 39 && this.currentPlayer.position[1] == 30) {
+        if (this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 30) {
             if (this.currentPlayer.hasKey) {
                 var bravo = document.getElementById('bravo');
                 bravo.style.display = 'block';
@@ -2134,8 +2134,8 @@ closeBravoButton.addEventListener('click', function() {
 var closeErrorButton = document.getElementsByClassName('closeError')[0];
   
 closeErrorButton.addEventListener('click', function() {
-    var error = document.getElementById('erreur');
-    error.style.display = 'none';
+    var erreur = document.getElementById('erreur');
+    erreur.style.display = 'none';
 });
 
 function disparaitre() {

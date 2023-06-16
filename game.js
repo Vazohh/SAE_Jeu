@@ -1779,11 +1779,11 @@ class Game {
     
         if (this.currentPlayer.position[0] == 39 && this.currentPlayer.position[1] == 30) {
             if (keyDeleted) {
-                const message = "Vous avez réussi à ouvrir le coffre, vous avez maintenant une épée, rendez-vous dans le château pour affronter le Boss CaptainClem";
-                alert(message);
+                var bravo = document.getElementById('bravo');
+                bravo.style.display = 'block';
             } else {
-                const message = "Vous n'avez pas la clé nécessaire pour ouvrir le coffre, allez la chercher et revenez";
-                alert(message);
+                var erreur = document.getElementById('erreur');
+                erreur.style.display = 'block'; 
             }
         }
     }
@@ -2131,22 +2131,5 @@ function afficher() {
     defendButton.style.display = "block";
     inventoryButton.style.display = "block";
 }
-function updateTimerDisplay() {
-  const minutes = Math.floor(timerSeconds / 60);
-  const seconds = timerSeconds % 60;
-
-  const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-
-  timerDisplay.textContent = formattedTime;
-}
 
 //Drag & Drop
-
-
-function jeuTermine() {
-  // Implémentez votre logique pour vérifier si le jeu est terminé
-  // Renvoyez true si le jeu est terminé, sinon renvoyez false
-  // Par exemple, vous pouvez vérifier si toutes les conditions de fin du jeu sont remplies
-  // et renvoyer true dans ce cas
-  return false;
-}

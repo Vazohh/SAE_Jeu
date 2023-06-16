@@ -68,6 +68,14 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.bravo {
+  display: none;
+}
+
+.erreur {
+  display: none;
+}
+
 .controls-content {
   background: none;
   border: none;

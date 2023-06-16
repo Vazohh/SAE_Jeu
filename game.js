@@ -1231,9 +1231,9 @@ class Board {
     }
 
     deleteKey(abs, ord) {
-        this.rows[abs][ord].image = null; // Supprimer l'image de la clé
-        this.rows[abs][ord].imgsrc = null; // Supprimer la source de l'image
-        this.rows[abs][ord].walkable = true; // Rendre la case à nouveau praticable
+        this.rows[abs][ord].image = null;
+        this.rows[abs][ord].imgsrc = null;
+        this.rows[abs][ord].walkable = true;
     }
 
     generateWaterBorder(){    
@@ -1680,12 +1680,13 @@ class Player {
         this.name = name;
         this.health = 100;
         this.items = ["objets"];
-        this.position = [11, 10];
+        this.position = [35, 29];
     }
     
     moveLeft() {
         if(this.position[1]>0 || this.position.walkable==true){
             this.position[1] = this.position[1]-1
+            console.log(this.position)
         }
         else{
 
@@ -1704,6 +1705,7 @@ class Player {
     moveUp(){
         if(this.position[0]>0 || this.position.walkable==true){
             this.position[0] = this.position[0]-1
+            console.log(this.position)
         }
         else{
 
@@ -1713,6 +1715,7 @@ class Player {
     moveDown(){
         if(this.position[0]<40 || this.position.walkable==true){
             this.position[0] = this.position[0]+1;
+            console.log(this.position)
         }
         else{
 
@@ -1767,10 +1770,24 @@ class Game {
     }
 
     checkPos() {
-        if(this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 31) {
-            this.board.deleteKey(38, 31)
+        let keyDeleted = false;
+
+        if (this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 31) {
+            this.board.deleteKey(38, 31);
+            keyDeleted = true;
+        }
+    
+        if (this.currentPlayer.position[0] == 39 && this.currentPlayer.position[1] == 30) {
+            if (keyDeleted) {
+                const message = "Vous avez réussi à ouvrir le coffre, vous avez maintenant une épée, rendez-vous dans le château pour affronter le Boss CaptainClem";
+                alert(message);
+            } else {
+                const message = "Vous n'avez pas la clé nécessaire pour ouvrir le coffre, allez la chercher et revenez";
+                alert(message);
+            }
         }
     }
+    
 
     keyboardControl(touche){
         if(touche == "ArrowLeft"){

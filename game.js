@@ -2109,13 +2109,26 @@ closeButton.addEventListener('click', function() {
     rules.style.display = 'none';
   });
 
-
   
 var closeControlsButton = document.getElementsByClassName('closeControls')[0];
   
 closeControlsButton.addEventListener('click', function() {
     var controls = document.getElementById('controls');
     controls.style.display = 'none';
+});
+
+var closeBravoButton = document.getElementsByClassName('closeBravo')[0];
+  
+closeBravoButton.addEventListener('click', function() {
+    var bravo = document.getElementById('bravo');
+    bravo.style.display = 'none';
+});
+
+var closeErrorButton = document.getElementsByClassName('closeError')[0];
+  
+closeErrorButton.addEventListener('click', function() {
+    var error = document.getElementById('erreur');
+    error.style.display = 'none';
 });
 
 function disparaitre() {

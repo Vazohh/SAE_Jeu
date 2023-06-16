@@ -1681,6 +1681,7 @@ class Player {
         this.health = 100;
         this.items = ["objets"];
         this.position = [35, 29];
+        this.hasKey = false
     }
     
     moveLeft() {
@@ -1770,15 +1771,14 @@ class Game {
     }
 
     checkPos() {
-        let keyDeleted = false;
 
         if (this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 31) {
             this.board.deleteKey(38, 31);
-            keyDeleted = true;
+            this.currentPlayer.hasKey = true;
         }
-    
+
         if (this.currentPlayer.position[0] == 39 && this.currentPlayer.position[1] == 30) {
-            if (keyDeleted) {
+            if (this.currentPlayer.hasKey) {
                 var bravo = document.getElementById('bravo');
                 bravo.style.display = 'block';
             } else {

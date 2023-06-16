@@ -1230,6 +1230,12 @@ class Board {
         this.rows[abs][ord].walkable = true;
     }
 
+    deleteKey(abs, ord) {
+        this.rows[abs][ord].image = null; // Supprimer l'image de la clé
+        this.rows[abs][ord].imgsrc = null; // Supprimer la source de l'image
+        this.rows[abs][ord].walkable = true; // Rendre la case à nouveau praticable
+    }
+
     generateWaterBorder(){    
         this.rows.map( (row, abs) =>
                 row.map( (tile, ord ) =>{

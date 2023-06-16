@@ -1868,9 +1868,9 @@ function updateInventoryTest(game) {
     inventoryHTML += `<div class="row">`; // Début de la ligne  <!--${object ? '<img id="inventory"'+ 'src='+object.src+ 'alt="poignard"></img>' : ''}--><!--img id="drag-item" src=${object.img.src}-->
                 
     currentPlayer.items.push(new Poignard());
-    //currentPlayer.items.push(new Epee());
-    //currentPlayer.items.push(new PotionSante());
-    //currentPlayer.items.push(new Bombe());
+    currentPlayer.items.push(new Epee());
+    currentPlayer.items.push(new PotionSante());
+    currentPlayer.items.push(new Bombe());
     currentPlayer.items.push(new Clef());
     for (let object  of currentPlayer.items) {
         console.log(object)

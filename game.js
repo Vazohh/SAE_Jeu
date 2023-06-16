@@ -2074,7 +2074,7 @@ function drawInventoryBoard(inventory) {
 }
 
 document.addEventListener('keydown', (event) =>{
-                                
+                             
         const key = event.key;
         switch (key) {
             case "ArrowLeft":
@@ -2091,16 +2091,23 @@ document.addEventListener('keydown', (event) =>{
                 break
     }
 
-    if (event.key === 'r') {
+    if (key === 'r') {
         var rules = document.getElementById('rules');
-        rules.style.display = 'block';
+        if (rules.style.display === 'block') {
+          rules.style.display = 'none';
+        } else {
+          rules.style.display = 'block';
+        }
     }
-    if (event.key === 'c') {
-        var controls = document.getElementById('controls');
-        controls.style.display = 'block';
+    if (key === 'c') {
+        var rules = document.getElementById('rules');
+        if (rules.style.display === 'block') {
+          rules.style.display = 'none';
+        } else {
+          rules.style.display = 'block';
+        }
     }
-    });
-
+})
   
 var closeButton = document.getElementsByClassName('close')[0];
   
@@ -2145,4 +2152,8 @@ function afficher() {
     inventoryButton.style.display = "block";
 }
 
+function afficherRegles() {
+    var rules = document.getElementById('rules');
+    rules.style.display = 'block';
+}
 //Drag & Drop

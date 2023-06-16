@@ -1929,7 +1929,7 @@ class Game {
             this.currentPlayer.hasKey = true;
         }
 
-        if (this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 30) {
+        if (this.currentPlayer.position[0] == 39 && this.currentPlayer.position[1] == 30) {
             if (this.currentPlayer.hasKey) {
                 var bravo = document.getElementById('bravo');
                 bravo.style.display = 'block';

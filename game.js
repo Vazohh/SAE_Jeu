@@ -1834,6 +1834,7 @@ class Player {
         this.items = [];
         this.position = [11, 10];
         this.hasKey = false
+        this.hasOpenedChest = false
     }
     
     moveLeft() {
@@ -1929,11 +1930,19 @@ class Game {
             this.currentPlayer.hasKey = true;
         }
 
-        if (this.currentPlayer.position[0] == 39 && this.currentPlayer.position[1] == 30) {
+        if (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 46) {
+            if (!this.currentPlayer.hasOpenedChest) {
+                afficherDialog();
+            }
+        }
+
+        if (this.currentPlayer.position[0] == 39 && this.currentPlayer.position[1] == 30 && !this.currentPlayer.hasOpenedChest) {
             if (this.currentPlayer.hasKey) {
                 var bravo = document.getElementById('bravo');
                 bravo.style.display = 'block';
-            } else {
+                this.currentPlayer.hasOpenedChest = true;
+            } 
+            else {
                 var erreur = document.getElementById('erreur');
                 erreur.style.display = 'block'; 
             }
@@ -2317,3 +2326,12 @@ function afficherRegles() {
     rules.style.display = 'block';
 }
 //Drag & Drop
+
+function afficherDialog() {
+    var dialog = document.getElementById("dialog");
+    dialog.style.display = "block";
+  
+    setTimeout(function() {
+      dialog.style.display = "none";
+    }, 5000);
+  }

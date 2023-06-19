@@ -2233,7 +2233,7 @@ function drawInventoryBoard(inventory) {
     }
 }
 
-document.addEventListener('keydown', (event) =>{
+document.addEventListener('keyup', (event) =>{
                              
         const key = event.key;
         switch (key) {

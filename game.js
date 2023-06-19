@@ -150,12 +150,11 @@ class Board {
         )
 
         this.generateChest(38,30)
+        this.generateBridge(29,48)
         this.generateWater(0,20)
         this.generateKey(36, 8)   
         this.generateWaterBorder()
         this.generateRestWaterBorder(0,20)
-        this.generateRestWaterBorder(39,50)
-        this.generateBridge(29,48)
         this.generateCastle(12,65)
 
     }
@@ -1298,18 +1297,6 @@ class Board {
                                 caseHaut.image ='0062';
                                 caseHaut.imgsrc=3;
                                 caseHaut.walkable = false;
-                                if(!herbeEnHautDroite){
-                                    caseHaut.image ='0063';
-                                    caseHaut.imgsrc=3;
-                                    caseHaut.walkable = false;
-
-                                    this.rows[abs-2][ord].image ='0040';
-                                    this.rows[abs-2][ord].imgsrc=3;
-                                    this.rows[abs-2][ord].walkable = false;
-
-                                }
-
-
                             
                             }if (!herbeAGauche && !herbeADroite && !herbeEnHaut && herbeEnBas) {
                                 // Si l'herbe est présente en bas
@@ -1380,37 +1367,34 @@ class Board {
                                     caseDroite.imgsrc=3;
                                     caseDroite.walkable = false;
 
-                                }if (herbeAGauche && !herbeADroite && !herbeEnHaut && herbeEnBas) {
-                                    // Si l'herbe est présente à gauche et en bas, mais pas à droite ni en haut
-                                    caseGauche.image ='0051';
-                                    caseGauche.imgsrc=3;
-                                    caseGauche.walkable = false;
+                            }if (herbeAGauche && !herbeADroite && !herbeEnHaut && herbeEnBas) {
+                                // Si l'herbe est présente à gauche et en bas, mais pas à droite ni en haut
+                                caseGauche.image ='0051';
+                                caseGauche.imgsrc=3;
+                                caseGauche.walkable = false;
+                                caseBasGauche.image ='0052';
+                                caseBasGauche.imgsrc=3;
+                                caseBasGauche.walkable = false;
 
-                                    caseBasGauche.image ='0052';
-                                    caseBasGauche.imgsrc=3;
-                                    caseBasGauche.walkable = false;
+                                caseBas.image ='0039';
+                                caseBas.imgsrc=3;
+                                caseBas.walkable = false;
 
-                                    caseBas.image ='0039';
-                                    caseBas.imgsrc=3;
-                                    caseBas.walkable = false;
+                                if(!herbeEnBasDroite){
+                                    this.rows[abs+2][ord].image='0052'
+                                    this.rows[abs+2][ord].imgsrc=3;
+                                    this.rows[abs+2][ord].walkable = false;
 
-                                    if(!herbeEnBasDroite){
-                                        this.rows[abs+2][ord].image='0052'
-                                        this.rows[abs+2][ord].imgsrc=3;
-                                        this.rows[abs+2][ord].walkable = false;
-
-                                        this.rows[abs+2][ord+1].image='0039'
-                                        this.rows[abs+2][ord+1].imgsrc=3;
-                                        this.rows[abs+2][ord+1].walkable = false;
+                                    this.rows[abs+2][ord+1].image='0039'
+                                    this.rows[abs+2][ord+1].imgsrc=3;
+                                    this.rows[abs+2][ord+1].walkable = false;
                                     }
+                                }
                                 
                             }
                             else {
                                 // Si l'herbe n'est pas présente dans aucune des positions
 
-                                }
-                            }else{
-                                
                             }
 
                         }   
@@ -1427,6 +1411,26 @@ class Board {
         this.rows[abs][ord+3].image ='0049';
         this.rows[abs][ord+3].imgsrc=3;
         this.rows[abs][ord+3].walkable = false;
+
+        this.rows[abs+39][ord+29].image ='0051';
+        this.rows[abs+39][ord+29].imgsrc=3;
+        this.rows[abs+39][ord+29].walkable = false;
+        this.rows[abs+39][ord+33].image ='0049';
+        this.rows[abs+39][ord+33].imgsrc=3;
+        this.rows[abs+39][ord+33].walkable = false;
+
+        this.rows[abs+3][ord+4].image = '0041';
+        this.rows[abs+3][ord+4].imgsrc=3;
+        this.rows[abs+3][ord+4].walkable = false;
+        this.rows[abs+5][ord+5].image = '0041';
+        this.rows[abs+5][ord+5].imgsrc=3;
+        this.rows[abs+5][ord+5].walkable = false;
+        this.rows[abs+9][ord+6].image = '0041';
+        this.rows[abs+9][ord+6].imgsrc=3;
+        this.rows[abs+9][ord+6].walkable = false;
+        this.rows[abs+10][ord+7].image = '0041';
+        this.rows[abs+10][ord+7].imgsrc=3;
+        this.rows[abs+10][ord+7].walkable = false;
     }
 
     generateBridge(abs,ord){

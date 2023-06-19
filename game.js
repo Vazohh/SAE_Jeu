@@ -1237,8 +1237,6 @@ class Board {
 
     }
 
-
-
     generateWaterBorder(){    
         this.rows.map( (row, abs) =>
                 row.map( (tile, ord ) =>{
@@ -1263,7 +1261,54 @@ class Board {
                             let herbeEnHautDroite = caseHautDroite.image != '0042' &&caseHautDroite.imgsrc!=3 && caseHautDroite.background!="BridgeA" && caseHautDroite.background!="BridgeC" && caseHautDroite.background!="BridgeB"
                             let herbeEnBasGauche = caseBasGauche.image != '0042' && caseBasGauche.imgsrc!=3 && caseBasGauche.background!="BridgeA" && caseBasGauche.background!="BridgeC" && caseBasGauche.background!="BridgeB"
                             let herbeEnBasDroite = caseBasDroite.image != '0042' && caseBasDroite.imgsrc!=3 && caseBasDroite.background!="BridgeA" && caseBasDroite.background!="BridgeC" && caseBasDroite.background!="BridgeB"
+                            
+                            if (!herbeAGauche && herbeADroite && !herbeEnHaut && !herbeEnBas) {
+                                // Si l'herbe est présente à droite
+                                caseDroite.image ='0049';
+                                caseDroite.imgsrc=3;
+                                caseDroite.walkable = false;
+                                if(!herbeEnBasDroite){
+                                    caseDroite.image ='0061';
+                                    caseDroite.imgsrc=3;
+                                    caseDroite.walkable = false;
+                                    if(this.rows[abs][ord+3].image !='0042'){
 
+                                    }
+                                    else{
+                                        this.rows[abs][ord+2].image ='0041';
+                                        this.rows[abs][ord+2].imgsrc=3;
+                                        this.rows[abs][ord+2].walkable = false;
+                                    }
+                                }
+                                
+                            }if (!herbeAGauche && !herbeADroite && herbeEnHaut && !herbeEnBas) {
+                                // Si l'herbe est présente en haut
+                            
+                                caseHaut.image ='0062';
+                                caseHaut.imgsrc=3;
+                                caseHaut.walkable = false;
+                                if(!herbeEnHautDroite){
+                                    caseHaut.image ='0063';
+                                    caseHaut.imgsrc=3;
+                                    caseHaut.walkable = false;
+
+                                    this.rows[abs-2][ord].image ='0040';
+                                    this.rows[abs-2][ord].imgsrc=3;
+                                    this.rows[abs-2][ord].walkable = false;
+
+                                }
+
+
+                            
+                            }if (!herbeAGauche && !herbeADroite && !herbeEnHaut && herbeEnBas) {
+                                // Si l'herbe est présente en bas
+                                if(!herbeEnHautGauche){
+                                    caseBas.image ='0038';
+                                    caseBas.imgsrc=3;
+                                    caseBas.walkable = false;
+                                }
+                                
+                            }
                             if (herbeAGauche && herbeADroite && !herbeEnHaut && !herbeEnBas) {
                                 // Si l'herbe est présente à gauche et à droite, mais pas en haut ni en bas
                                 caseGauche.image ='0051';
@@ -1329,38 +1374,6 @@ class Board {
                                     caseBas.walkable = false;
                                 }
                                 
-                            }if (!herbeAGauche && herbeADroite && !herbeEnHaut && !herbeEnBas) {
-                                // Si l'herbe est présente à droite
-                                caseDroite.image ='0049';
-                                caseDroite.imgsrc=3;
-                                caseDroite.walkable = false;
-                                
-                            }if (!herbeAGauche && !herbeADroite && herbeEnHaut && !herbeEnBas) {
-                                // Si l'herbe est présente en haut
-                                
-                                if(caseHaut.background=='BridgeC'){
-                                    console.log("un pont");
-                                }
-                                else{
-                                    caseHaut.image ='0062';
-                                    caseHaut.imgsrc=3;
-                                    caseHaut.walkable = false;
-                                }
-
-                            
-                            }if (!herbeAGauche && !herbeADroite && !herbeEnHaut && herbeEnBas) {
-                                // Si l'herbe est présente en bas
-                                if(caseHaut.background=='BridgeC'){
-                                    caseHaut.background = 'BridgeC'
-                                }
-                                else{
-                                    if(!herbeEnHautGauche){
-                                        caseBas.image ='0038';
-                                        caseBas.imgsrc=3;
-                                        caseBas.walkable = false;
-                                    }
-                                }
-                            
                             }
                             else {
                                 // Si l'herbe n'est pas présente dans aucune des positions

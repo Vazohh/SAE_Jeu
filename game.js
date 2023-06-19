@@ -1941,6 +1941,9 @@ class Game {
             if (this.currentPlayer.hasKey) {
                 var bravo = document.getElementById('bravo');
                 bravo.style.display = 'block';
+                this.currentPlayer.items.push(new Epee());
+                this.currentPlayer.items.splice(this.currentPlayer.items.findIndex(item => item instanceof Clef), 1);
+                updateInventoryTest(this);
             } else {
                 var erreur = document.getElementById('erreur');
                 erreur.style.display = 'block'; 

@@ -26,7 +26,7 @@ class Tile {
     }
 }
 
-class Board {
+class Board {   
     constructor() {
         this.width = 75
         this.height = 40
@@ -1233,11 +1233,20 @@ class Board {
         this.rows[abs][ord].walkable = true;
     }
 
-    deleteKey(abs, ord) {
+    deleteKey(abs, ord, game) {
+        
         this.rows[abs][ord].image = null;
         this.rows[abs][ord].imgsrc = null;
         this.rows[abs][ord].walkable = true;
+        let currentPlayer = game.currentPlayer
+        currentPlayer.items.push(new Clef())
+        updateInventoryTest(game);
+        
+        
+
     }
+
+
 
     generateWaterBorder(){    
         this.rows.map( (row, abs) =>
@@ -1613,9 +1622,9 @@ class Board {
 class Invetory{
     constructor(){
         
-        this.rows = Array(1).fill().map(() => Array(10).fill().map(() => new Tile()))
+        //this.rows = Array(1).fill().map(() => Array(10).fill().map(() => new Tile()))
         //Test object
-        //this.rows = Array(1).fill().map(() => Array(10).fill().map(() => new Object()))
+        this.rows = Array(1).fill().map(() => Array(10).fill().map(() => new Object()))
     }
 }
 
@@ -1791,7 +1800,6 @@ class SortGel extends Object {
     }
 }
 class Clef extends Object {
-    //town
     constructor() {
         super();
         this.localisation='town'
@@ -1806,13 +1814,13 @@ function updateInventoryTest(game) {
 
     // Afficher l'état de l'inventaire
     let inventoryHTML = '';
-    inventoryHTML += `<div class="row">`; // Début de la ligne  <!--${object ? '<img id="inventory"'+ 'src='+object.src+ 'alt="poignard"></img>' : ''}--><!--img id="drag-item" src=${object.img.src}-->
+    inventoryHTML += `<div class="row">`;
                 
     currentPlayer.items.push(new Poignard());
-    currentPlayer.items.push(new Epee());
-    currentPlayer.items.push(new PotionSante());
-    currentPlayer.items.push(new Bombe());
-    currentPlayer.items.push(new Clef());
+    //currentPlayer.items.push(new Epee());
+    //currentPlayer.items.push(new PotionSante());
+    //currentPlayer.items.push(new Bombe());
+    //currentPlayer.items.push(new Clef());
     for (let object  of currentPlayer.items) {
         console.log(object)
         inventoryHTML += `
@@ -1925,7 +1933,7 @@ class Game {
     checkPos() {
 
         if (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 8) {
-            this.board.deleteKey(36, 8);
+            this.board.deleteKey(36, 8, this);
             this.currentPlayer.hasKey = true;
         }
 
@@ -2316,4 +2324,3 @@ function afficherRegles() {
     var rules = document.getElementById('rules');
     rules.style.display = 'block';
 }
-//Drag & Drop

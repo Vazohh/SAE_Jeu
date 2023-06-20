@@ -2118,7 +2118,7 @@ class Player {
     }
 
     useItem(item) {
-        // À implémenter : utiliser un objet de l'inventaire du joueur
+
     }
 }
 
@@ -2130,6 +2130,7 @@ class Game {
         this.currentPlayer = players[0];
         this.gameState = "not_started";
         this.inventory = inventory;
+        this.Apparence=0;
 
         this.start()
     }
@@ -2236,6 +2237,54 @@ class Game {
                 this.currentPlayer.moveDown()
             }
         }
+        if(touche == "1"){
+            if(this.Apparence == 1){
+                this.Apparence = 0
+            }
+            else{
+                this.Apparence = 1
+            }
+        }
+        if(touche == "2"){
+            if(this.Apparence == 2){
+                this.Apparence = 0
+            }
+            else{
+                this.Apparence = 2
+            }
+        }
+        if(touche == "3"){
+            if(this.Apparence == 3){
+                this.Apparence = 0
+            }
+            else{
+                this.Apparence = 3
+            }
+        }
+        if(touche == "A" || touche == "a"){
+            if(this.Apparence == 1){
+                console.log("Attaque !")
+                this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]-1]//vie du monstre -damage de l'épée
+                this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]+1]//vie du monstre -damage de l'épée
+                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]]//vie du monstre -damage de l'épée
+                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]]//vie du monstre -damage de l'épée
+                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]-1]//vie du monstre -damage de l'épée
+                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]-1]//vie du monstre -damage de l'épée
+                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]+1]//vie du monstre -damage de l'épée
+                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]+1]//vie du monstre -damage de l'épée
+            }
+            else{
+                console.log("coup de coude")
+                this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]-1]//vie du monstre -damage du point
+                this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]+1]//vie du monstre -damage du point
+                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]]//vie du monstre -damage du point
+                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]]//vie du monstre -damage du point
+                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]-1]//vie du monstre -damage du point
+                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]-1]//vie du monstre -damage du point
+                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]+1]//vie du monstre -damage du point
+                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]+1]//vie du monstre -damage du point
+            }
+        }
 
         console.log(this)
         this.checkPos()
@@ -2282,13 +2331,45 @@ function updateUI(game) {
                 }
             }
             else {
-                gameBoardHTML += `
-                <div class="tile ${tile.background}" id="drop-zone" >
-                    ${tile.character ? '<img id="Player" src="kenney_tiny-dungeon/Tiles/tile_0085.png"></img>' : ''}
-                    ${tile.item ? tile.item.name : ''}
-                    ${tile.monster ? tile.monster.name : ''}
-                </div>
-            `;
+                if(game.Apparence == 1){    
+                    gameBoardHTML += `
+                    <div class="tile ${tile.background}" id="drop-zone" >
+                        ${tile.character ? `<img id="Player" src=kenney_tiny-dungeon/Tiles/tile_0132.png></img>` : ''}
+                        ${tile.item ? tile.item.name : ''}
+                        ${tile.monster ? tile.monster.name : ''}
+                    </div>
+                `;
+               }
+                if(game.Apparence  == 2){
+                    gameBoardHTML += `
+                    <div class="tile ${tile.background}" id="drop-zone" >
+                        ${tile.character ? `<img id="Player" src=kenney_tiny-dungeon/Tiles/tile_0133.png></img>` : ''}
+                        ${tile.item ? tile.item.name : ''}
+                        ${tile.monster ? tile.monster.name : ''}
+                    </div>
+                `;
+                }
+                if(game.Apparence  == 3){
+                    gameBoardHTML += `
+                    <div class="tile ${tile.background}" id="drop-zone" >
+                        ${tile.character ? `<img id="Player" src=kenney_tiny-dungeon/Tiles/tile_0134.png></img>` : ''}
+                        ${tile.item ? tile.item.name : ''}
+                        ${tile.monster ? tile.monster.name : ''}
+                    </div>
+                `;
+                }
+                if(game.Apparence == 0){
+                    gameBoardHTML += `
+                    <div class="tile ${tile.background}" id="drop-zone" >
+                        ${tile.character ? `<img id="Player" src=kenney_tiny-dungeon/Tiles/tile_0085.png></img>` : ''}
+                        ${tile.item ? tile.item.name : ''}
+                        ${tile.monster ? tile.monster.name : ''}
+                    </div>
+                `;
+                }
+                else{
+                   
+                }
             }
             
         }
@@ -2528,6 +2609,22 @@ document.addEventListener('keyup', (event) =>{
             case "ArrowDown":
                 game.keyboardControl(key)
                 break
+            case "1":
+                game.keyboardControl(key)
+                break
+            case "2":
+                game.keyboardControl(key)
+                break
+            case "3":
+                game.keyboardControl(key)
+                break
+            case "A":
+                game.keyboardControl(key)
+                break
+            case "a":
+                game.keyboardControl(key)
+                break
+
     }
 
     if (key === 'r') {

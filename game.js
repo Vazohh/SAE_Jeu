@@ -2168,6 +2168,7 @@ class Game {
                 this.currentPlayer.items.push(new Epee());
                 this.currentPlayer.items.splice(this.currentPlayer.items.findIndex(item => item instanceof Clef), 1);
                 updateInventoryTest(this);
+                this.currentPlayer.hasOpenedChest = true;
             } else {
                 var erreur = document.getElementById('erreur');
                 erreur.style.display = 'block'; 

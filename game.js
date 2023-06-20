@@ -1419,6 +1419,13 @@ class Board {
         this.rows[abs+39][ord+33].imgsrc=3;
         this.rows[abs+39][ord+33].walkable = false;
 
+        this.rows[abs+26][ord+31].image ='0049';
+        this.rows[abs+26][ord+31].imgsrc=3;
+        this.rows[abs+26][ord+31].walkable = false;
+        this.rows[abs+9][ord+19].image ='0049';
+        this.rows[abs+9][ord+19].imgsrc=3;
+        this.rows[abs+9][ord+19].walkable = false;
+
         this.rows[abs+3][ord+4].image = '0041';
         this.rows[abs+3][ord+4].imgsrc=3;
         this.rows[abs+3][ord+4].walkable = false;
@@ -1431,6 +1438,158 @@ class Board {
         this.rows[abs+10][ord+7].image = '0041';
         this.rows[abs+10][ord+7].imgsrc=3;
         this.rows[abs+10][ord+7].walkable = false;
+        this.rows[abs+13][ord+22].image = '0041';
+        this.rows[abs+13][ord+22].imgsrc=3;
+        this.rows[abs+13][ord+22].walkable = false;
+        this.rows[abs+16][ord+28].image = '0041';
+        this.rows[abs+16][ord+28].imgsrc=3;
+        this.rows[abs+16][ord+28].walkable = false;
+        this.rows[abs+17][ord+29].image = '0041';
+        this.rows[abs+17][ord+29].imgsrc=3;
+        this.rows[abs+17][ord+29].walkable = false;
+        this.rows[abs+21][ord+30].image = '0041';
+        this.rows[abs+21][ord+30].imgsrc=3;
+        this.rows[abs+21][ord+30].walkable = false;
+        this.rows[abs+24][ord+31].image = '0041';
+        this.rows[abs+24][ord+31].imgsrc=3;
+        this.rows[abs+24][ord+31].walkable = false;
+        this.rows[abs+31][ord+32].image = '0041';
+        this.rows[abs+31][ord+32].imgsrc=3;
+        this.rows[abs+31][ord+32].walkable = false;
+        this.rows[abs+35][ord+33].image = '0041';
+        this.rows[abs+35][ord+33].imgsrc=3;
+        this.rows[abs+35][ord+33].walkable = false;
+
+        this.rows[abs+11][ord+8].image ='0063';
+        this.rows[abs+11][ord+8].imgsrc=3;
+        this.rows[abs+11][ord+8].walkable = false;
+        this.rows[abs+10][ord+9].image ='0063';
+        this.rows[abs+10][ord+9].imgsrc=3;
+        this.rows[abs+10][ord+9].walkable = false;
+        this.rows[abs+9][ord+11].image ='0063';
+        this.rows[abs+9][ord+11].imgsrc=3;
+        this.rows[abs+9][ord+11].walkable = false;
+        this.rows[abs+8][ord+12].image ='0063';
+        this.rows[abs+8][ord+12].imgsrc=3;
+        this.rows[abs+8][ord+12].walkable = false;
+
+        this.rows[abs+10][ord+8].image ='0040';
+        this.rows[abs+10][ord+8].imgsrc=3;
+        this.rows[abs+10][ord+8].walkable = false;
+        this.rows[abs+9][ord+9].image ='0040';
+        this.rows[abs+9][ord+9].imgsrc=3;
+        this.rows[abs+9][ord+9].walkable = false;
+        this.rows[abs+8][ord+11].image ='0040';
+        this.rows[abs+8][ord+11].imgsrc=3;
+        this.rows[abs+8][ord+11].walkable = false;
+        this.rows[abs+7][ord+12].image ='0040';
+        this.rows[abs+7][ord+12].imgsrc=3;
+        this.rows[abs+7][ord+12].walkable = false;
+
+        this.rows[abs+11][ord+14].image ='0049';
+        this.rows[abs+11][ord+14].imgsrc=3;
+        this.rows[abs+11][ord+14].walkable = false;
+
+        this.rows[abs+6][ord].image ='0051';
+        this.rows[abs+6][ord].imgsrc=3;
+        this.rows[abs+6][ord].walkable = false;
+        this.rows[abs+17][ord+5].image ='0051';
+        this.rows[abs+17][ord+5].imgsrc=3;
+        this.rows[abs+17][ord+5].walkable = false;
+        this.rows[abs+23][ord+26].image ='0051';
+        this.rows[abs+23][ord+26].imgsrc=3;
+        this.rows[abs+23][ord+26].walkable = false;
+        this.rows[abs+26][ord+27].image ='0051';
+        this.rows[abs+26][ord+27].imgsrc=3;
+        this.rows[abs+26][ord+27].walkable = false;
+        this.rows[abs+33][ord+28].image ='0051';
+        this.rows[abs+33][ord+28].imgsrc=3;
+        this.rows[abs+33][ord+28].walkable = false;
+        this.rows[abs+37][ord+29].image ='0051';
+        this.rows[abs+37][ord+29].imgsrc=3;
+        this.rows[abs+37][ord+29].walkable = false;
+
+        this.rows[abs+7][ord+1].image ='0039';
+        this.rows[abs+7][ord+1].imgsrc=3;
+        this.rows[abs+7][ord+1].walkable = false;
+        this.rows[abs+13][ord+4].image ='0039';
+        this.rows[abs+13][ord+4].imgsrc=3;
+        this.rows[abs+13][ord+4].walkable = false;
+        this.rows[abs+15][ord+19].image ='0039';
+        this.rows[abs+15][ord+19].imgsrc=3;
+        this.rows[abs+15][ord+19].walkable = false;
+        this.rows[abs+16][ord+20].image ='0039';
+        this.rows[abs+16][ord+20].imgsrc=3;
+        this.rows[abs+16][ord+20].walkable = false;
+        this.rows[abs+17][ord+23].image ='0039';
+        this.rows[abs+17][ord+23].imgsrc=3;
+        this.rows[abs+17][ord+23].walkable = false;
+        this.rows[abs+18][ord+24].image ='0039';
+        this.rows[abs+18][ord+24].imgsrc=3;
+        this.rows[abs+18][ord+24].walkable = false;
+        this.rows[abs+19][ord+25].image ='0039';
+        this.rows[abs+19][ord+25].imgsrc=3;
+        this.rows[abs+19][ord+25].walkable = false;
+
+        this.rows[abs+7][ord].image ='0052';
+        this.rows[abs+7][ord].imgsrc=3;
+        this.rows[abs+7][ord].walkable = false;
+        this.rows[abs+13][ord+3].image ='0052';
+        this.rows[abs+13][ord+3].imgsrc=3;
+        this.rows[abs+13][ord+3].walkable = false;
+        this.rows[abs+21][ord+7].image ='0052';
+        this.rows[abs+21][ord+7].imgsrc=3;
+        this.rows[abs+21][ord+7].walkable = false;
+        this.rows[abs+16][ord+19].image ='0052';
+        this.rows[abs+16][ord+19].imgsrc=3;
+        this.rows[abs+16][ord+19].walkable = false;
+        this.rows[abs+17][ord+20].image ='0052';
+        this.rows[abs+17][ord+20].imgsrc=3;
+        this.rows[abs+17][ord+20].walkable = false;
+        this.rows[abs+18][ord+23].image ='0052';
+        this.rows[abs+18][ord+23].imgsrc=3;
+        this.rows[abs+18][ord+23].walkable = false;
+        this.rows[abs+19][ord+24].image ='0052';
+        this.rows[abs+19][ord+24].imgsrc=3;
+        this.rows[abs+19][ord+24].walkable = false;
+
+        this.rows[abs+20][ord+12].image ='0037';
+        this.rows[abs+20][ord+12].imgsrc=3;
+        this.rows[abs+20][ord+12].walkable = false;
+        this.rows[abs+19][ord+13].image ='0037';
+        this.rows[abs+19][ord+13].imgsrc=3;
+        this.rows[abs+19][ord+13].walkable = false;
+        this.rows[abs+18][ord+14].image ='0037';
+        this.rows[abs+18][ord+14].imgsrc=3;
+        this.rows[abs+18][ord+14].walkable = false;
+        this.rows[abs+17][ord+15].image ='0037';
+        this.rows[abs+17][ord+15].imgsrc=3;
+        this.rows[abs+17][ord+15].walkable = false;
+        this.rows[abs+15][ord+16].image ='0037';
+        this.rows[abs+15][ord+16].imgsrc=3;
+        this.rows[abs+15][ord+16].walkable = false;
+
+        this.rows[abs+21][ord+12].image ='0053';
+        this.rows[abs+21][ord+12].imgsrc=3;
+        this.rows[abs+21][ord+12].walkable = false;
+        this.rows[abs+20][ord+13].image ='0053';
+        this.rows[abs+20][ord+13].imgsrc=3;
+        this.rows[abs+20][ord+13].walkable = false;
+        this.rows[abs+19][ord+14].image ='0053';
+        this.rows[abs+19][ord+14].imgsrc=3;
+        this.rows[abs+19][ord+14].walkable = false;
+        this.rows[abs+18][ord+15].image ='0053';
+        this.rows[abs+18][ord+15].imgsrc=3;
+        this.rows[abs+18][ord+15].walkable = false;
+        this.rows[abs+17][ord+16].image ='0053';
+        this.rows[abs+17][ord+16].imgsrc=3;
+        this.rows[abs+17][ord+16].walkable = false;
+
+        this.rows[abs+16][ord+16].image ='0049';
+        this.rows[abs+16][ord+16].imgsrc=3;
+        this.rows[abs+16][ord+16].walkable = false;
+        
+
     }
 
     generateBridge(abs,ord){

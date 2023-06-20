@@ -1234,7 +1234,6 @@ class Board {
     }
 
     deleteKey(abs, ord, game) {
-        
         this.rows[abs][ord].image = null;
         this.rows[abs][ord].imgsrc = null;
         this.rows[abs][ord].walkable = true;
@@ -1992,7 +1991,7 @@ class Game {
 
     checkPos() {
 
-        if (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 8) {
+        if (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 8 && this.currentPlayer.hasKey == false) {
             this.board.deleteKey(36, 8, this);
             this.currentPlayer.hasKey = true;
         }
@@ -2007,9 +2006,10 @@ class Game {
             if (this.currentPlayer.hasKey) {
                 var bravo = document.getElementById('bravo');
                 bravo.style.display = 'block';
-                this.currentPlayer.hasOpenedChest = true;
-            } 
-            else {
+                this.currentPlayer.items.push(new Epee());
+                this.currentPlayer.items.splice(this.currentPlayer.items.findIndex(item => item instanceof Clef), 1);
+                updateInventoryTest(this);
+            } else {
                 var erreur = document.getElementById('erreur');
                 erreur.style.display = 'block'; 
             }
@@ -2200,7 +2200,7 @@ function updateUI(game) {
 
 //     console.log(inventory);
 }
-
+let compteurClef = 0;
 let game;
 document.getElementById('start-game').addEventListener('click', () => {
     game = new Game([new Player("Joueur 1"), new Player("Joueur 2")], new Board(10), new Inventory(10));

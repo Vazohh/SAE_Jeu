@@ -2205,6 +2205,9 @@ class Game {
         if ((this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 7) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 8) || (this.currentPlayer.position[0] == 30 && this.currentPlayer.position[1] == 8) || (this.currentPlayer.position[0] == 30 && this.currentPlayer.position[1] == 6) || (this.currentPlayer.position[0] == 31 && this.currentPlayer.position[1] == 6) || (this.currentPlayer.position[0] == 31 && this.currentPlayer.position[1] == 7)) {
             setHealthLevel(2.5);
         }
+        if ((this.currentPlayer.position[0] == 37 && this.currentPlayer.position[1] == 30) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 30) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 29) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 28) || (this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 29) || (this.currentPlayer.position[0] == 37 && this.currentPlayer.position[1] == 28)) {
+            setHealthLevel(2.5);
+        }
 
         if (health == 0) {
             this.end();

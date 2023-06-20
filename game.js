@@ -153,7 +153,11 @@ class Board {
         this.generateBridge(29,48)
         this.generateWater(0,20)
         this.generateKey(36, 8)
-        this.generateMob(13, 65)   
+        this.generateMob(13, 65)
+        this.generateCyclop(8, 55)  
+        this.generateCyclop(37, 29)
+        this.generateCyclop(30, 7)  
+        this.generateCyclop(21, 20) 
         this.generateWaterBorder()
         this.generateRestWaterBorder(0,20)
         this.generateCastle(12,65)
@@ -1246,7 +1250,13 @@ class Board {
         this.rows[abs][ord].image ='0121';
         this.rows[abs][ord].imgsrc=1;
         this.rows[abs][ord].walkable = false;
-    }   
+    } 
+    
+    generateCyclop(abs,ord) {
+        this.rows[abs][ord].image ='0109';
+        this.rows[abs][ord].imgsrc=1;
+        this.rows[abs][ord].walkable = false;
+    }
 
     deleteMob(abs, ord) {
         this.rows[abs][ord].image = null;
@@ -2057,7 +2067,7 @@ class Player {
         this.position = [11, 10];
         this.hasKey = false;
         this.hasOpenedChest = false;
-        this.mobInLife = true;
+        this.mobDeath = false;
     }
     
     moveLeft() {
@@ -2175,9 +2185,24 @@ class Game {
             }
         }
 
+        if ((this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 65 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath)) {
+            setHealthLevel(5);
+        }
+
         if (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 65 && this.currentPlayer.hasOpenedChest) {
             this.board.deleteMob(13, 65);
-            setHealthLevel(50);
+            this.currentPlayer.mobDeath = true;
+        }
+
+        // Cyclops
+        if ((this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 55) || (this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 56) || (this.currentPlayer.position[0] == 8 && this.currentPlayer.position[1] == 56) || (this.currentPlayer.position[0] == 8 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 55) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 56)) {
+            setHealthLevel(2.5);
+        }
+        if ((this.currentPlayer.position[0] == 22 && this.currentPlayer.position[1] == 19) || (this.currentPlayer.position[0] == 22 && this.currentPlayer.position[1] == 20) || (this.currentPlayer.position[0] == 22 && this.currentPlayer.position[1] == 21) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 21) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 21) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 20) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 19) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 19)) {
+            setHealthLevel(2.5);
+        }
+        if ((this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 7) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 8) || (this.currentPlayer.position[0] == 30 && this.currentPlayer.position[1] == 8) || (this.currentPlayer.position[0] == 30 && this.currentPlayer.position[1] == 6) || (this.currentPlayer.position[0] == 31 && this.currentPlayer.position[1] == 6) || (this.currentPlayer.position[0] == 31 && this.currentPlayer.position[1] == 7)) {
+            setHealthLevel(2.5);
         }
 
         if (health == 0) {
@@ -2599,8 +2624,8 @@ function afficherDialog() {
 
 function setHealthLevel(percentage) {
     var healthLevel = document.getElementById('health-level');
-    healthLevel.style.width = percentage + '%';
-    health = percentage;
+    healthLevel.style.width = (health - percentage) + '%';
+    health = health - percentage;
 }
 
 var health = 100;

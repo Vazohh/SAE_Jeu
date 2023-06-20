@@ -152,7 +152,8 @@ class Board {
         this.generateChest(38,30)
         this.generateBridge(29,48)
         this.generateWater(0,20)
-        this.generateKey(36, 8)   
+        this.generateKey(36, 8)
+        this.generateMob(13, 65)   
         this.generateWaterBorder()
         this.generateRestWaterBorder(0,20)
         this.generateCastle(12,65)
@@ -1241,6 +1242,18 @@ class Board {
         updateInventoryTest(game);
     }
 
+    generateMob(abs,ord) {
+        this.rows[abs][ord].image ='0121';
+        this.rows[abs][ord].imgsrc=1;
+        this.rows[abs][ord].walkable = false;
+    }   
+
+    deleteMob(abs, ord) {
+        this.rows[abs][ord].image = null;
+        this.rows[abs][ord].imgsrc = null;
+        this.rows[abs][ord].walkable = true;
+    }
+
     generateWaterBorder(){    
         this.rows.map( (row, abs) =>
                 row.map( (tile, ord ) =>{
@@ -2042,8 +2055,9 @@ class Player {
         this.health = 100;
         this.items = [];
         this.position = [11, 10];
-        this.hasKey = false
-        this.hasOpenedChest = false
+        this.hasKey = false;
+        this.hasOpenedChest = false;
+        this.mobInLife = true;
     }
     
     moveLeft() {
@@ -2158,6 +2172,11 @@ class Game {
                 var erreur = document.getElementById('erreur');
                 erreur.style.display = 'block'; 
             }
+        }
+
+        if (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 65 && this.currentPlayer.hasOpenedChest) {
+            this.board.deleteMob(13, 65);
+            setHealthLevel(50);
         }
 
         if (health == 0) {
@@ -2495,6 +2514,23 @@ document.addEventListener('keyup', (event) =>{
           rules.style.display = 'none';
         } else {
           rules.style.display = 'block';
+        }
+    }
+
+    if (key === 'Escape') {
+        var erreur = document.getElementById('erreur');
+        if (erreur.style.display === 'block') {
+            erreur.style.display = 'none';
+        }
+
+        var bravo = document.getElementById('bravo');
+        if (bravo.style.display === 'block') {
+            bravo.style.display = 'none';
+        }
+
+        var dialog = document.getElementById('dialog');
+        if (dialog.style.display === 'block') {
+            dialog.style.display = 'none';
         }
     }
 })

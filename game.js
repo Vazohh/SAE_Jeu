@@ -2153,6 +2153,7 @@ class Game {
         if (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 8 && this.currentPlayer.hasKey == false) {
             this.board.deleteKey(36, 8, this);
             this.currentPlayer.hasKey = true;
+            setHealthLevel(0);
         }
 
         if (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 46) {

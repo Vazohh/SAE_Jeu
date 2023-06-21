@@ -150,6 +150,8 @@ class Game {
             }
         }
         if(touche == "A" || touche == "a"){
+            const playerPosX = this.currentPlayer.position[0];
+            const playerPosY = this.currentPlayer.position[1];
             if(this.Apparence == 1){
                 if(Cyclop.sante<=0){
                     Cyclop.alive=false;
@@ -164,10 +166,7 @@ class Game {
                     game.board.rows[Ghost.posX][Ghost.posY].image=''
                 }
                 else {
-                console.log("Attaque sword!");
-                const playerPosX = this.currentPlayer.position[0];
-                const playerPosY = this.currentPlayer.position[1];
-            
+                    console.log("Attaque sword!");
                     if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
                     || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
                     || this.board.rows[playerPosX - 1][playerPosY] === game.board.rows[Cyclop.posX][Cyclop.posY]

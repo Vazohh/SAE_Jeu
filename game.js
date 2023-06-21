@@ -67,11 +67,6 @@ class Game {
             setHealthLevel(5);
         }
 
-        if (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 65 && this.currentPlayer.hasOpenedChest) {
-            this.board.deleteMob(13, 65);
-            this.currentPlayer.mobDeath = true;
-        }
-
         // Cyclops
         if ((this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 55) || (this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 56) || (this.currentPlayer.position[0] == 8 && this.currentPlayer.position[1] == 56) || (this.currentPlayer.position[0] == 8 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 55) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 56)) {
             setHealthLevel(5);

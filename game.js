@@ -53,6 +53,7 @@ class Game {
                 var bravo = document.getElementById('bravo');
                 bravo.style.display = 'block';
                 this.currentPlayer.items.push(new Epee());
+                game.currentPlayer.hasSword = true;
                 this.currentPlayer.items.splice(this.currentPlayer.items.findIndex(item => item instanceof Clef), 1);
                 updateInventoryTest(this);
                 this.currentPlayer.hasOpenedChest = true;
@@ -112,15 +113,17 @@ class Game {
                 this.currentPlayer.moveDown()
             }
         }
-        if(touche == "1"){
-            if(this.Apparence == 1){
-                this.Apparence = 0
-            }
-            else{
-                this.Apparence = 1
+        if(touche == "1"){ //Epee
+            if (game.currentPlayer.hasSword) {
+                if(this.Apparence == 1){
+                    this.Apparence = 0 
+                }
+                else{
+                    this.Apparence = 1
+                }
             }
         }
-        if(touche == "2"){
+        if(touche == "2"){ //Poignard
             if(this.Apparence == 2){
                 this.Apparence = 0
             }
@@ -128,12 +131,14 @@ class Game {
                 this.Apparence = 2
             }
         }
-        if(touche == "3"){
-            if(this.Apparence == 3){
-                this.Apparence = 0
-            }
-            else{
-                this.Apparence = 3
+        if(touche == "3"){ //Clef
+            if (game.currentPlayer.hasKey) {
+                if(this.Apparence == 3){
+                    this.Apparence = 0
+                }
+                else{
+                    this.Apparence = 3
+                }
             }
         }
         if(touche == "A" || touche == "a"){

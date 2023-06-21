@@ -501,11 +501,11 @@ document.addEventListener('keyup', (event) =>{
     }
 
     if (key === 'r') {
-        var rules = document.getElementById('rules');
-        if (rules.style.display === 'block') {
-          rules.style.display = 'none';
+        var controls = document.getElementById('controls');
+        if (controls.style.display === 'block') {
+          controls.style.display = 'none';
         } else {
-          rules.style.display = 'block';
+          controls.style.display = 'block';
         }
     }
     if (key === 'c') {

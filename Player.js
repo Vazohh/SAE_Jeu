@@ -5,7 +5,6 @@ class Player {
         this.items = [];
         this.position = [11, 10];
         this.hasKey = false;
-        this.hasSword = false;
         this.hasOpenedChest = false;
         this.mobDeath = false;
     }

@@ -1203,7 +1203,8 @@ class Board {
         this.rows[abs][ord].imgsrc = null;
         this.rows[abs][ord].walkable = true;
         let currentPlayer = game.currentPlayer
-        currentPlayer.items.push(new Clef())
+        //currentPlayer.items.splice(game.currentPlayer.items[0],1);
+        currentPlayer.items.splice(2, 2, key);
         updateInventoryTest(game);
     }
 

@@ -32,7 +32,18 @@ class Clef extends Object {
 		this.idImage = '0117'
     }
 }
-const Sword = new Epee();
+const sword = new Epee();
+const key = new Clef();
+
+class Bombe extends Object {  
+    constructor() {
+        super();
+        this.localisation='town'
+		this.idImage = '0105'
+        this.damage = 100
+    }
+}
+const bomb = new Bombe();
 /*
 class EpeeLarge extends Object {
     constructor() {
@@ -99,17 +110,9 @@ class Fleche extends Object {
 		this.idImage = '0119'
         this.damage = 2
     }
-}
-class Bombe extends Object {
-    //town
-    
-    constructor() {
-        super();
-        this.localisation='town'
-		this.idImage = '0105'
-        this.damage = 100
-    }
-}
+}*/
+
+/*
 class BaguetteMagique extends Object {
     constructor() {
         super();

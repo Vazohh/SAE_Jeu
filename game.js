@@ -52,9 +52,9 @@ class Game {
             if (this.currentPlayer.hasKey) {
                 var bravo = document.getElementById('bravo');
                 bravo.style.display = 'block';
-                this.currentPlayer.items.push(new Epee());
-                game.currentPlayer.hasSword = true;
-                this.currentPlayer.items.splice(this.currentPlayer.items.findIndex(item => item instanceof Clef), 1);
+                game.currentPlayer.items.splice(0, 1, sword);
+                game.currentPlayer.items.splice(1, 1, bomb);
+                //this.currentPlayer.items.splice(this.currentPlayer.items.findIndex(item => item instanceof Clef), 1);
                 updateInventoryTest(this);
                 this.currentPlayer.hasOpenedChest = true;
             } else {
@@ -120,7 +120,7 @@ class Game {
             }
         }
         if(touche == "1"){ //Epee
-            if (game.currentPlayer.hasSword) {
+            if (game.currentPlayer.hasOpenedChest) {
                 if(this.Apparence == 1){
                     this.Apparence = 0 
                 }
@@ -129,12 +129,14 @@ class Game {
                 }
             }
         }
-        if(touche == "2"){ //Poignard
-            if(this.Apparence == 2){
-                this.Apparence = 0
-            }
-            else{
-                this.Apparence = 2
+        if(touche == "2"){ //Bombe
+            if (game.currentPlayer.hasOpenedChest) {
+                if(this.Apparence == 2){
+                    this.Apparence = 0
+                }
+                else{
+                    this.Apparence = 2
+                }
             }
         }
         if(touche == "3"){ //Clef
@@ -302,7 +304,7 @@ function updateUI(game) {
                 if(game.Apparence  == 2){
                     gameBoardHTML += `
                     <div class="tile ${tile.background}" id="drop-zone" >
-                        ${tile.character ? `<img id="Player" src=kenney_tiny-dungeon/Tiles/tile_0133.png></img>` : ''}
+                        ${tile.character ? `<img id="Player" src=kenney_tiny-dungeon/Tiles/tile_0135.png></img>` : ''}
                         ${tile.item ? tile.item.name : ''}
                         ${tile.monster ? tile.monster.name : ''}
                     </div>
@@ -341,93 +343,6 @@ function updateUI(game) {
 
 }
 
- function updateInventory(game) {
-
-//     let currentPlayer = game.currentPlayer
-
-//     // Afficher l'état de l'inventaire
-//     let inventoryHTML = '';
-//     inventoryHTML += `<div class="row">`; // Début de la ligne 
-//     for (let item  of currentPlayer.items) {
-//             inventoryHTML += `
-                
-//                 <div class="inventory" id="drag-item" draggable="true" class="poignard"> 
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0103.png" alt="poignard"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="épée">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0104.png" alt="épée"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="épée large">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0105.png" alt="épée large"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="épée bronze">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0107.png" alt="épée bronze"></img>' : ''}
-//                 </div>              
-//                 <div class="inventory" id="drag-item" draggable="true" class="marteau">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0117.png" alt="marteau"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="double hache">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0118.png" alt="double hache"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="hache">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0119.png" alt="hache"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="faucille">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0129.png" alt="faucille"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="lance">
-//                 ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0131.png" alt="lance"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="arc">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0118.png" alt="arc"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="flèche">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0119.png" alt="flèche"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="bombe">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0105.png" alt="bombe"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="baguette magique">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0129.png" alt="baguette magique"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="baguette magique courbée">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0130.png" alt="baguette magique courbée"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="potion sante">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0113.png" alt="potion sante"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="potion vitesse">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0114.png" alt="potion vitesse"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="potion force">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0115.png" alt="potion force"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="potion defense">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0116.png" alt="potion defense"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="sort seisme">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0126.png" alt="sort seisme"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="sort poison">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0127.png" alt="sort poison"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="sort foudre">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0128.png" alt="sort foudre"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="sort gel">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-dungeon/Tiles/tile_0125.png" alt="sort gel"></img>' : ''}
-//                 </div>
-//                 <div class="inventory" id="drag-item" draggable="true" class="clé">
-//                     ${item ? '<img id="inventory" src="kenney_tiny-town/Tiles/tile_0117.png" alt="clé"></img>' : ''}
-//                 </div>
-//             `;
-            
-//     }
-//     inventoryHTML += '</div>'; // Fin de la ligne   
-//     document.getElementById('inventory-board').innerHTML = inventoryHTML;
-
-//     console.log(inventory);
-}
 let compteurClef = 0;
 let game;
 document.getElementById('start-game').addEventListener('click', () => {
@@ -437,7 +352,9 @@ document.getElementById('start-game').addEventListener('click', () => {
     console.log(game.board)
     console.log(game.inventory)
     updateUI(game);
-    /*game.currentPlayer.items.push(new Poignard());*/
+    game.currentPlayer.items.push(new Object());
+    game.currentPlayer.items.push(new Object());
+    game.currentPlayer.items.push(new Object());
     updateInventoryTest(game);
 
 });
@@ -650,10 +567,10 @@ closeButton.addEventListener('click', function() {
   
 var closeControlsButton = document.getElementsByClassName('closeControls')[0];
   
-closeControlsButton.addEventListener('click', function() {
+/*closeControlsButton.addEventListener('click', function() {
     var controls = document.getElementById('controls');
     controls.style.display = 'none';
-});
+});*/
 
 var closeBravoButton = document.getElementsByClassName('closeBravo')[0];
   
@@ -695,7 +612,6 @@ function afficherControles() {
     controls.style.display = 'block';
 }
 
-//Drag & Drop
 
 function afficherDialog() {
     var dialog = document.getElementById("dialog");

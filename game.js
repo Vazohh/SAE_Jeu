@@ -142,6 +142,10 @@ class Game {
                     Cyclop.alive=false;
                     game.board.rows[Cyclop.posX][Cyclop.posY].image=''
                 }
+                if(Cyclop2.sante<=0){
+                    Cyclop2.alive=false;
+                    game.board.rows[Cyclop2.posX][Cyclop2.posY].image=''
+                }
                 if(Ghost.sante<=0){
                     Ghost.alive=false;
                     game.board.rows[Ghost.posX][Ghost.posY].image=''
@@ -161,6 +165,16 @@ class Game {
                     || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]){
                         Cyclop.sante -= Sword.damage;
                     }
+                    if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY - 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY - 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]){
+                            Cyclop2.sante -= Sword.damage;
+                    }
                     if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
                         || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]
                         || this.board.rows[playerPosX - 1][playerPosY] === game.board.rows[Ghost.posX][Ghost.posY]
@@ -178,6 +192,10 @@ class Game {
                     Cyclop.alive=false;
                     game.board.rows[Cyclop.posX][Cyclop.posY].image=''
                 }
+                if(Cyclop2.sante<=0){
+                    Cyclop2.alive=false;
+                    game.board.rows[Cyclop2.posX][Cyclop2.posY].image=''
+                }
                 if(Ghost.sante<=0){
                     Ghost.alive=false;
                     game.board.rows[Ghost.posX][Ghost.posY].image=''
@@ -192,6 +210,16 @@ class Game {
                         || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
                         || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]){
                             Cyclop.sante -= Hand.damage;
+                    }
+                    if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY - 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY - 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]){
+                            Cyclop2.sante -= Hand.damage;
                     }
                     if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
                         || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]

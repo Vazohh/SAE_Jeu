@@ -125,14 +125,14 @@ class Board {
         this.generateBridge(29,48)
         this.generateWater(0,20)
         this.generateKey(36, 8)
-        this.generateMob(13, 65)
-        this.generateCyclop(8, 55)  
-        this.generateCyclop(37, 29)
-        this.generateCyclop(30, 7)  
-        this.generateCyclop(21, 20) 
         this.generateWaterBorder()
         this.generateRestWaterBorder(0,20)
         this.generateCastle(12,65)
+    
+    this.generateCyclop(Cyclop.posX,Cyclop.posY);
+    this.generateCyclop(Cyclop2.posX,Cyclop2.posY);
+    this.generateGhost(Ghost.posX,Ghost.posY)
+
 
     }
 
@@ -1218,7 +1218,7 @@ class Board {
         updateInventoryTest(game);
     }
 
-    generateMob(abs,ord) {
+    generateGhost(abs,ord) {
         this.rows[abs][ord].image ='0121';
         this.rows[abs][ord].imgsrc=1;
         this.rows[abs][ord].walkable = false;
@@ -1241,9 +1241,6 @@ class Board {
                 row.map( (tile, ord ) =>{
                     if(abs >0 && ord>0 && abs<39 && ord<69){
                         if(this.rows[abs][ord].imgsrc == 3 && this.rows[abs][ord].image=='0042'){
-                            console.log(abs, ord);
-                            console.log("test", this.rows[abs-1][ord].background);
-
                             let caseHaut = this.rows[abs-1][ord]
                             let caseBas = this.rows[abs+1][ord]
                             let caseGauche = this.rows[abs][ord-1]

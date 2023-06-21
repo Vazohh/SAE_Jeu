@@ -138,26 +138,84 @@ class Game {
         }
         if(touche == "A" || touche == "a"){
             if(this.Apparence == 1){
-                console.log("Attaque !")
-                this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]-1]//vie du monstre -damage de l'épée
-                this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]+1]//vie du monstre -damage de l'épée
-                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]]//vie du monstre -damage de l'épée
-                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]]//vie du monstre -damage de l'épée
-                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]-1]//vie du monstre -damage de l'épée
-                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]-1]//vie du monstre -damage de l'épée
-                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]+1]//vie du monstre -damage de l'épée
-                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]+1]//vie du monstre -damage de l'épée
+                if(Cyclop.sante<=0){
+                    Cyclop.alive=false;
+                    game.board.rows[Cyclop.posX][Cyclop.posY].image=''
+                }
+                if(Ghost.sante<=0){
+                    Ghost.alive=false;
+                    game.board.rows[Ghost.posX][Ghost.posY].image=''
+                }
+                else {
+                console.log("Attaque sword!");
+                const playerPosX = this.currentPlayer.position[0];
+                const playerPosY = this.currentPlayer.position[1];
+            
+                    if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                    || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                    || this.board.rows[playerPosX - 1][playerPosY] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                    || this.board.rows[playerPosX + 1][playerPosY] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                    || this.board.rows[playerPosX - 1][playerPosY - 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                    || this.board.rows[playerPosX + 1][playerPosY - 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                    || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                    || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]){
+                        Cyclop.sante -= Sword.damage;
+                    }
+                    if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]){
+                        Ghost.sante -= Sword.damage;
+                    }
+                }
             }
             else{
-                console.log("coup de coude")
-                this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]-1]//vie du monstre -damage du point
-                this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]+1]//vie du monstre -damage du point
-                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]]//vie du monstre -damage du point
-                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]]//vie du monstre -damage du point
-                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]-1]//vie du monstre -damage du point
-                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]-1]//vie du monstre -damage du point
-                this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]+1]//vie du monstre -damage du point
-                this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]+1]//vie du monstre -damage du point
+                if(Cyclop.sante<=0){
+                    Cyclop.alive=false;
+                    game.board.rows[Cyclop.posX][Cyclop.posY].image=''
+                }
+                if(Ghost.sante<=0){
+                    Ghost.alive=false;
+                    game.board.rows[Ghost.posX][Ghost.posY].image=''
+                }
+                else{
+                    if(this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]-1]){
+                        Cyclop.sante -= Hand.damage;
+                        Ghost.sante -= Hand.damage;
+                    }
+                    if(this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]+1]){
+                        Cyclop.sante -= Hand.damage;
+                        Ghost.sante -= Hand.damage;
+                    }
+                    if(this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]]){
+                        Cyclop.sante -= Hand.damage;
+                        Ghost.sante -= Hand.damage;
+                    }
+                    if(this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]]){
+                        Cyclop.sante -= Hand.damage;
+                        Ghost.sante -= Hand.damage;
+                    }
+                    if(this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]-1]){
+                        Cyclop.sante -= Hand.damage;
+                        Ghost.sante -= Hand.damage;
+                    }
+                    if(this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]-1]){
+                        Cyclop.sante -= Hand.damage;
+                        Ghost.sante -= Hand.damage;
+                    }
+                    if(this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]+1]){
+                        Cyclop.sante -= Hand.damage;
+                        Ghost.sante -= Hand.damage;
+                    }
+                    if(this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]+1]){
+                        Cyclop.sante -= Hand.damage;
+                        Ghost.sante -= Hand.damage;
+                    }
+                }
             }
         }
         console.log(this)
@@ -352,7 +410,7 @@ document.getElementById('start-game').addEventListener('click', () => {
     console.log(game.board)
     console.log(game.inventory)
     updateUI(game);
-    game.currentPlayer.items.push(new Poignard());
+    /*game.currentPlayer.items.push(new Poignard());*/
     updateInventoryTest(game);
 
 });

@@ -10,24 +10,30 @@ class Object {
     }
 }
 
-class Poignard extends Object {
+class Main{
     constructor() {
-        super();
-        this.localisation='dungeon'
-		this.idImage = '0103'
-        this.damage = 3
+        this.damage = 10
 		
     }
-	
 }
+const Hand = new Main();
 class Epee extends Object {
     constructor() {
         super();
         this.localisation='dungeon'
 		this.idImage = '0104'
-        this.damage = 10
+        this.damage = 50
     }
 }
+class Clef extends Object {
+    constructor() {
+        super();
+        this.localisation='town'
+		this.idImage = '0117'
+    }
+}
+const Sword = new Epee();
+/*
 class EpeeLarge extends Object {
     constructor() {
         super();
@@ -168,10 +174,15 @@ class SortGel extends Object {
 		this.idImage = '0125'
     }
 }
-class Clef extends Object {
+
+class Poignard extends Object {
     constructor() {
         super();
-        this.localisation='town'
-		this.idImage = '0117'
+        this.localisation='dungeon'
+		this.idImage = '0103'
+        this.damage = 3
+		
     }
+	
 }
+*/

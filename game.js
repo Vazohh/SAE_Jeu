@@ -357,14 +357,18 @@ document.getElementById('start-game').addEventListener('click', () => {
     updateInventoryTest(game);
 
 });
-
+var e = document.getElementById('inventory-board');
 document.getElementById('use-item-button').addEventListener('click', () => {
-    compteur = 0;
-    if (compteur == 0) {
-        drawInventoryBoard(game.inventory);
-        updateInventoryTest(game);
-        compteur++;
-    }
+    // compteur = 0;
+    // if (compteur == 0) {
+    //     drawInventoryBoard(game.inventory);
+    //     updateInventoryTest(game);
+    //     compteur++;
+    // }
+    if(e.style.display == 'block')
+        e.style.display = 'none';
+    else
+        e.style.display = 'block';
 
     let dragItem = document.querySelectorAll('#drag-item');
     let dropZone = document.querySelectorAll('#drop-zone');
@@ -440,7 +444,7 @@ function drawGameBoard(board) {
     }
 }
 
-function drawInventoryBoard(inventory) {
+/*function drawInventoryBoard(inventory) {
     // Obtenir la div de plateau d'inventaire
     let gameBoardDiv = document.getElementById('inventory-board');
 
@@ -465,7 +469,7 @@ function drawInventoryBoard(inventory) {
         // Ajouter un élément de saut de ligne pour créer une nouvelle ligne
         gameBoardDiv.appendChild(document.createElement('br'));
     }
-}
+}*/
 
 document.addEventListener('keyup', (event) =>{
                              

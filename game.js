@@ -42,7 +42,7 @@ class Game {
             setHealthLevel(0);
         }
 
-        if (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 46) {
+        if (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 46 || this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 46) {
             if (!this.currentPlayer.hasOpenedChest) {
                 afficherDialog();
             }
@@ -84,6 +84,17 @@ class Game {
         }
         if ((this.currentPlayer.position[0] == 37 && this.currentPlayer.position[1] == 30) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 30) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 29) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 28) || (this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 29) || (this.currentPlayer.position[0] == 37 && this.currentPlayer.position[1] == 28)) {
             setHealthLevel(5);
+        }
+
+        //enf game
+        if ((this.currentPlayer.position[0] == 12 && this.currentPlayer.position[1] == 65) || (this.currentPlayer.position[0] == 12 && this.currentPlayer.position[1] == 66)) {
+            if (this.currentPlayer.hasOpenedChest) {
+                var fin = document.getElementById('fin');
+                fin.style.display = 'block';
+            } else {
+                var erreur = document.getElementById('erreur');
+                erreur.style.display = 'block'; 
+            }
         }
 
         if (health == 0) {
@@ -579,7 +590,7 @@ document.addEventListener('keyup', (event) =>{
 
     }
 
-    if (key === 'r') {
+    if (key === 'c') {
         var controls = document.getElementById('controls');
         if (controls.style.display === 'block') {
           controls.style.display = 'none';
@@ -587,7 +598,7 @@ document.addEventListener('keyup', (event) =>{
           controls.style.display = 'block';
         }
     }
-    if (key === 'c') {
+    if (key === 'o') {
         var rules = document.getElementById('rules');
         if (rules.style.display === 'block') {
           rules.style.display = 'none';
@@ -611,6 +622,20 @@ document.addEventListener('keyup', (event) =>{
         if (dialog.style.display === 'block') {
             dialog.style.display = 'none';
         }
+
+        var fin = document.getElementById('fin');
+        if (fin.style.display === 'block') {
+            fin.style.display = 'none';
+        }
+        var controls = document.getElementById('controls');
+        if (controls.style.display === 'block') {
+            controls.style.display = 'none';
+        }
+        var rules = document.getElementById('rules');
+        if (rules.style.display === 'block') {
+            rules.style.display = 'none';
+        }
+
     }
 })
   
@@ -619,8 +644,14 @@ var closeButton = document.getElementsByClassName('close')[0];
 closeButton.addEventListener('click', function() {
     var rules = document.getElementById('rules');
     rules.style.display = 'none';
-  });
+});
 
+var closeButton = document.getElementsByClassName('close')[0];
+
+closeButton.addEventListener('click', function() {
+    var controls = document.getElementById('controls');
+    controls.style.display = 'none';
+});
   
 var closeControlsButton = document.getElementsByClassName('closeControls')[0];
   
@@ -664,6 +695,11 @@ function afficherRegles() {
     var rules = document.getElementById('rules');
     rules.style.display = 'block';
 }
+function afficherControles() {
+    var controls = document.getElementById('controls');
+    controls.style.display = 'block';
+}
+
 //Drag & Drop
 
 function afficherDialog() {

@@ -1623,10 +1623,10 @@ class Board {
 
         this.rows[abs][ord].image ='0123';
         this.rows[abs][ord].imgsrc=2;
-        this.rows[abs][ord].walkable = false;
+        this.rows[abs][ord].walkable = true;
         this.rows[abs][ord+1].image ='0124';
         this.rows[abs][ord+1].imgsrc=2;
-        this.rows[abs][ord+1].walkable = false;
+        this.rows[abs][ord+1].walkable = true;
         this.rows[abs-1][ord].image ='0111';
         this.rows[abs-1][ord].imgsrc=2;
         this.rows[abs-1][ord].walkable = false;

@@ -397,6 +397,7 @@ body {
 
 #game-board {
   margin: auto;
+  border: 2px solid #000;
 }
 
 #inventory-board {
@@ -414,12 +415,14 @@ body {
   position: absolute;
   top: 17px;
   right: 40px;
-  color: #fff;
+  color: lightgray;
 }
 
 #action-buttons {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #action-buttons button {
@@ -431,12 +434,15 @@ body {
   height: 20px;
   background-color: #eaeaea;
   display: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #health-level {
   height: 100%;
   background-color: #00ff00;
   transition: width 0.3s ease; /* Transition de la largeur en 0,3 seconde */
+  border: 2px solid #000;
 }
 
 .dialog {

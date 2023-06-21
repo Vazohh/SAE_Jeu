@@ -91,7 +91,7 @@
         <button id="start-game" onclick="disparaitre(); afficher();">Start Zeldo</button>
         <div id="action-buttons">
             <button id="attack-button" style="display: none;" onclick="afficherRegles();">Objectifs</button>
-            <button id="defend-button" style="display: none;">Controles</button>
+            <button id="defend-button" style="display: none;" onclick="afficherControles();">Controles</button>
             <button id="use-item-button" style="display: none;">Inventaire</button>
         </div>
     </div>  
@@ -99,7 +99,7 @@
     <div id="rules" class="rules">
         <div class="rules-content">
             <span class="close">&times;</span>
-            <span class="close-text">[Appuyer sur C pour fermer]</span>
+            <span class="close-text">[Appuyer sur O pour fermer]</span>
             <img src="img/objectifs.png" alt="controles" style="width:40%">
         </div>
     </div>
@@ -107,7 +107,7 @@
     <div id="controls" class="controls">
         <div class="controls-content">
             <span class="close">&times;</span>
-            <span class="close-text">[Appuyer sur R pour fermer]</span>
+            <span class="close-text">[Appuyer sur C pour fermer]</span>
             <img src="img/controls.png" alt="controles" style="width:40%">
         </div>
     </div>
@@ -129,6 +129,13 @@
     <div id="dialog" class="dialog">
         <div class="dialog-content">
             <img src="img/dialog.png" alt="Dialog" style="width:40%;">
+        </div>
+    </div>
+
+    <div id="fin" class="bravo">
+        <div class="bravo-content">
+            <span class="closeBravo">&times;</span>
+            <img src="img/fin.png" alt="Fin" style="width:40%;">
         </div>
     </div>
 

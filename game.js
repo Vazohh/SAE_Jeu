@@ -183,36 +183,24 @@ class Game {
                     game.board.rows[Ghost.posX][Ghost.posY].image=''
                 }
                 else{
-                    if(this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]-1]){
-                        Cyclop.sante -= Hand.damage;
-                        Ghost.sante -= Hand.damage;
+                    if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                        || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY - 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY - 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]){
+                            Cyclop.sante -= Hand.damage;
                     }
-                    if(this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]+1]){
-                        Cyclop.sante -= Hand.damage;
-                        Ghost.sante -= Hand.damage;
-                    }
-                    if(this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]]){
-                        Cyclop.sante -= Hand.damage;
-                        Ghost.sante -= Hand.damage;
-                    }
-                    if(this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]]){
-                        Cyclop.sante -= Hand.damage;
-                        Ghost.sante -= Hand.damage;
-                    }
-                    if(this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]-1]){
-                        Cyclop.sante -= Hand.damage;
-                        Ghost.sante -= Hand.damage;
-                    }
-                    if(this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]-1]){
-                        Cyclop.sante -= Hand.damage;
-                        Ghost.sante -= Hand.damage;
-                    }
-                    if(this.board.rows[this.currentPlayer.position[0]-1][ this.currentPlayer.position[1]+1]){
-                        Cyclop.sante -= Hand.damage;
-                        Ghost.sante -= Hand.damage;
-                    }
-                    if(this.board.rows[this.currentPlayer.position[0]+1][ this.currentPlayer.position[1]+1]){
-                        Cyclop.sante -= Hand.damage;
+                    if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]
+                        || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]){
                         Ghost.sante -= Hand.damage;
                     }
                 }

@@ -20,3 +20,9 @@ const Cyclop = new Monster("Cyclop", 100, 20, 20, 60);
 const Cyclop2 = new Monster("Cyclop", 100, 20, 28, 67);
 console.log("Cyclop")
 const Ghost = new Monster("Ghost", 50, 10, 19, 64);
+
+const Farmer = new Monster("Farmer", 100, 0, 12, 15);
+const Mom = new Monster("Mom", 100, 0, 18, 7);
+const Boy = new Monster("Boy", 100, 0, 12, 6);
+const Knight = new Monster("Knight", 100, 0, 27, 46);
+const Wizard = new Monster("Wizard", 100, 0, 17, 23);

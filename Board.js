@@ -125,15 +125,18 @@ class Board {
         this.generateBridge(29,48)
         this.generateWater(0,20)
         this.generateKey(36, 8)
-        this.generateMob(13, 65)
-        this.generateCyclop(8, 55)  
-        this.generateCyclop(37, 29)
-        this.generateCyclop(30, 7)  
-        this.generateCyclop(21, 20) 
         this.generateWaterBorder()
         this.generateRestWaterBorder(0,20)
         this.generateCastle(12,65)
-
+    
+    this.generateCyclop(Cyclop.posX,Cyclop.posY);
+    this.generateCyclop(Cyclop2.posX,Cyclop2.posY);
+    this.generateGhost(Ghost.posX,Ghost.posY);
+    this.generateMom(Mom.posX,Mom.posY);
+    this.generateBoy(Boy.posX,Boy.posY);
+    this.generateFarmer(Farmer.posX,Farmer.posY);
+    this.generateKnight(Knight.posX,Knight.posY);
+    this.generateWizard(Wizard.posX,Wizard.posY);
     }
 
     generateGrassFlower(abs,ord){
@@ -215,10 +218,6 @@ class Board {
         this.rows[abs-2][ord-3].imgsrc=2;
         this.rows[abs-2][ord-3].walkable = false;
 
-        this.rows[abs+1][ord-1].image='0100';
-        this.rows[abs+1][ord-1].imgsrc=1;
-        this.rows[abs+1][ord-1].walkable = false;
-
         this.rows[abs+1][ord].background = 'gravel'
         this.rows[abs+2][ord].background = 'gravel'
         this.rows[abs+1][ord+1].background = 'gravel'
@@ -255,10 +254,6 @@ class Board {
         this.rows[abs-2][ord-1].image='0052';
         this.rows[abs-2][ord-1].imgsrc=2;
         this.rows[abs-2][ord-1].walkable = false;
-
-        this.rows[abs+1][ord-1].image='0088';
-        this.rows[abs+1][ord-1].imgsrc=1;
-        this.rows[abs+1][ord-1].walkable = false;
 
         this.rows[abs+1][ord].background = 'gravel'
         this.rows[abs+2][ord].background = 'gravel'
@@ -440,12 +435,6 @@ class Board {
         this.rows[abs+6][ord+2].image ='0057';
         this.rows[abs+6][ord+2].imgsrc=2;
         this.rows[abs+6][ord+2].walkable = false;
-
-        this.rows[abs+4][ord-1].image ='0086';
-        this.rows[abs+4][ord-1].imgsrc=1;
-        this.rows[abs+4][ord-1].walkable = false;
-
-
     }
 
     generateTarget(abs,ord){
@@ -1218,7 +1207,7 @@ class Board {
         updateInventoryTest(game);
     }
 
-    generateMob(abs,ord) {
+    generateGhost(abs,ord) {
         this.rows[abs][ord].image ='0121';
         this.rows[abs][ord].imgsrc=1;
         this.rows[abs][ord].walkable = false;
@@ -1226,6 +1215,36 @@ class Board {
     
     generateCyclop(abs,ord) {
         this.rows[abs][ord].image ='0109';
+        this.rows[abs][ord].imgsrc=1;
+        this.rows[abs][ord].walkable = false;
+    }
+
+    generateMom(abs,ord){
+        this.rows[abs][ord].image='0100';
+        this.rows[abs][ord].imgsrc=1;
+        this.rows[abs][ord].walkable = false;
+    }
+    
+    generateBoy(abs,ord){
+        this.rows[abs+1][ord-1].image='0088';
+        this.rows[abs+1][ord-1].imgsrc=1;
+        this.rows[abs+1][ord-1].walkable = false;
+    }
+
+    generateFarmer(abs,ord){
+        this.rows[abs][ord].image ='0086';
+        this.rows[abs][ord].imgsrc=1;
+        this.rows[abs][ord].walkable = false;
+    }
+
+    generateKnight(abs,ord){
+        this.rows[abs][ord].image ='0096';
+        this.rows[abs][ord].imgsrc=1;
+        this.rows[abs][ord].walkable = false;
+    }
+
+    generateWizard(abs,ord){
+        this.rows[abs][ord].image ='0084';
         this.rows[abs][ord].imgsrc=1;
         this.rows[abs][ord].walkable = false;
     }
@@ -1241,9 +1260,6 @@ class Board {
                 row.map( (tile, ord ) =>{
                     if(abs >0 && ord>0 && abs<39 && ord<69){
                         if(this.rows[abs][ord].imgsrc == 3 && this.rows[abs][ord].image=='0042'){
-                            console.log(abs, ord);
-                            console.log("test", this.rows[abs-1][ord].background);
-
                             let caseHaut = this.rows[abs-1][ord]
                             let caseBas = this.rows[abs+1][ord]
                             let caseGauche = this.rows[abs][ord-1]
@@ -1601,12 +1617,6 @@ class Board {
         this.rows[abs][ord+1].background="BridgeC"
         this.rows[abs][ord+2].background="BridgeC"
         this.rows[abs][ord+3].background="BridgeC"
-
-        this.rows[abs-2][ord-2].image ='0084';
-        this.rows[abs-2][ord-2].imgsrc=1;
-        this.rows[abs-2][ord-2].walkable = false;
-
-
     }
 
     generateCastle(abs,ord){

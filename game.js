@@ -176,7 +176,7 @@ class Game {
                     || this.board.rows[playerPosX + 1][playerPosY - 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
                     || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]
                     || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Cyclop.posX][Cyclop.posY]){
-                        Cyclop.sante -= Sword.damage;
+                        Cyclop.sante -= sword.damage;
                     }
                     if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
                         || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
@@ -186,7 +186,7 @@ class Game {
                         || this.board.rows[playerPosX + 1][playerPosY - 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
                         || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]
                         || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Cyclop2.posX][Cyclop2.posY]){
-                            Cyclop2.sante -= Sword.damage;
+                            Cyclop2.sante -= sword.damage;
                     }
                     if(this.board.rows[playerPosX][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
                         || this.board.rows[playerPosX][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]
@@ -196,7 +196,7 @@ class Game {
                         || this.board.rows[playerPosX + 1][playerPosY - 1] === game.board.rows[Ghost.posX][Ghost.posY]
                         || this.board.rows[playerPosX - 1][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]
                         || this.board.rows[playerPosX + 1][playerPosY + 1] === game.board.rows[Ghost.posX][Ghost.posY]){
-                        Ghost.sante -= Sword.damage;
+                        Ghost.sante -= sword.damage;
                     }
                 }
             }

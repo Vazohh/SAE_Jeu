@@ -17,7 +17,7 @@ class Monster {
 } 
 
 const Cyclop = new Monster("Cyclop", 100, 20, 20, 60);
-const Cyclop2 = new Monster("Cyclop2", 100, 20, 28, 67);
+const Cyclop2 = new Monster("Cyclop ", 100, 20, 28, 67);
 const Ghost = new Monster("Ghost", 50, 10, 13, 65);
 
 const Farmer = new Monster("Farmer", 100, 0, 12, 15);

@@ -39,7 +39,6 @@ class Game {
         if (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 8 && this.currentPlayer.hasKey == false) {
             this.board.deleteKey(36, 8, this);
             this.currentPlayer.hasKey = true;
-            setHealthLevel(0);
         }
 
         if (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 46 || this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 46) {
@@ -62,28 +61,38 @@ class Game {
                 erreur.style.display = 'block'; 
             }
         }
-
-        if ((this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 65 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath)) {
-            setHealthLevel(5);
+        if(Ghost.alive) {
+            if ((this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 65 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath)) {
+                setHealthLevel(5);
+            }
         }
 
-        // Cyclops
-        if ((this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 55) || (this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 56) || (this.currentPlayer.position[0] == 8 && this.currentPlayer.position[1] == 56) || (this.currentPlayer.position[0] == 8 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 55) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 56)) {
-            setHealthLevel(5);
-        }
-        if ((this.currentPlayer.position[0] == 22 && this.currentPlayer.position[1] == 19) || (this.currentPlayer.position[0] == 22 && this.currentPlayer.position[1] == 20) || (this.currentPlayer.position[0] == 22 && this.currentPlayer.position[1] == 21) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 21) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 21) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 20) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 19) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 19)) {
-            setHealthLevel(5);
-        }
-        if ((this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 7) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 8) || (this.currentPlayer.position[0] == 30 && this.currentPlayer.position[1] == 8) || (this.currentPlayer.position[0] == 30 && this.currentPlayer.position[1] == 6) || (this.currentPlayer.position[0] == 31 && this.currentPlayer.position[1] == 6) || (this.currentPlayer.position[0] == 31 && this.currentPlayer.position[1] == 7)) {
-            setHealthLevel(5);
-        }
-        if ((this.currentPlayer.position[0] == 37 && this.currentPlayer.position[1] == 30) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 30) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 29) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 28) || (this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 29) || (this.currentPlayer.position[0] == 37 && this.currentPlayer.position[1] == 28)) {
-            setHealthLevel(5);
+        if(Cyclop.alive) {
+            if ((this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 59 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 59 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 19 && this.currentPlayer.position[1] == 59 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 60 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 61 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 61 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 19 && this.currentPlayer.position[1] == 61 && !this.currentPlayer.mobDeath)) {
+                setHealthLevel(2.5);
+            }
         }
 
-        //enf game
+        if(Cyclop2.alive) {
+            if ((this.currentPlayer.position[0] == 27 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 67 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 68 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 68 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 27 && this.currentPlayer.position[1] == 68 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 27 && this.currentPlayer.position[1] == 67 && !this.currentPlayer.mobDeath)) {
+                setHealthLevel(2.5);
+            }
+        }
+
+        if (!Ghost.alive) {
+            this.board.rows[13][65].walkable = true;
+        }
+
+        if (!Cyclop.alive) {
+            this.board.rows[20][60].walkable = true;
+        }
+        if (!Cyclop2.alive) {
+            this.board.rows[28][67].walkable = true;
+        }
+
+        //end game
         if ((this.currentPlayer.position[0] == 12 && this.currentPlayer.position[1] == 65) || (this.currentPlayer.position[0] == 12 && this.currentPlayer.position[1] == 66)) {
-            if (this.currentPlayer.hasOpenedChest) {
+            if (this.currentPlayer.hasOpenedChest && !Ghost.alive) {
                 var fin = document.getElementById('fin');
                 fin.style.display = 'block';
             } else {
@@ -92,7 +101,7 @@ class Game {
             }
         }
 
-        if (health == 0) {
+        if (health <= 0) {
             this.end();
         }
     }

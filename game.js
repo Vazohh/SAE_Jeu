@@ -6,6 +6,7 @@ class Game {
         this.gameState = "not_started";
         this.inventory = inventory;
         this.Apparence=0;
+        this.health = 100;
 
         this.start()
     }
@@ -32,6 +33,12 @@ class Game {
         this.board.rows[this.currentPlayer.position[0]][this.currentPlayer.position[1]].character = "hero"
         updateUI(this)
 
+    }
+    
+    setHealthLevel(percentage) {
+        var healthLevel = document.getElementById('health-level');
+        healthLevel.style.width = (this.health - percentage) + '%';
+        this.health = this.health - percentage;
     }
 
     checkPos() {
@@ -61,21 +68,22 @@ class Game {
                 erreur.style.display = 'block'; 
             }
         }
+
         if(Ghost.alive) {
             if ((this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 65 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath)) {
-                setHealthLevel(5);
+                this.setHealthLevel(5);
             }
         }
 
         if(Cyclop.alive) {
             if ((this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 59 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 59 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 19 && this.currentPlayer.position[1] == 59 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 60 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 61 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 61 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 19 && this.currentPlayer.position[1] == 61 && !this.currentPlayer.mobDeath)) {
-                setHealthLevel(2.5);
+                this.setHealthLevel(2.5);
             }
         }
 
         if(Cyclop2.alive) {
             if ((this.currentPlayer.position[0] == 27 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 67 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 68 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 68 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 27 && this.currentPlayer.position[1] == 68 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 27 && this.currentPlayer.position[1] == 67 && !this.currentPlayer.mobDeath)) {
-                setHealthLevel(2.5);
+                this.setHealthLevel(2.5);
             }
         }
 
@@ -101,7 +109,7 @@ class Game {
             }
         }
 
-        if (health <= 0) {
+        if (this.health <= 0) {
             this.end();
         }
     }
@@ -303,6 +311,7 @@ class Game {
             }
         }
         console.log(this)
+        console.log(this.health)
         this.checkPos()
         this.update()
     }
@@ -695,11 +704,4 @@ function afficherDialog() {
     }, 5000);
   }
 
-function setHealthLevel(percentage) {
-    var healthLevel = document.getElementById('health-level');
-    healthLevel.style.width = (health - percentage) + '%';
-    health = health - percentage;
-}
-
-var health = 100;
   

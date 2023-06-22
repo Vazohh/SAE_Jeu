@@ -39,7 +39,6 @@ class Game {
         if (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 8 && this.currentPlayer.hasKey == false) {
             this.board.deleteKey(36, 8, this);
             this.currentPlayer.hasKey = true;
-            setHealthLevel(0);
         }
 
         if (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 46 || this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 46) {
@@ -68,18 +67,6 @@ class Game {
         }
 
         // Cyclops
-        if ((this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 55) || (this.currentPlayer.position[0] == 9 && this.currentPlayer.position[1] == 56) || (this.currentPlayer.position[0] == 8 && this.currentPlayer.position[1] == 56) || (this.currentPlayer.position[0] == 8 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 55) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 54) || (this.currentPlayer.position[0] == 7 && this.currentPlayer.position[1] == 56)) {
-            setHealthLevel(5);
-        }
-        if ((this.currentPlayer.position[0] == 22 && this.currentPlayer.position[1] == 19) || (this.currentPlayer.position[0] == 22 && this.currentPlayer.position[1] == 20) || (this.currentPlayer.position[0] == 22 && this.currentPlayer.position[1] == 21) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 21) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 21) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 20) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 19) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 19)) {
-            setHealthLevel(5);
-        }
-        if ((this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 7) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 8) || (this.currentPlayer.position[0] == 30 && this.currentPlayer.position[1] == 8) || (this.currentPlayer.position[0] == 30 && this.currentPlayer.position[1] == 6) || (this.currentPlayer.position[0] == 31 && this.currentPlayer.position[1] == 6) || (this.currentPlayer.position[0] == 31 && this.currentPlayer.position[1] == 7)) {
-            setHealthLevel(5);
-        }
-        if ((this.currentPlayer.position[0] == 37 && this.currentPlayer.position[1] == 30) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 30) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 29) || (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 28) || (this.currentPlayer.position[0] == 38 && this.currentPlayer.position[1] == 29) || (this.currentPlayer.position[0] == 37 && this.currentPlayer.position[1] == 28)) {
-            setHealthLevel(5);
-        }
 
         //enf game
         if ((this.currentPlayer.position[0] == 12 && this.currentPlayer.position[1] == 65) || (this.currentPlayer.position[0] == 12 && this.currentPlayer.position[1] == 66)) {

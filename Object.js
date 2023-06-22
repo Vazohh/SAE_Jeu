@@ -22,7 +22,7 @@ class Epee extends Object {
         super();
         this.localisation='dungeon'
 		this.idImage = '0104'
-        this.damage = 50
+        this.damage = 25
     }
 }
 class Clef extends Object {

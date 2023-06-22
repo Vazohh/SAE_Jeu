@@ -96,8 +96,8 @@ class Game {
                 var fin = document.getElementById('fin');
                 fin.style.display = 'block';
             } else {
-                var erreur = document.getElementById('erreur');
-                erreur.style.display = 'block'; 
+                var oops = document.getElementById('oops');
+                oops.style.display = 'block'; 
             }
         }
 
@@ -589,6 +589,11 @@ document.addEventListener('keyup', (event) =>{
             bravo.style.display = 'none';
         }
 
+        var oops = document.getElementById('oops');
+        if (oops.style.display === 'block'){
+            oops.style.display = 'none';
+        }
+
         var dialog = document.getElementById('dialog');
         if (dialog.style.display === 'block') {
             dialog.style.display = 'none';
@@ -638,12 +643,21 @@ closeBravoButton.addEventListener('click', function() {
     bravo.style.display = 'none';
 });
 
+var closeOopsButton = document.getElementsByClassName('oops')[0];
+  
+closeOopsButton.addEventListener('click', function() {
+    var oops = document.getElementById('oops');
+    oops.style.display = 'none';
+});
+
 var closeErrorButton = document.getElementsByClassName('closeError')[0];
   
 closeErrorButton.addEventListener('click', function() {
     var erreur = document.getElementById('erreur');
     erreur.style.display = 'none';
 });
+
+
 
 function disparaitre() {
     var bouton = document.getElementById("start-game");

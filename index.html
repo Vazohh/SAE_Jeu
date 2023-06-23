@@ -142,12 +142,9 @@
     <div id="health-bar">
         <div id="health-level"></div>
     </div>
+    <div id="timer">00:00:00</div>
 
-    <div id="oops" class="error">
-        <div class="error-content">
-            <img src="img/oops.png" alt="Oops" style="width:40%;">
-        </div>
-    </div>
+    
       
     <div id="gameover" class="gameover">
         <div class="gameover-content">
@@ -155,6 +152,15 @@
             <p>Appuie sur F5 pour rejouer</p>
         </div>
     </div>
+    <div id="volumeContainer" class="volume-container">
+        <input type="range" min="0" max="100" value="50" step="1" class="volume-slider" id="volumeSlider">
+        <div class="volume-label" id="volumeLabel">50</div>
+      </div>
+      <audio id="audioPlayer" src="Son.mp3"></audio>
+      
+    
+    
+      
     
     <script src="Tile.js"></script>
     <script src="Board.js"></script>

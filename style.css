@@ -469,12 +469,40 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-
-.hide-map .map {
+#timer {
+  font-size: 36px;
+  margin-bottom: 20px;
   display: none;
+  color: rgb(64, 64, 68) ;
 }
 
+.volume-container {
+  display: none;
+  width: 200px;
+  margin: 0 auto;
+}
 
-.show-map .map {
-  display: block;
+.volume-slider {
+  width: 100%;
+  height: 10px;
+  
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volume-label {
+
+  text-align: center;
+  color: rgb(64, 64, 68) ;
+}
+.container {
+  text-align: center;
 }

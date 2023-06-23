@@ -2,13 +2,10 @@ class Game {
     constructor(players, board, inventory) {
         this.players = players;
         this.board = board;
-        
-   
         this.currentPlayer = players[0];
         this.gameState = "not_started";
         this.inventory = inventory;
         this.Apparence=0;
-        this.health = 100;
 
         this.start()
     }
@@ -18,7 +15,7 @@ class Game {
         this.board.rows[this.currentPlayer.position[0]][this.currentPlayer.position[1]].character = "hero"
         this.board.generate();
         // À implémenter : afficher le plateau de jeu et les joueurs sur l'interface HTML
-       
+               
     }
     teleportToChateauInterieur() {
         if (this.currentPlayer.position[0] === 2 && this.currentPlayer.position[1] === 2) {
@@ -51,15 +48,8 @@ class Game {
         updateUI(this)
 
     }
-    
-    setHealthLevel(percentage) {
-        var healthLevel = document.getElementById('health-level');
-        healthLevel.style.width = (this.health - percentage) + '%';
-        this.health = this.health - percentage;
-    }
 
     checkPos() {
-       
 
         if (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 8 && this.currentPlayer.hasKey == false) {
             this.board.deleteKey(36, 8, this);
@@ -86,22 +76,21 @@ class Game {
                 erreur.style.display = 'block'; 
             }
         }
-
         if(Ghost.alive) {
             if ((this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 65 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 64 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 14 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 13 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath)) {
-                this.setHealthLevel(5);
+                setHealthLevel(5);
             }
         }
 
         if(Cyclop.alive) {
             if ((this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 59 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 59 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 19 && this.currentPlayer.position[1] == 59 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 60 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 21 && this.currentPlayer.position[1] == 61 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 20 && this.currentPlayer.position[1] == 61 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 19 && this.currentPlayer.position[1] == 61 && !this.currentPlayer.mobDeath)) {
-                this.setHealthLevel(2.5);
+                setHealthLevel(2.5);
             }
         }
 
         if(Cyclop2.alive) {
             if ((this.currentPlayer.position[0] == 27 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 66 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 67 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 29 && this.currentPlayer.position[1] == 68 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 28 && this.currentPlayer.position[1] == 68 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 27 && this.currentPlayer.position[1] == 68 && !this.currentPlayer.mobDeath) || (this.currentPlayer.position[0] == 27 && this.currentPlayer.position[1] == 67 && !this.currentPlayer.mobDeath)) {
-                this.setHealthLevel(2.5);
+                setHealthLevel(2.5);
             }
         }
 
@@ -122,21 +111,18 @@ class Game {
                 var fin = document.getElementById('fin');
                 fin.style.display = 'block';
             } else {
-                var oops = document.getElementById('oops');
-                oops.style.display = 'block'; 
+                var erreur = document.getElementById('erreur');
+                erreur.style.display = 'block'; 
             }
         }
 
-        if (this.health <= 0) {
+        if (health <= 0) {
             this.end();
         }
     }
     
 
     keyboardControl(touche){
- 
-  
-
         if(touche == "ArrowLeft"){
             if(this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]-1].walkable){
                 this.currentPlayer.moveLeft()
@@ -332,7 +318,6 @@ class Game {
             }
         }
         console.log(this)
-        console.log(this.health)
         this.checkPos()
         this.update()
     }
@@ -619,11 +604,6 @@ document.addEventListener('keyup', (event) =>{
             bravo.style.display = 'none';
         }
 
-        var oops = document.getElementById('oops');
-        if (oops.style.display === 'block'){
-            oops.style.display = 'none';
-        }
-
         var dialog = document.getElementById('dialog');
         if (dialog.style.display === 'block') {
             dialog.style.display = 'none';
@@ -673,13 +653,6 @@ closeBravoButton.addEventListener('click', function() {
     bravo.style.display = 'none';
 });
 
-var closeOopsButton = document.getElementsByClassName('oops')[0];
-  
-closeOopsButton.addEventListener('click', function() {
-    var oops = document.getElementById('oops');
-    oops.style.display = 'none';
-});
-
 var closeErrorButton = document.getElementsByClassName('closeError')[0];
   
 closeErrorButton.addEventListener('click', function() {
@@ -687,11 +660,11 @@ closeErrorButton.addEventListener('click', function() {
     erreur.style.display = 'none';
 });
 
-
-
 function disparaitre() {
     var bouton = document.getElementById("start-game");
     bouton.style.display = "none";
+    timer.style.display = "none";
+    
 }
 
 function afficher() {
@@ -699,10 +672,19 @@ function afficher() {
     var defendButton = document.getElementById("defend-button");
     var inventoryButton = document.getElementById("use-item-button");
     var healthBar = document.getElementById("health-bar");
+    var timer = document.getElementById("timer");
+    var volumeContainer = document.getElementById("volumeContainer");
+    volumeContainer.style.display = "block";
+   
+        
+    
+    timer.style.display = "block";
     attackButton.style.display = "block";
     defendButton.style.display = "block";
     inventoryButton.style.display = "block";
     healthBar.style.display = "block";
+    
+    
     
 }
 
@@ -725,5 +707,73 @@ function afficherDialog() {
     }, 5000);
   }
 
-  
+function setHealthLevel(percentage) {
+    var healthLevel = document.getElementById('health-level');
+    healthLevel.style.width = (health - percentage) + '%';
+    health = health - percentage;
+}
 
+var health = 100;
+
+var startTime;
+var timerRunning = false;
+var minutes = 0;
+var seconds = 0;
+var milliseconds = 0;
+
+function startTimer() {
+  timerRunning = true;
+  startTime = performance.now();
+  requestAnimationFrame(updateTimer);
+}
+
+function updateTimer(currentTime) {
+  if (!timerRunning) {
+    return;
+  }
+
+  var elapsedTime = Math.floor(currentTime - startTime);
+  minutes = Math.floor(elapsedTime / (1000 * 60));
+  seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+  milliseconds = elapsedTime % 1000;
+
+  var timeString = padNumber(minutes) + ':' + padNumber(seconds) + ':' + padNumber(milliseconds, 3);
+  document.getElementById('timer').innerHTML = timeString;
+
+  requestAnimationFrame(updateTimer);
+}
+
+function padNumber(number, length) {
+  var str = String(number);
+  while (str.length < length) {
+    str = '0' + str;
+  }
+  return str;
+}
+document.getElementById('start-game').addEventListener('click', startTimer);
+
+function setupVolumeSlider() {
+    var volumeSlider = document.getElementById("volumeSlider");
+    var volumeContainer = document.getElementById("volumeContainer");
+    var volumeLabel = document.getElementById("volumeLabel");
+    var audioPlayer = document.getElementById("audioPlayer");
+
+    volumeSlider.addEventListener("input", function() {
+        var volumeValue = volumeSlider.value;
+        volumeLabel.textContent = "" + volumeValue;
+        audioPlayer.volume = volumeValue / 100;
+    });
+
+    audioPlayer.addEventListener("canplay", function() {
+        // Votre code pour lancer la lecture de la musique ici
+        // Intégrez cette partie avec la logique de démarrage de votre jeu
+        audioPlayer.play();
+    });
+
+    volumeContainer.style.display = "none";
+}
+
+// Appelez la fonction setupVolumeSlider pour initialiser la barre de volume
+setupVolumeSlider();
+
+  

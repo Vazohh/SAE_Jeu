@@ -2,6 +2,8 @@ class Game {
     constructor(players, board, inventory) {
         this.players = players;
         this.board = board;
+        
+   
         this.currentPlayer = players[0];
         this.gameState = "not_started";
         this.inventory = inventory;
@@ -16,6 +18,21 @@ class Game {
         this.board.rows[this.currentPlayer.position[0]][this.currentPlayer.position[1]].character = "hero"
         this.board.generate();
         // À implémenter : afficher le plateau de jeu et les joueurs sur l'interface HTML
+       
+    }
+    teleportToChateauInterieur() {
+        if (this.currentPlayer.position[0] === 2 && this.currentPlayer.position[1] === 2) {
+          this.gameState = "en_transition";
+    
+          // Téléportation vers la deuxième map (château intérieur)
+          this.board = chateauInterieur.rows;
+          const chateauInterieurStartingPositionX = 0;
+          const chateauInterieurStartingPositionY = 0;
+          this.currentPlayer.position = [chateauInterieurStartingPositionX, chateauInterieurStartingPositionY];
+    
+          // Mettre à jour l'état du jeu pour "en_cours" ou autre indication appropriée
+          this.gameState = "en_cours";
+        }
     }
 
     end() {
@@ -42,6 +59,7 @@ class Game {
     }
 
     checkPos() {
+       
 
         if (this.currentPlayer.position[0] == 36 && this.currentPlayer.position[1] == 8 && this.currentPlayer.hasKey == false) {
             this.board.deleteKey(36, 8, this);
@@ -116,6 +134,9 @@ class Game {
     
 
     keyboardControl(touche){
+ 
+  
+
         if(touche == "ArrowLeft"){
             if(this.board.rows[this.currentPlayer.position[0]][ this.currentPlayer.position[1]-1].walkable){
                 this.currentPlayer.moveLeft()
@@ -705,3 +726,4 @@ function afficherDialog() {
   }
 
   
+

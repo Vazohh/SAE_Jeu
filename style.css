@@ -469,3 +469,12 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.hide-map .map {
+  display: none;
+}
+
+
+.show-map .map {
+  display: block;
+}

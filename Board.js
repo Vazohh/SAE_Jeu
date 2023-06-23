@@ -1,3 +1,5 @@
+
+
 class Board {   
     constructor() {
         this.width = 75

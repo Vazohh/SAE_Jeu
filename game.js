@@ -719,7 +719,7 @@ var startTime;
 var timerRunning = false;
 var minutes = 0;
 var seconds = 0;
-var milliseconds = 0;
+//var milliseconds = 0;
 
 function startTimer() {
   timerRunning = true;
@@ -737,7 +737,7 @@ function updateTimer(currentTime) {
   seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
   milliseconds = elapsedTime % 1000;
 
-  var timeString = padNumber(minutes) + ':' + padNumber(seconds) + ':' + padNumber(milliseconds, 3);
+  var timeString = padNumber(minutes,2) + ':' + padNumber(seconds) /*+ ':' + padNumber(milliseconds, 3)*/;
   document.getElementById('timer').innerHTML = timeString;
 
   requestAnimationFrame(updateTimer);
@@ -750,24 +750,35 @@ function padNumber(number, length) {
   }
   return str;
 }
-document.getElementById('start-game').addEventListener('click', startTimer);
+let audio = new Audio('Son.mp3');
+function PlaySound() {
+    audio.loop = true;
+    audio.play(); 
+}
 
+
+
+document.getElementById('start-game').addEventListener('click', startTimer);
+document.getElementById('start-game').addEventListener('click', PlaySound);
 function setupVolumeSlider() {
     var volumeSlider = document.getElementById("volumeSlider");
     var volumeContainer = document.getElementById("volumeContainer");
     var volumeLabel = document.getElementById("volumeLabel");
     var audioPlayer = document.getElementById("audioPlayer");
+    
 
     volumeSlider.addEventListener("input", function() {
         var volumeValue = volumeSlider.value;
         volumeLabel.textContent = "" + volumeValue;
-        audioPlayer.volume = volumeValue / 100;
+        audio.volume = volumeValue / 100;
     });
+    
 
     audioPlayer.addEventListener("canplay", function() {
         // Votre code pour lancer la lecture de la musique ici
         // Intégrez cette partie avec la logique de démarrage de votre jeu
-        audioPlayer.play();
+        
+        //audioPlayer.play();
     });
 
     volumeContainer.style.display = "none";
